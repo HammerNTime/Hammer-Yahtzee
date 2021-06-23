@@ -46,22 +46,33 @@ rollButton.addEventListener("click", rollNewDice)
 
 /* -------------------------Functions------------------------- */
 
+function init() {
+    diceReset()
+}
+
+
 
 function rollNewDice() {
+    let roll
     if (dice1Check !== -1){
-        dice1.innerText = randomDiceRoll()
+        roll = randomDiceRoll()
+        dice1.innerText = roll
     }
     if (dice2Check !== -1){
-        dice2.innerText = randomDiceRoll()
+        roll = randomDiceRoll()
+        dice2.innerText = roll
     }
     if (dice3Check !== -1){
-        dice3.innerText = randomDiceRoll()
+        roll = randomDiceRoll()
+        dice3.innerText = roll
     }
     if (dice4Check !== -1){
-        dice4.innerText = randomDiceRoll()
+        roll = randomDiceRoll()
+        dice4.innerText = roll
     }
     if (dice5Check !== -1){
-        dice5.innerText = randomDiceRoll()
+        roll = randomDiceRoll()
+        dice5.innerText = roll
     }
 }
 
@@ -70,3 +81,10 @@ const randomDiceRoll = () => {
    return parseInt(Math.floor((Math.random() * 6) + 1))
 } 
 
+function diceReset() {
+    dice1Check = 1
+    dice2Check = 1
+    dice3Check = 1
+    dice4Check = 1
+    dice5Check = 1
+}

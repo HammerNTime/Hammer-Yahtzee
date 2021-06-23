@@ -3,7 +3,7 @@ body {
     display: flex;
     margin: 0;
     flex-direction: column;
-    height: 100vh;
+    height: 120vh;
 }
 form#roll-button {
     margin-top: 20px;
@@ -65,15 +65,15 @@ section.score-card {
     grid-template-columns: repeat(4, 15vmin);
     grid-gap: 0vmin;
     justify-content: center;
-    margin-top: 20px;
+    margin: 20px;
     flex-shrink: inherit;
 
   }
 section.score-card > div > div {
     display: flex;
     flex: content;
-    grid-template-rows: repeat(10, .3vmin);
-    grid-template-columns: repeat(1, 10vmin);
+    /* grid-template-rows: repeat(10, 4vmin); */
+    /* grid-template-columns: repeat(1, 10vmin); */
     grid-gap: 0vmin;
     justify-content: center;
     margin: -1px;
@@ -85,14 +85,14 @@ section.score-card > div > div {
     border-color: black;
     color: black;
 }
-/* #column-2 > div {
-    display: grid;
-    grid-template-rows: repeat(10, .3vmin);
-    grid-template-columns: repeat(1, 10vmin);
-    grid-gap: 0vmin;
+ /* / #column-2 > div { */
+    /* display: grid; */
+    /* grid-template-rows: repeat(10, .3vmin); */
+    /* grid-template-columns: repeat(1, vmin); */
+    /* grid-gap: 0vmin;
     justify-content: center;
-    margin: -1px;
-    flex-shrink: inherit;
+    margin: -1px; */
+    /* flex-shrink: inherit;
     border: 1px solid black;
     font-size: 1.3vmin;
     text-align: center;
@@ -100,9 +100,9 @@ section.score-card > div > div {
     background-color: white;
     border-color: black;
     flex-shrink: inherit;
-    color: black;
-}
-#column-3 > div {
+    color: black; */
+/* } */
+/* #column-3 > div {
     display: grid;
     grid-template-rows: repeat(10, .2vmin);
     grid-template-columns: repeat(1, 10vmin);
