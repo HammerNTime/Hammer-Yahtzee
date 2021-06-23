@@ -43,6 +43,7 @@ let dice1Check, dice2Check, dice3Check, dice4Check, dice5Check
 
 rollButton.addEventListener("click", rollNewDice)
 
+
 /* -------------------------Functions------------------------- */
 
 
