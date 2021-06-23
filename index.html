@@ -5,32 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/app.js"></script>
+    <script defer src="./js/app.js"></script>
     <title>Document</title>
 </head>
 <body>
     <h1>Initial Text/Plr Msgs</h1>
-    <section>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
+    <section id="dice" class="dice">
+        <div id="dice1">1</div>
+        <div id="dice2">2</div>
+        <div id="dice3">3</div>
+        <div id="dice4">4</div>
+        <div id="dice5">5</div>
     </section>
-    <button>Roll</button>
-    <section>
-        <div>hold 1</div>
-        <div>hold 2</div>
-        <div>hold 3</div>
-        <div>hold 4</div>
-        <div>hold 5</div>
+    <form id="roll-button">
+        <button type="button">Roll</button>
+    </form>
+    <section id="dice-hold" class="dice-hold">
+        <div id="dice-hold1">hold 1</div>
+        <div id="dice-hold2">hold 2</div>
+        <div id="dice-hold3">hold 3</div>
+        <div id="dice-hold4">hold 4</div>
+        <div id="dice-hold5">hold 5</div>
     </section>
     <h2>Previous game info</h2>
 
-    <section id="score-card">
+    <section id="score-card" class="score-card">
         <div>Upper Section</div>
         <div>Scoring</div>
-        <div id="plr-1-name">Player 1</div>
+        <div id = "plr-1-name">Player 1</div>
         <div id="plr-2-name">Player 2</div>
         <div>Aces</div>
         <div>1's</div>

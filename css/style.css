@@ -1,0 +1,70 @@
+body {
+    text-align: center;
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    height: 100vh;
+}
+form#roll-button {
+    margin-top: 20px;
+}
+section.dice {
+    display: grid;
+    grid-template-rows: repeat(1, 50px);
+    grid-template-columns: repeat(5, 50px);
+    grid-gap: 2vmin;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  section.dice > div {
+    border: 3px solid black;
+    font-size: 4vmin;
+    text-align: center;
+    vertical-align: middle;
+    background-color: white;
+    border-color: black;
+    border-radius: 20%;
+    flex-shrink: inherit;
+    color: black;
+  }
+section.dice-hold {
+    display: grid;
+    grid-template-rows: repeat(1, 50px);
+    grid-template-columns: repeat(5, 50px);
+    grid-gap: 2vmin;
+    justify-content: center;
+    margin-top: 20px;
+    flex-shrink: inherit;
+
+  }
+  section.dice-hold > div {
+    border: 3px solid black;
+    font-size: 1vmin;
+    text-align: center;
+    vertical-align: middle;
+    background-color: white;
+    border-color: black;
+    border-radius: 20%;
+    flex-shrink: inherit;
+    color: black;
+  }
+section.score-card {
+    display: grid;
+    grid-template-rows: repeat(20, 5vmin);
+    grid-template-columns: repeat(4, 10vmin);
+    grid-gap: 0vmin;
+    justify-content: center;
+    margin-top: 20px;
+    flex-shrink: inherit;
+
+  }
+  section.score-card > div {
+    border: 3px solid black;
+    font-size: 1vmin;
+    text-align: center;
+    vertical-align: middle;
+    background-color: white;
+    border-color: black;
+    flex-shrink: inherit;
+    color: black;
+  }
