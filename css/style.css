@@ -1,4 +1,26 @@
+
+html {
+    box-sizing: border-box
+  }
+  
+  /* The Universal Selector */
+  *, /* All elements*/
+  *::before, /* All ::before pseudo-elements */
+  *::after { /* All ::after pseudo-elements */
+    /* height & width will now include border & padding by default
+       but can be over-ridden as needed */
+    box-sizing: inherit;
+  }
+  
+  /* resets font size to be 62.5% of the user preference - 
+       in most browser configurations this will be 10px */
+  :root {
+      font-size: 62.5%
+  }
+  
+
 body {
+    display: flex;
     text-align: center;
     display: flex;
     margin: 0;
@@ -62,7 +84,7 @@ section.dice-hold {
 section.score-card {
     display: grid;
     grid-template-rows: repeat(1, 40vmin);
-    grid-template-columns: repeat(4, 15vmin);
+    grid-template-columns: 15vmin 15vmin 10vmin 10vmin;
     grid-gap: 0vmin;
     justify-content: center;
     margin: 20px;
@@ -85,6 +107,4 @@ section.score-card > div > div {
     border-color: black;
     color: black;
 }
-/* #column-2 > div {
- 
-} */
+

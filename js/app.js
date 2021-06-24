@@ -46,15 +46,15 @@ let dice1Check, dice2Check, dice3Check, dice4Check, dice5Check
 /* -------------------------Event Listeners------------------------- */
 
 rollButton.addEventListener("click", rollNewDice)
-scoreCard.addEventListener("click", addScore)
+scoreCard.addEventListener("click", scoreCardClick)
+dice.addEventListener("click", diceHoldInit)
 
 
 /* -------------------------Functions------------------------- */
-
+init()
 function init() {
     diceReset()
 }
-
 
 
 function rollNewDice() {
@@ -94,18 +94,68 @@ function diceReset() {
     dice5Check = 1
 }
 
-function addScore(event) {
+function scoreCardClick(event) {
     if (event.target.parentElement === column1 
         || event.target.parentElement === column2 
         || event.target.id === "score-card"
         || event.target.id === "column-1"
         || event.target.id === "column-2"
         || event.target.id === "column-3"
-        || event.target.id === "column-4"){
+        || event.target.id === "column-4"
+        || event.target.id === "plr-1-name"
+        || event.target.id === "plr-2-name"){
         return
     }
     else {
         event.target.innerText = dice1.innerText
     }
     console.log(event)
+}
+
+function diceHoldInit(event) {
+    if (event.target.id === "dice1"){
+        dice1Check *= -1
+        if (dice1Check === -1){
+            dice1.style.backgroundColor = "red"
+        }
+        if (dice1Check === 1){
+            dice1.style.backgroundColor = "white"
+        }
+    }
+    if (event.target.id === "dice2"){
+        dice2Check *= -1
+        if (dice2Check === -1){
+            dice2.style.backgroundColor = "red"
+        }
+        if (dice2Check === 1){
+            dice2.style.backgroundColor = "white"
+        }
+    }
+    if (event.target.id === "dice3"){
+        dice3Check *= -1
+        if (dice3Check === -1){
+            dice3.style.backgroundColor = "red"
+        }
+        if (dice3Check === 1){
+            dice3.style.backgroundColor = "white"
+        }
+    }
+    if (event.target.id === "dice4"){
+        dice4Check *= -1
+        if (dice4Check === -1){
+            dice4.style.backgroundColor = "red"
+        }
+        if (dice4Check === 1){
+            dice4.style.backgroundColor = "white"
+        }
+    }
+    if (event.target.id === "dice5"){
+        dice5Check *= -1
+        if (dice5Check === -1){
+            dice5.style.backgroundColor = "red"
+        }
+        if (dice5Check === 1){
+            dice5.style.backgroundColor = "white"
+        }
+    }
 }
