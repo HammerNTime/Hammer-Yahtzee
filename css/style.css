@@ -106,5 +106,6 @@ section.score-card > div > div {
     background-color: white;
     border-color: black;
     color: black;
+    height: 32px;
 }
 

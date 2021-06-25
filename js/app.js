@@ -41,8 +41,16 @@ console.log(plr1Name)
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let dice1Check, dice2Check, dice3Check, dice4Check, dice5Check, diceArray, currentRoll
+let dice1Check, dice2Check, dice3Check, dice4Check, dice5Check, diceArray, currentRoll, currentTurn, plr1Array
 
+const player1Obj = {
+    aces: null,
+    twos: null,
+    threes: null,
+    fours: null,
+    fives: null,
+    sixes: null,
+}
 
 /* -------------------------Event Listeners------------------------- */
 
@@ -54,6 +62,8 @@ dice.addEventListener("click", diceHoldInit)
 /* -------------------------Functions------------------------- */
 init()
 function init() {
+    plr1Array = []
+    currentTurn = 1
     diceReset()
     turnReset()
 }
@@ -65,7 +75,7 @@ function rollNewDice() {
     && dice3Check === -1
     && dice4Check === -1
     && dice5Check === -1
-    ){
+    || currentRoll > 3){
         return    
     }
     rollCheck()
@@ -133,11 +143,14 @@ function scoreCardClick(event) {
         || event.target.id === "column-3"
         || event.target.id === "column-4"
         || event.target.id === "plr-1-name"
-        || event.target.id === "plr-2-name"){
+        || event.target.id === "plr-2-name"
+        || plr1Array.includes(event.target.id)
+        || event.target.innerText === "none"){
         return
     }
     else {
-        event.target.innerText = dice1.innerText
+        plr1Array.push(event.target.id)
+        console.log(plr1Array);
         diceReset()
         turnReset()
     }
@@ -196,6 +209,7 @@ function turnReset() {
     currentRoll = 1
     rollButton.innerHTML = "Roll 1"
     checkPossibilities()
+    turnChange()
 }
 
 function rollCheck() {
@@ -208,14 +222,10 @@ function rollCheck() {
         currentRoll++
     }
     else if (currentRoll === 3){
-        rollButton.innerHTML = "Next Player"
-        currentRoll = "nextPlr"
-    }
-    else if (currentRoll === "nextPlr"){
-        currentRoll = "reset"
+        rollButton.innerHTML = "Make Your Selection"
+        currentRoll++
     }
 }
-
 function render() {
     checkPossibilities()
 }
@@ -230,9 +240,17 @@ function checkPossibilities(){
     checkSixes()
 }
 
+function turnChange() {
+    currentTurn *= -1
+}
+
 /* ------------------------- Game Logic ------------------------- */
 
 function checkAces(){
+    if (plr1Array.includes("aces-1")){
+        aces1.style.backgroundColor = "#ededed"
+        return
+    }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(1)){
@@ -248,13 +266,17 @@ function checkAces(){
         aces1.style.backgroundColor = "white"
         aces1.innerText = "none"
     }
-    if (!diceArray.includes(1) && currentRoll === "nextPlr"){
+    if (!diceArray.includes(1) && currentRoll === 4){
         aces1.style.backgroundColor = "yellow"
         aces1.innerText = 0
 
     }
 }
 function checkTwos(){
+    if (plr1Array.includes("twos-1")){
+        twos1.style.backgroundColor = "#ededed"
+        return
+    }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(2)){
@@ -270,13 +292,17 @@ function checkTwos(){
         twos1.style.backgroundColor = "white"
         twos1.innerText = "none"
     }
-    if (!diceArray.includes(2) && currentRoll === "nextPlr"){
+    if (!diceArray.includes(2) && currentRoll === 4){
         twos1.style.backgroundColor = "yellow"
         twos1.innerText = 0
 
     }
 }
 function checkThrees(){
+    if (plr1Array.includes("threes-1")){
+        threes1.style.backgroundColor = "#ededed"
+        return
+    }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(3)){
@@ -292,13 +318,17 @@ function checkThrees(){
         threes1.style.backgroundColor = "white"
         threes1.innerText = "none"
     }
-    if (!diceArray.includes(3) && currentRoll === "nextPlr"){
+    if (!diceArray.includes(3) && currentRoll === 4){
         threes1.style.backgroundColor = "yellow"
         threes1.innerText = 0
 
     }
 }
 function checkFours(){
+    if (plr1Array.includes("fours-1")){
+        fours1.style.backgroundColor = "#ededed"
+        return
+    }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(4)){
@@ -314,13 +344,17 @@ function checkFours(){
         fours1.style.backgroundColor = "white"
         fours1.innerText = "none"
     }
-    if (!diceArray.includes(4) && currentRoll === "nextPlr"){
+    if (!diceArray.includes(4) && currentRoll === 4){
         fours1.style.backgroundColor = "yellow"
         fours1.innerText = 0
 
     }
 }
 function checkFives(){
+    if (plr1Array.includes("fives-1")){
+        fives1.style.backgroundColor = "#ededed"
+        return
+    }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(5)){
@@ -336,13 +370,17 @@ function checkFives(){
         fives1.style.backgroundColor = "white"
         fives1.innerText = "none"
     }
-    if (!diceArray.includes(5) && currentRoll === "nextPlr"){
+    if (!diceArray.includes(5) && currentRoll === 4){
         fives1.style.backgroundColor = "yellow"
         fives1.innerText = 0
 
     }
 }
 function checkSixes(){
+    if (plr1Array.includes("sixes-1")){
+        sixes1.style.backgroundColor = "#ededed"
+        return
+    }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(6)){
@@ -358,7 +396,7 @@ function checkSixes(){
         sixes1.style.backgroundColor = "white"
         sixes1.innerText = "none"
     }
-    if (!diceArray.includes(6) && currentRoll === "nextPlr"){
+    if (!diceArray.includes(6) && currentRoll === 4){
         sixes1.style.backgroundColor = "yellow"
         sixes1.innerText = 0
 
