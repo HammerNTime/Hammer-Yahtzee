@@ -11,6 +11,7 @@ const dice4 = document.querySelector("#dice4")
 const dice5 = document.querySelector("#dice5")
 
 const diceHold = document.querySelector("#dice-hold")
+const rollButtonForm = document.querySelector("#roll-button-form")
 const rollButton = document.querySelector("#roll-button")
 const scoreCard = document.querySelector("#score-card")
 const column1 = document.querySelector("#column-1")
@@ -40,12 +41,12 @@ console.log(plr1Name)
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let dice1Check, dice2Check, dice3Check, dice4Check, dice5Check
+let dice1Check, dice2Check, dice3Check, dice4Check, dice5Check, diceArray, currentTurn
 
 
 /* -------------------------Event Listeners------------------------- */
 
-rollButton.addEventListener("click", rollNewDice)
+rollButtonForm.addEventListener("click", rollNewDice)
 scoreCard.addEventListener("click", scoreCardClick)
 dice.addEventListener("click", diceHoldInit)
 
@@ -54,30 +55,46 @@ dice.addEventListener("click", diceHoldInit)
 init()
 function init() {
     diceReset()
+    turnReset()
 }
 
 
 function rollNewDice() {
+    if (dice1Check === -1 
+    && dice2Check === -1
+    && dice3Check === -1
+    && dice4Check === -1
+    && dice5Check === -1
+    ){
+        return    
+    }
+    turnCheck()
     let roll
     if (dice1Check !== -1){
         roll = randomDiceRoll()
         dice1.innerText = roll
+        diceArray.splice(0, 1, roll)
+        
     }
     if (dice2Check !== -1){
         roll = randomDiceRoll()
         dice2.innerText = roll
+        diceArray.splice(1, 1, roll)
     }
     if (dice3Check !== -1){
         roll = randomDiceRoll()
+        diceArray.splice(2, 1, roll)
         dice3.innerText = roll
     }
     if (dice4Check !== -1){
         roll = randomDiceRoll()
         dice4.innerText = roll
+        diceArray.splice(3, 1, roll)
     }
     if (dice5Check !== -1){
         roll = randomDiceRoll()
         dice5.innerText = roll
+        diceArray.splice(4, 1, roll)
     }
 }
 
@@ -92,6 +109,12 @@ function diceReset() {
     dice3Check = 1
     dice4Check = 1
     dice5Check = 1
+    dice1.style.backgroundColor = "white"
+    dice2.style.backgroundColor = "white"
+    dice3.style.backgroundColor = "white"
+    dice4.style.backgroundColor = "white"
+    dice5.style.backgroundColor = "white"
+    diceArray = [null, null, null, null, null]
 }
 
 function scoreCardClick(event) {
@@ -108,6 +131,7 @@ function scoreCardClick(event) {
     }
     else {
         event.target.innerText = dice1.innerText
+        diceReset()
     }
     console.log(event)
 }
@@ -157,5 +181,24 @@ function diceHoldInit(event) {
         if (dice5Check === 1){
             dice5.style.backgroundColor = "white"
         }
+    }
+}
+
+function turnReset() {
+    currentTurn = 1
+}
+
+function turnCheck() {
+    if (currentTurn === 1) {
+        rollButton.innerHTML = "Roll 2"
+        currentTurn++
+    }
+    else if (currentTurn === 2){
+        rollButton.innerHTML = "Roll 3"
+        currentTurn++
+    }
+    else if (currentTurn === 3){
+        rollButton.innerHTML = "Roll 1"
+        currentTurn = 1
     }
 }

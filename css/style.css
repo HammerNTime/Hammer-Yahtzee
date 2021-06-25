@@ -27,7 +27,7 @@ body {
     flex-direction: column;
     height: 120vh;
 }
-form#roll-button {
+#roll-button-form {
     margin-top: 20px;
 }
 section.dice {
