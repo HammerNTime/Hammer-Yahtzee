@@ -40,6 +40,8 @@ const threeKind1 = document.querySelector("#three-kind-1")
 const threeKind2 = document.querySelector("#three-kind-2")
 const fourKind1 = document.querySelector("#four-kind-1")
 const fourKind2 = document.querySelector("#four-kind-2")
+const fullHouse1 = document.querySelector("#full-house-1")
+const fullHouse2 = document.querySelector("#full-house-2")
 
 
 console.log(plr1Name)
@@ -300,6 +302,7 @@ function checkPossibilities(){
         checkSixes(plr1Array, "sixes-1", sixes1)
         check3Kind(plr1Array, "three-kind-1", threeKind1)
         check4Kind(plr1Array, "four-kind-1", fourKind1)
+        checkFullHouse(plr1Array, "full-house-1", fullHouse1)
     }
     if (currentTurn === -1){
         checkAces(plr2Array, "aces-2", aces2)
@@ -310,6 +313,7 @@ function checkPossibilities(){
         checkSixes(plr2Array, "sixes-2", sixes2)
         check3Kind(plr2Array, "three-kind-2", threeKind2)
         check4Kind(plr2Array, "four-kind-2", fourKind2)
+        checkFullHouse(plr2Array, "full-house-2", fullHouse2)
     }
 }
 
@@ -508,8 +512,8 @@ function check3Kind(plr, id, el){
     let total
     let copyDiceArray = diceArray.slice(0, 5)
     let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
-    console.log(sortedNumArray)
     console.log(diceArray)
+    console.log(sortedNumArray)
     if ((sortedNumArray[0] === sortedNumArray[2] && diceArray[0] !== null)
         || (sortedNumArray[1] === sortedNumArray[3] && diceArray[0] !== null)
         || (sortedNumArray[2] === sortedNumArray[4] && diceArray[0] !== null))
@@ -524,11 +528,10 @@ function check3Kind(plr, id, el){
     if (sortedNumArray[0] !== sortedNumArray[2]
         && sortedNumArray[1] !== sortedNumArray[3]
         && sortedNumArray[2] !== sortedNumArray[4]
+        && currentRoll === 4
         ){
-            if (currentRoll === 4){
             el.style.backgroundColor = "yellow"
             el.innerText = 0
-            }
         }
 }
 
@@ -540,8 +543,6 @@ function check4Kind(plr, id, el){
     let total
     let copyDiceArray = diceArray.slice(0, 5)
     let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
-    console.log(sortedNumArray)
-    console.log(diceArray)
     if ((sortedNumArray[0] === sortedNumArray[3] && diceArray[0] !== null)
         || (sortedNumArray[1] === sortedNumArray[4] && diceArray[0] !== null))
         { 
@@ -554,11 +555,35 @@ function check4Kind(plr, id, el){
         }
     if (sortedNumArray[0] !== sortedNumArray[3]
         && sortedNumArray[1] !== sortedNumArray[4]
+        && currentRoll === 4
         ){
-            if (currentRoll === 4){
             el.style.backgroundColor = "yellow"
             el.innerText = 0
-            }
         }
+}
+function checkFullHouse(plr, id, el){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
+        return
+    }
+    let total
+    let copyDiceArray = diceArray.slice(0, 5)
+    let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
+    if ((sortedNumArray[0] === sortedNumArray[2] && sortedNumArray[3] === sortedNumArray[4] && sortedNumArray[0] !== sortedNumArray[4] && diceArray[0] !== null)
+        || (sortedNumArray[0] === sortedNumArray[1] && sortedNumArray[2] === sortedNumArray[4] && sortedNumArray[0] !== sortedNumArray[4] && diceArray[0] !== null))
+        { 
+            el.style.backgroundColor = "#42f581"
+            total = sortedNumArray.reduce((acc, num) => acc += num, 0)
+            el.innerText = 25
+        } else {
+            el.style.backgroundColor = "white"
+            el.innerText = null
+        }
+    if (sortedNumArray[0] !== sortedNumArray[1] || sortedNumArray[3] !== sortedNumArray[4]){
+        if (sortedNumArray[0] !== sortedNumArray[2] && sortedNumArray[2] !== sortedNumArray[4] && currentRoll === 4){
+            el.style.backgroundColor = "yellow"
+            el.innerText = 0
+        }
+    }
 }
 
