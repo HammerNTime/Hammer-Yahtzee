@@ -38,6 +38,8 @@ const upperTotal1 = document.querySelector("#upper-total-1")
 const upperTotal2 = document.querySelector("#upper-total-2")
 const threeKind1 = document.querySelector("#three-kind-1")
 const threeKind2 = document.querySelector("#three-kind-2")
+const fourKind1 = document.querySelector("#four-kind-1")
+const fourKind2 = document.querySelector("#four-kind-2")
 
 
 console.log(plr1Name)
@@ -297,6 +299,7 @@ function checkPossibilities(){
         checkFives(plr1Array, "fives-1", fives1)
         checkSixes(plr1Array, "sixes-1", sixes1)
         check3Kind(plr1Array, "three-kind-1", threeKind1)
+        check4Kind(plr1Array, "four-kind-1", fourKind1)
     }
     if (currentTurn === -1){
         checkAces(plr2Array, "aces-2", aces2)
@@ -306,6 +309,7 @@ function checkPossibilities(){
         checkFives(plr2Array, "fives-2", fives2)
         checkSixes(plr2Array, "sixes-2", sixes2)
         check3Kind(plr2Array, "three-kind-2", threeKind2)
+        check4Kind(plr2Array, "four-kind-2", fourKind2)
     }
 }
 
@@ -494,7 +498,8 @@ function checkSixes(plr, id, el){
 }
 
 // checks for 3 of a kind validity. had to slice the diceArray to get a shallow copy so i could 
-// mutate it without effecting the whole.
+// mutate it without effecting the whole. also makes sure it doesn't hit a false positive with
+// nulls in the diceArray
 function check3Kind(plr, id, el){
     if (plr.includes(id)){
         el.style.backgroundColor = "#ededed"
@@ -527,22 +532,33 @@ function check3Kind(plr, id, el){
         }
 }
 
-    // let total
-    // if (diceArray.includes(6)){
-    //     el.style.backgroundColor = "#42f581"
-    //     diceArray.forEach(num => {
-    //         if (num === 6){
-    //             filteredNumsArray.push(num)
-    //         }      
-    //     })
-    //    total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
-    //    el.innerText = total
-    // } else {
-    //     el.style.backgroundColor = "white"
-    //     el.innerText = null
-    // }
-    // if (!diceArray.includes(6) && currentRoll === 4){
-    //     el.style.backgroundColor = "yellow"
-    //     el.innerText = 0
+function check4Kind(plr, id, el){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
+        return
+    }
+    let total
+    let copyDiceArray = diceArray.slice(0, 5)
+    let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
+    console.log(sortedNumArray)
+    console.log(diceArray)
+    if ((sortedNumArray[0] === sortedNumArray[3] && diceArray[0] !== null)
+        || (sortedNumArray[1] === sortedNumArray[4] && diceArray[0] !== null))
+        { 
+            el.style.backgroundColor = "#42f581"
+            total = sortedNumArray.reduce((acc, num) => acc += num, 0)
+            el.innerText = total
+        } else {
+            el.style.backgroundColor = "white"
+            el.innerText = null
+        }
+    if (sortedNumArray[0] !== sortedNumArray[3]
+        && sortedNumArray[1] !== sortedNumArray[4]
+        ){
+            if (currentRoll === 4){
+            el.style.backgroundColor = "yellow"
+            el.innerText = 0
+            }
+        }
+}
 
-    // }
