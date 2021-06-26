@@ -63,9 +63,10 @@ dice.addEventListener("click", diceHoldInit)
 init()
 function init() {
     plr1Array = []
-    currentTurn = 1
+    plr2Array = []
     diceReset()
     turnReset()
+    currentTurn = 1
 }
 
 
@@ -144,15 +145,27 @@ function scoreCardClick(event) {
         || event.target.id === "column-4"
         || event.target.id === "plr-1-name"
         || event.target.id === "plr-2-name"
-        || plr1Array.includes(event.target.id)
-        || event.target.innerText === "none"){
+        || event.target.innerText === ""){
         return
     }
-    else {
-        plr1Array.push(event.target.id)
-        console.log(plr1Array);
-        diceReset()
-        turnReset()
+    else if (currentTurn === 1){
+        if (plr1Array.includes(event.target.id)){
+            return
+        } else {
+            plr1Array.push(event.target.id)
+            console.log(plr1Array);
+            diceReset()
+            turnReset()
+        }
+    } else {
+        if (plr2Array.includes(event.target.id)){
+            return
+        } else {
+            plr2Array.push(event.target.id)
+            console.log(plr2Array);
+            diceReset()
+            turnReset()
+        }
     }
     console.log(event)
 }
@@ -229,15 +242,24 @@ function rollCheck() {
 function render() {
     checkPossibilities()
 }
-
 function checkPossibilities(){
     console.log('Checking!');
-    checkAces()
-    checkTwos()
-    checkThrees()
-    checkFours()
-    checkFives()
-    checkSixes()
+    if (currentTurn === 1){
+        checkAces(plr1Array, "aces-1", aces1)
+        checkTwos(plr1Array, "twos-1", twos1)
+        checkThrees(plr1Array, "threes-1", threes1)
+        checkFours(plr1Array, "fours-1", fours1)
+        checkFives(plr1Array, "fives-1", fives1)
+        checkSixes(plr1Array, "sixes-1", sixes1)
+    }
+    if (currentTurn === -1){
+        checkAces(plr2Array, "aces-2", aces2)
+        checkTwos(plr2Array, "twos-2", twos2)
+        checkThrees(plr2Array, "threes-2", threes2)
+        checkFours(plr2Array, "fours-2", fours2)
+        checkFives(plr2Array, "fives-2", fives2)
+        checkSixes(plr2Array, "sixes-2", sixes2)
+    }
 }
 
 function turnChange() {
@@ -246,159 +268,159 @@ function turnChange() {
 
 /* ------------------------- Game Logic ------------------------- */
 
-function checkAces(){
-    if (plr1Array.includes("aces-1")){
-        aces1.style.backgroundColor = "#ededed"
+function checkAces(plr, id, el){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
         return
     }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(1)){
-        aces1.style.backgroundColor = "#42f581"
+        el.style.backgroundColor = "#42f581"
         diceArray.forEach(num => {
             if (num === 1){
                 filteredNumsArray.push(num)
             }      
         })
        total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
-       aces1.innerText = total
+       el.innerText = total
     } else {
-        aces1.style.backgroundColor = "white"
-        aces1.innerText = "none"
+        el.style.backgroundColor = "white"
+        el.innerText = null
     }
     if (!diceArray.includes(1) && currentRoll === 4){
-        aces1.style.backgroundColor = "yellow"
-        aces1.innerText = 0
+        el.style.backgroundColor = "yellow"
+        el.innerText = 0
 
     }
 }
-function checkTwos(){
-    if (plr1Array.includes("twos-1")){
-        twos1.style.backgroundColor = "#ededed"
+function checkTwos(plr, id, el){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
         return
     }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(2)){
-        twos1.style.backgroundColor = "#42f581"
+        el.style.backgroundColor = "#42f581"
         diceArray.forEach(num => {
             if (num === 2){
                 filteredNumsArray.push(num)
             }      
         })
        total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
-       twos1.innerText = total
+       el.innerText = total
     } else {
-        twos1.style.backgroundColor = "white"
-        twos1.innerText = "none"
+        el.style.backgroundColor = "white"
+        el.innerText = null
     }
     if (!diceArray.includes(2) && currentRoll === 4){
-        twos1.style.backgroundColor = "yellow"
-        twos1.innerText = 0
+        el.style.backgroundColor = "yellow"
+        el.innerText = 0
 
     }
 }
-function checkThrees(){
-    if (plr1Array.includes("threes-1")){
-        threes1.style.backgroundColor = "#ededed"
+function checkThrees(plr, id, el){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
         return
     }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(3)){
-        threes1.style.backgroundColor = "#42f581"
+        el.style.backgroundColor = "#42f581"
         diceArray.forEach(num => {
             if (num === 3){
                 filteredNumsArray.push(num)
             }      
         })
        total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
-       threes1.innerText = total
+       el.innerText = total
     } else {
-        threes1.style.backgroundColor = "white"
-        threes1.innerText = "none"
+        el.style.backgroundColor = "white"
+        el.innerText = null
     }
     if (!diceArray.includes(3) && currentRoll === 4){
-        threes1.style.backgroundColor = "yellow"
-        threes1.innerText = 0
+        el.style.backgroundColor = "yellow"
+        el.innerText = 0
 
     }
 }
-function checkFours(){
-    if (plr1Array.includes("fours-1")){
-        fours1.style.backgroundColor = "#ededed"
+function checkFours(plr, id, el){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
         return
     }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(4)){
-        fours1.style.backgroundColor = "#42f581"
+        el.style.backgroundColor = "#42f581"
         diceArray.forEach(num => {
             if (num === 4){
                 filteredNumsArray.push(num)
             }      
         })
        total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
-       fours1.innerText = total
+       el.innerText = total
     } else {
-        fours1.style.backgroundColor = "white"
-        fours1.innerText = "none"
+        el.style.backgroundColor = "white"
+        el.innerText = null
     }
     if (!diceArray.includes(4) && currentRoll === 4){
-        fours1.style.backgroundColor = "yellow"
-        fours1.innerText = 0
+        el.style.backgroundColor = "yellow"
+        el.innerText = 0
 
     }
 }
-function checkFives(){
-    if (plr1Array.includes("fives-1")){
-        fives1.style.backgroundColor = "#ededed"
+function checkFives(plr, id, el){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
         return
     }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(5)){
-        fives1.style.backgroundColor = "#42f581"
+        el.style.backgroundColor = "#42f581"
         diceArray.forEach(num => {
             if (num === 5){
                 filteredNumsArray.push(num)
             }      
         })
        total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
-       fives1.innerText = total
+       el.innerText = total
     } else {
-        fives1.style.backgroundColor = "white"
-        fives1.innerText = "none"
+        el.style.backgroundColor = "white"
+        el.innerText = null
     }
     if (!diceArray.includes(5) && currentRoll === 4){
-        fives1.style.backgroundColor = "yellow"
-        fives1.innerText = 0
+        el.style.backgroundColor = "yellow"
+        el.innerText = 0
 
     }
 }
-function checkSixes(){
-    if (plr1Array.includes("sixes-1")){
-        sixes1.style.backgroundColor = "#ededed"
+function checkSixes(plr, id, el){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
         return
     }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(6)){
-        sixes1.style.backgroundColor = "#42f581"
+        el.style.backgroundColor = "#42f581"
         diceArray.forEach(num => {
             if (num === 6){
                 filteredNumsArray.push(num)
             }      
         })
        total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
-       sixes1.innerText = total
+       el.innerText = total
     } else {
-        sixes1.style.backgroundColor = "white"
-        sixes1.innerText = "none"
+        el.style.backgroundColor = "white"
+        el.innerText = null
     }
     if (!diceArray.includes(6) && currentRoll === 4){
-        sixes1.style.backgroundColor = "yellow"
-        sixes1.innerText = 0
+        el.style.backgroundColor = "yellow"
+        el.innerText = 0
 
     }
 }
