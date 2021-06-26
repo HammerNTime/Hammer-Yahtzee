@@ -36,12 +36,16 @@ const bonus1 = document.querySelector("#bonus-1")
 const bonus2 = document.querySelector("#bonus-2")
 const upperTotal1 = document.querySelector("#upper-total-1")
 const upperTotal2 = document.querySelector("#upper-total-2")
+const threeKind1 = document.querySelector("#three-kind-1")
+const threeKind2 = document.querySelector("#three-kind-2")
+
 
 console.log(plr1Name)
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let dice1Check, dice2Check, dice3Check, dice4Check, dice5Check, diceArray, currentRoll, currentTurn, plr1Array
+let dice1Check, dice2Check, dice3Check, dice4Check, dice5Check, diceArray, currentRoll, 
+currentTurn, plr1Array, plr1Upper, plr2Upper, checkUpper, plr1Lower, plr2Lower
 
 const player1Obj = {
     aces: null,
@@ -61,81 +65,23 @@ dice.addEventListener("click", diceHoldInit)
 
 /* -------------------------Functions------------------------- */
 init()
+
 function init() {
     plr1Array = []
     plr2Array = []
+    plr1Upper = []
+    plr2Upper = []
+    plr1Lower = []
+    plr2Lower = []
     diceReset()
     turnReset()
     currentTurn = 1
 }
 
-
-function rollNewDice() {
-    if (dice1Check === -1 
-    && dice2Check === -1
-    && dice3Check === -1
-    && dice4Check === -1
-    && dice5Check === -1
-    || currentRoll > 3){
-        return    
-    }
-    rollCheck()
-    if (currentRoll === "reset"){
-        diceReset()
-        turnReset()
-        return
-    }
-    let roll
-    
-    if (dice1Check !== -1){
-        roll = randomDiceRoll()
-        dice1.innerText = roll
-        diceArray.splice(0, 1, roll)
-        
-    }
-    if (dice2Check !== -1){
-        roll = randomDiceRoll()
-        dice2.innerText = roll
-        diceArray.splice(1, 1, roll)
-    }
-    if (dice3Check !== -1){
-        roll = randomDiceRoll()
-        diceArray.splice(2, 1, roll)
-        dice3.innerText = roll
-    }
-    if (dice4Check !== -1){
-        roll = randomDiceRoll()
-        dice4.innerText = roll
-        diceArray.splice(3, 1, roll)
-    }
-    if (dice5Check !== -1){
-        roll = randomDiceRoll()
-        dice5.innerText = roll
-        diceArray.splice(4, 1, roll)
-    }
-    render()
-}
-
-
-const randomDiceRoll = () => {
-   return parseInt(Math.floor((Math.random() * 6) + 1))
-} 
-
-function diceReset() {
-    dice1Check = 1
-    dice2Check = 1
-    dice3Check = 1
-    dice4Check = 1
-    dice5Check = 1
-    dice1.style.backgroundColor = "white"
-    dice2.style.backgroundColor = "white"
-    dice3.style.backgroundColor = "white"
-    dice4.style.backgroundColor = "white"
-    dice5.style.backgroundColor = "white"
-    diceArray = [null, null, null, null, null]
-}
+/* -------------------------Click Event Functions------------------------- */
 
 function scoreCardClick(event) {
+    upperCheck = event.target.id
     if (event.target.parentElement === column1 
         || event.target.parentElement === column2 
         || event.target.id === "score-card"
@@ -151,17 +97,33 @@ function scoreCardClick(event) {
     else if (currentTurn === 1){
         if (plr1Array.includes(event.target.id)){
             return
+        } 
+        else if (checkUpper === true) {
+            plr1Array.push(event.target.id)
+            plr1Upper.push(parseInt(event.target.innerText))
+            console.log(parseInt(event.target.innerText));
+            diceReset()
+            turnReset()
         } else {
             plr1Array.push(event.target.id)
-            console.log(plr1Array);
+            plr1Lower.push(parseInt(event.target.innerText))
+            console.log(parseInt(event.target.innerText));
             diceReset()
             turnReset()
         }
     } else {
         if (plr2Array.includes(event.target.id)){
             return
+        } 
+        else if (checkUpper === true) {
+            plr2Array.push(event.target.id)
+            plr2Upper.push(parseInt(event.target.innerText))
+            console.log(plr2Array);
+            diceReset()
+            turnReset()
         } else {
             plr2Array.push(event.target.id)
+            plr2Lower.push(parseInt(event.target.innerText))
             console.log(plr2Array);
             diceReset()
             turnReset()
@@ -218,11 +180,55 @@ function diceHoldInit(event) {
     }
 }
 
-function turnReset() {
-    currentRoll = 1
-    rollButton.innerHTML = "Roll 1"
-    checkPossibilities()
-    turnChange()
+
+
+/* -------------------------Roll Dice Functions------------------------- */
+
+
+function rollNewDice() {
+    if (dice1Check === -1 
+    && dice2Check === -1
+    && dice3Check === -1
+    && dice4Check === -1
+    && dice5Check === -1
+    || currentRoll > 3){
+        return    
+    }
+    rollCheck()
+    // if (currentRoll === "reset"){
+    //     diceReset()
+    //     turnReset()
+    //     return
+    // }
+    let roll
+    
+    if (dice1Check !== -1){
+        roll = randomDiceRoll()
+        dice1.innerText = roll
+        diceArray.splice(0, 1, roll)
+        
+    }
+    if (dice2Check !== -1){
+        roll = randomDiceRoll()
+        dice2.innerText = roll
+        diceArray.splice(1, 1, roll)
+    }
+    if (dice3Check !== -1){
+        roll = randomDiceRoll()
+        diceArray.splice(2, 1, roll)
+        dice3.innerText = roll
+    }
+    if (dice4Check !== -1){
+        roll = randomDiceRoll()
+        dice4.innerText = roll
+        diceArray.splice(3, 1, roll)
+    }
+    if (dice5Check !== -1){
+        roll = randomDiceRoll()
+        dice5.innerText = roll
+        diceArray.splice(4, 1, roll)
+    }
+    render()
 }
 
 function rollCheck() {
@@ -239,8 +245,47 @@ function rollCheck() {
         currentRoll++
     }
 }
+
+const randomDiceRoll = () => {
+   return parseInt(Math.floor((Math.random() * 6) + 1))
+} 
+
+
+/* -------------------------Reset Functions------------------------- */
+
+
+function diceReset() {
+    dice1Check = 1
+    dice2Check = 1
+    dice3Check = 1
+    dice4Check = 1
+    dice5Check = 1
+    dice1.style.backgroundColor = "white"
+    dice2.style.backgroundColor = "white"
+    dice3.style.backgroundColor = "white"
+    dice4.style.backgroundColor = "white"
+    dice5.style.backgroundColor = "white"
+    diceArray = [null, null, null, null, null]
+}
+
+
+function turnReset() {
+    currentRoll = 1
+    rollButton.innerHTML = "Roll 1"
+    render()
+    turnChange()
+}
+
+function turnChange() {
+    currentTurn *= -1
+}
+
+
+/* -------------------------Render Functions------------------------- */
+
 function render() {
     checkPossibilities()
+    updateTotals()
 }
 function checkPossibilities(){
     console.log('Checking!');
@@ -251,6 +296,7 @@ function checkPossibilities(){
         checkFours(plr1Array, "fours-1", fours1)
         checkFives(plr1Array, "fives-1", fives1)
         checkSixes(plr1Array, "sixes-1", sixes1)
+        check3Kind(plr1Array, "three-kind-1", threeKind1)
     }
     if (currentTurn === -1){
         checkAces(plr2Array, "aces-2", aces2)
@@ -259,11 +305,33 @@ function checkPossibilities(){
         checkFours(plr2Array, "fours-2", fours2)
         checkFives(plr2Array, "fives-2", fives2)
         checkSixes(plr2Array, "sixes-2", sixes2)
+        check3Kind(plr2Array, "three-kind-2", threeKind2)
     }
 }
 
-function turnChange() {
-    currentTurn *= -1
+function updateTotals() {
+    upperTotal1.innerText = plr1Upper.reduce((acc, num) => acc += num, 0) 
+    upperTotal2.innerText = plr2Upper.reduce((acc, num) => acc += num, 0)
+}
+
+function checkIfUpper(){
+    if (upperCheck === "aces-1"
+    || upperCheck === "twos-1"
+    || upperCheck === "threes-1"
+    || upperCheck === "fours-1"
+    || upperCheck === "fives-1"
+    || upperCheck === "sixes-1"
+    || upperCheck === "aces-2"
+    || upperCheck === "twos-2"
+    || upperCheck === "threes-2"
+    || upperCheck === "fours-2"
+    || upperCheck === "fives-2"
+    || upperCheck === "sixes-2"
+    ){
+        return true
+    } else {
+        return false
+    }
 }
 
 /* ------------------------- Game Logic ------------------------- */
@@ -424,3 +492,57 @@ function checkSixes(plr, id, el){
 
     }
 }
+
+// checks for 3 of a kind validity. had to slice the diceArray to get a shallow copy so i could 
+// mutate it without effecting the whole.
+function check3Kind(plr, id, el){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
+        return
+    }
+    let total
+    let copyDiceArray = diceArray.slice(0, 5)
+    let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
+    console.log(sortedNumArray)
+    console.log(diceArray)
+    if ((sortedNumArray[0] === sortedNumArray[2] && diceArray[0] !== null)
+        || (sortedNumArray[1] === sortedNumArray[3] && diceArray[0] !== null)
+        || (sortedNumArray[2] === sortedNumArray[4] && diceArray[0] !== null))
+        { 
+            el.style.backgroundColor = "#42f581"
+            total = sortedNumArray.reduce((acc, num) => acc += num, 0)
+            el.innerText = total
+        } else {
+            el.style.backgroundColor = "white"
+            el.innerText = null
+        }
+    if (sortedNumArray[0] !== sortedNumArray[2]
+        && sortedNumArray[1] !== sortedNumArray[3]
+        && sortedNumArray[2] !== sortedNumArray[4]
+        ){
+            if (currentRoll === 4){
+            el.style.backgroundColor = "yellow"
+            el.innerText = 0
+            }
+        }
+}
+
+    // let total
+    // if (diceArray.includes(6)){
+    //     el.style.backgroundColor = "#42f581"
+    //     diceArray.forEach(num => {
+    //         if (num === 6){
+    //             filteredNumsArray.push(num)
+    //         }      
+    //     })
+    //    total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
+    //    el.innerText = total
+    // } else {
+    //     el.style.backgroundColor = "white"
+    //     el.innerText = null
+    // }
+    // if (!diceArray.includes(6) && currentRoll === 4){
+    //     el.style.backgroundColor = "yellow"
+    //     el.innerText = 0
+
+    // }
