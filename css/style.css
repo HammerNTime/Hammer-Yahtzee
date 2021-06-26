@@ -20,12 +20,20 @@ html {
   
 
 body {
-    display: flex;
+    display: grid;
     text-align: center;
-    display: flex;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     margin: 0;
-    flex-direction: column;
+    /* flex-direction: column; */
     height: 120vh;
+    grid-template-areas: 
+    "initial score"
+    "dice score"
+    "roll score"
+    "hold score"
+    "previous score";
+
 }
 #roll-button-form {
     margin-top: 20px;
@@ -39,6 +47,7 @@ section.dice {
     margin-top: 20px;
     flex-shrink: inherit;
     vertical-align: center;
+    grid-area: dice;
   }
   section.dice > div {
     display: flex;
@@ -89,6 +98,7 @@ section.score-card {
     justify-content: center;
     margin: 20px;
     flex-shrink: inherit;
+    grid-area: score;
 
   }
 section.score-card > div > div {
@@ -106,6 +116,6 @@ section.score-card > div > div {
     background-color: white;
     border-color: black;
     color: black;
-    height: 32px;
+    height: 28px;
 }
 
