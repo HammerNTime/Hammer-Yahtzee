@@ -42,6 +42,22 @@ const fourKind1 = document.querySelector("#four-kind-1")
 const fourKind2 = document.querySelector("#four-kind-2")
 const fullHouse1 = document.querySelector("#full-house-1")
 const fullHouse2 = document.querySelector("#full-house-2")
+const smStraight1 = document.querySelector("#sm-straight-1")
+const smStraight2 = document.querySelector("#sm-straight-2")
+const lgStraight1 = document.querySelector("#lg-straight-1")
+const lgStraight2 = document.querySelector("#lg-straight-2")
+const yahtzee1 = document.querySelector("#yahtzee-1")
+const yahtzee2 = document.querySelector("#yahtzee-2")
+const chance1 = document.querySelector("#chance-1")
+const chance2 = document.querySelector("#chance-2")
+const yahtzeeBonus1 = document.querySelector("#yahtzee-bonus-1")
+const yahtzeeBonus2 = document.querySelector("#yahtzee-bonus-2")
+const lowerTotal1 = document.querySelector("#lower-total-1")
+const lowerTotal2 = document.querySelector("#lower-total-2")
+const upperTotal11 = document.querySelector("#upper-total-11")
+const upperTotal22 = document.querySelector("#upper-total-22")
+const grandTotal1 = document.querySelector("#grand-total-1")
+const grandTotal2 = document.querySelector("#grand-total-2")
 
 
 console.log(plr1Name)
@@ -102,7 +118,7 @@ function scoreCardClick(event) {
         if (plr1Array.includes(event.target.id)){
             return
         } 
-        else if (checkUpper === true) {
+        else if (checkIfUpper() === true) {
             plr1Array.push(event.target.id)
             plr1Upper.push(parseInt(event.target.innerText))
             console.log(parseInt(event.target.innerText));
@@ -119,7 +135,7 @@ function scoreCardClick(event) {
         if (plr2Array.includes(event.target.id)){
             return
         } 
-        else if (checkUpper === true) {
+        else if (checkIfUpper() === true) {
             plr2Array.push(event.target.id)
             plr2Upper.push(parseInt(event.target.innerText))
             console.log(plr2Array);
@@ -303,6 +319,14 @@ function checkPossibilities(){
         check3Kind(plr1Array, "three-kind-1", threeKind1)
         check4Kind(plr1Array, "four-kind-1", fourKind1)
         checkFullHouse(plr1Array, "full-house-1", fullHouse1)
+        checkSmStraight(plr1Array, "sm-straight-1", smStraight1)
+        checkLgStraight(plr1Array, "lg-straight-1", lgStraight1)
+        // checkYahtzee(plr1Array, "yahtzee-1", yahtzee1)
+        // checkChance(plr1Array, "chance-1", chance1)
+        // checkYahtzeeBonus(plr1Array, "yahtzee-bonus-1", yahtzeeBonus1)
+        // checkLowerTotal(plr1Array, "lower-total-1", lowerTotal1)
+        // checkUpperTotal2(plr1Array, "upper-total-11", upperTotal11)
+        // checkGrandTotal(plr1Array, "grand-total-1", grandTotal1)
     }
     if (currentTurn === -1){
         checkAces(plr2Array, "aces-2", aces2)
@@ -314,6 +338,15 @@ function checkPossibilities(){
         check3Kind(plr2Array, "three-kind-2", threeKind2)
         check4Kind(plr2Array, "four-kind-2", fourKind2)
         checkFullHouse(plr2Array, "full-house-2", fullHouse2)
+        checkSmStraight(plr2Array, "sm-straight-2", smStraight2)
+        checkLgStraight(plr2Array, "lg-straight-2", lgStraight2)
+        // checkYahtzee(plr2Array, "yahtzee-2", yahtzee2)
+        // checkChance(plr2Array, "chance-2", chance2)
+        // checkYahtzeeBonus(plr2Array, "yahtzee-bonus-2", yahtzeeBonus2)
+        // checkLowerTotal(plr2Array, "lower-total-2", lowerTotal2)
+        // checkUpperTotal2(plr2Array, "upper-total-22", upperTotal22)
+        // checkGrandTotal(plr2Array, "grand-total-2", grandTotal2)
+
     }
 }
 
@@ -584,6 +617,98 @@ function checkFullHouse(plr, id, el){
             el.style.backgroundColor = "yellow"
             el.innerText = 0
         }
+    }
+}
+
+// checks for sm Straight. had to make new arrays to push into to simplify the check. 
+// basically they are looking for the 3 occurances that a small straight can be present 
+// and sorting through the dice in order to make sure that if there are duplicate numbers
+// they dont prevent the check from being true
+function checkSmStraight(plr, id, el){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
+        return
+    }
+    let total
+    let check1 = 1
+    let check1Array = []
+    let check2 = 2
+    let check2Array = []
+    let check3 = 3
+    let check3Array = []
+    let copyDiceArray = diceArray.slice(0, 5)
+    let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
+
+    sortedNumArray.forEach((num) => {
+        if (num === check1) {
+            check1Array.push(num)
+            check1++
+            console.log(check1Array)
+        }
+        if (num === check2) {
+            check2Array.push(num)
+            check2++
+            console.log(check2Array)
+        }
+        if (num === check3) {
+            check3Array.push(num)
+            check3++
+            console.log(check3Array)
+        }
+    })
+    if (check1Array.length >= 4 || check2Array.length >= 4 || check3Array.length >= 4) 
+    { 
+            el.style.backgroundColor = "#42f581"
+            total = sortedNumArray.reduce((acc, num) => acc += num, 0)
+            el.innerText = 30
+        } else {
+            el.style.backgroundColor = "white"
+            el.innerText = null
+        }
+    if (check1Array.length < 4 && check2Array.length < 4 && check3Array < 4 && currentRoll === 4)
+    {
+            el.style.backgroundColor = "yellow"
+            el.innerText = 0
+    }
+}
+function checkLgStraight(plr, id, el){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
+        return
+    }
+    let total
+    let check1 = 1
+    let check1Array = []
+    let check2 = 2
+    let check2Array = []
+    let copyDiceArray = diceArray.slice(0, 5)
+    let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
+
+    sortedNumArray.forEach((num) => {
+        if (num === check1) {
+            check1Array.push(num)
+            check1++
+            console.log(check1Array)
+        }
+        if (num === check2) {
+            check2Array.push(num)
+            check2++
+            console.log(check2Array)
+        }
+    })
+    if (check1Array.length === 5 || check2Array.length === 5) 
+    { 
+            el.style.backgroundColor = "#42f581"
+            total = sortedNumArray.reduce((acc, num) => acc += num, 0)
+            el.innerText = 40
+        } else {
+            el.style.backgroundColor = "white"
+            el.innerText = null
+        }
+    if (check1Array.length < 5 && check2Array.length < 5 && currentRoll === 4)
+    {
+            el.style.backgroundColor = "yellow"
+            el.innerText = 0
     }
 }
 
