@@ -9,7 +9,6 @@ const dice2 = document.querySelector("#dice2")
 const dice3 = document.querySelector("#dice3")
 const dice4 = document.querySelector("#dice4")
 const dice5 = document.querySelector("#dice5")
-
 const diceHold = document.querySelector("#dice-hold")
 const rollButtonForm = document.querySelector("#roll-button-form")
 const rollButton = document.querySelector("#roll-button")
@@ -60,12 +59,11 @@ const grandTotal1 = document.querySelector("#grand-total-1")
 const grandTotal2 = document.querySelector("#grand-total-2")
 
 
-console.log(plr1Name)
 
 /*---------------------------- Variables (state) ----------------------------*/
 
 let dice1Check, dice2Check, dice3Check, dice4Check, dice5Check, diceArray, currentRoll, 
-currentTurn, plr1Array, plr1Upper, plr2Upper, checkUpper, plr1Lower, plr2Lower
+currentTurn, plr1Array, plr1Upper, plr2Upper, checkUpper, plr1Lower, plr2Lower, turnCounter, bonusCheck1, bonusCheck2
 
 const player1Obj = {
     aces: null,
@@ -93,6 +91,9 @@ function init() {
     plr2Upper = []
     plr1Lower = []
     plr2Lower = []
+    bonusCheck1 = null
+    bonusCheck2 = null
+    turnCounter = 0
     diceReset()
     turnReset()
     currentTurn = 1
@@ -121,13 +122,11 @@ function scoreCardClick(event) {
         else if (checkIfUpper() === true) {
             plr1Array.push(event.target.id)
             plr1Upper.push(parseInt(event.target.innerText))
-            console.log(parseInt(event.target.innerText));
             diceReset()
             turnReset()
         } else {
             plr1Array.push(event.target.id)
             plr1Lower.push(parseInt(event.target.innerText))
-            console.log(parseInt(event.target.innerText));
             diceReset()
             turnReset()
         }
@@ -138,18 +137,15 @@ function scoreCardClick(event) {
         else if (checkIfUpper() === true) {
             plr2Array.push(event.target.id)
             plr2Upper.push(parseInt(event.target.innerText))
-            console.log(plr2Array);
             diceReset()
             turnReset()
         } else {
             plr2Array.push(event.target.id)
             plr2Lower.push(parseInt(event.target.innerText))
-            console.log(plr2Array);
             diceReset()
             turnReset()
         }
     }
-    console.log(event)
 }
 
 function diceHoldInit(event) {
@@ -294,10 +290,12 @@ function turnReset() {
     rollButton.innerHTML = "Roll 1"
     render()
     turnChange()
+    gameOver()
 }
 
 function turnChange() {
     currentTurn *= -1
+    turnCounter++
 }
 
 
@@ -308,7 +306,6 @@ function render() {
     updateTotals()
 }
 function checkPossibilities(){
-    console.log('Checking!');
     if (currentTurn === 1){
         checkAces(plr1Array, "aces-1", aces1)
         checkTwos(plr1Array, "twos-1", twos1)
@@ -351,8 +348,17 @@ function checkPossibilities(){
 }
 
 function updateTotals() {
+    bonusCheck()
     upperTotal1.innerText = plr1Upper.reduce((acc, num) => acc += num, 0) 
     upperTotal2.innerText = plr2Upper.reduce((acc, num) => acc += num, 0)
+    lowerTotal1.innerText = plr1Lower.reduce((acc, num) => acc += num, 0) 
+    lowerTotal2.innerText = plr2Lower.reduce((acc, num) => acc += num, 0)
+    upperTotal11.innerText = upperTotal1.innerText
+    upperTotal22.innerText = upperTotal2.innerText
+    grandTotal1.innerText = (Number(upperTotal1.innerText) + Number(lowerTotal1.innerText))
+    grandTotal2.innerText = (Number(upperTotal2.innerText) + Number(lowerTotal2.innerText))
+
+    
 }
 
 function checkIfUpper(){
@@ -372,6 +378,11 @@ function checkIfUpper(){
         return true
     } else {
         return false
+    }
+}
+function gameOver() {
+    if (turnCounter === 26){
+        console.log('DONE!')
     }
 }
 
@@ -545,8 +556,6 @@ function check3Kind(plr, id, el){
     let total
     let copyDiceArray = diceArray.slice(0, 5)
     let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
-    console.log(diceArray)
-    console.log(sortedNumArray)
     if ((sortedNumArray[0] === sortedNumArray[2] && diceArray[0] !== null)
         || (sortedNumArray[1] === sortedNumArray[3] && diceArray[0] !== null)
         || (sortedNumArray[2] === sortedNumArray[4] && diceArray[0] !== null))
@@ -643,17 +652,14 @@ function checkSmStraight(plr, id, el){
         if (num === check1) {
             check1Array.push(num)
             check1++
-            console.log(check1Array)
         }
         if (num === check2) {
             check2Array.push(num)
             check2++
-            console.log(check2Array)
         }
         if (num === check3) {
             check3Array.push(num)
             check3++
-            console.log(check3Array)
         }
     })
     if (check1Array.length >= 4 || check2Array.length >= 4 || check3Array.length >= 4) 
@@ -688,12 +694,10 @@ function checkLgStraight(plr, id, el){
         if (num === check1) {
             check1Array.push(num)
             check1++
-            console.log(check1Array)
         }
         if (num === check2) {
             check2Array.push(num)
             check2++
-            console.log(check2Array)
         }
     })
     if (check1Array.length === 5 || check2Array.length === 5) 
@@ -764,5 +768,18 @@ function checkYahtzeeBonus(plr, id, el, pyt){
                 el.style.backgroundColor = "#42f581"
                 el.innerText = (Number(el.innerText) + 100)
             } 
+    }
+}
+
+function bonusCheck() {
+    if (bonusCheck1 === null && ((plr1Upper.reduce((acc, num) => acc += num, 0)) >= 63)) {
+        plr1Upper.push(35)
+        bonus1.innerText = 35
+        bonusCheck1 = 1
+    }
+    if (bonusCheck2 === null && ((plr2Upper.reduce((acc, num) => acc += num, 0)) >= 63)) {
+        plr2Upper.push(35)
+        bonus2.innerText = 35
+        bonusCheck1 = 1
     }
 }
