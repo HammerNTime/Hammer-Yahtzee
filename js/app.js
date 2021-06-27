@@ -76,7 +76,7 @@ const player1Obj = {
 
 /* -------------------------Event Listeners------------------------- */
 
-rollButtonForm.addEventListener("click", rollNewDice)
+rollButton.addEventListener("click", rollNewDice)
 scoreCard.addEventListener("click", scoreCardClick)
 dice.addEventListener("click", diceHoldInit)
 
@@ -94,6 +94,7 @@ function init() {
     bonusCheck1 = null
     bonusCheck2 = null
     turnCounter = 0
+    message.innerText = `Welcome to Yahtzee! ${plr1Name.innerText} is up first!`
     diceReset()
     turnReset()
     currentTurn = 1
@@ -281,10 +282,13 @@ function rollCheck() {
     }
     else if (currentRoll === 2){
         rollButton.innerHTML = "Roll 3"
+        rollButton.className = "btn btn-warning btn-lg"
         currentRoll++
     }
     else if (currentRoll === 3){
         rollButton.innerHTML = "Make Your Selection"
+        rollButton.className = "btn btn-danger btn-lg"
+
         currentRoll++
     } else if (currentRoll === "New Game") {
         gameReset()

@@ -23,27 +23,29 @@ body {
     display: grid;
     text-align: center;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: .5fr 1fr .5fr 1fr;
     margin: 0;
     /* flex-direction: column; */
     height: 120vh;
     grid-template-areas: 
     "initial score"
     "dice score"
-    "dice score"
     "roll score"
     "previous score";
 
 }
-#roll-button-form {
-    margin-top: 20px;
-}
 
+#column-1 > div {
+  font-weight: bold;
+}
 #column-2 > div {
-  font-size: 10px;
+  font-size: 8px;
 }
 #column-2 :first-child {
   font-size: 14px;
+}
+#roll-button {
+  margin-top: -70px;
 }
 
 section.dice {
@@ -72,18 +74,18 @@ section.dice {
     height: 10vmin;
     width: 10vmin;
   }
-section.dice-hold {
+/* section.dice-hold {
     display: flex;
     grid-template-rows: repeat(1, 50px);
     grid-template-columns: repeat(5, 50px);
     grid-gap: 2vmin;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 0px;
     flex-shrink: inherit;
     vertical-align: center;
 
-  }
-  section.dice-hold > div {
+  } */
+  /* section.dice-hold > div {
     display: flex;
     justify-content: center;
     border: 3px solid black;
@@ -97,7 +99,7 @@ section.dice-hold {
     color: black;
     height: 10vmin;
     width: 10vmin;
-  }
+  } */
 section.score-card {
     display: grid;
     grid-template-rows: repeat(1, 40vmin);
@@ -171,4 +173,8 @@ section.score-card > div > div {
 }
 #delete-border-4 {
   border-left: none;
+}
+
+#message {
+  margin-top: 30px;
 }
