@@ -793,6 +793,6 @@ function bonusCheck() {
     if (bonusCheck2 === null && ((plr2Upper.reduce((acc, num) => acc += num, 0)) >= 63)) {
         plr2Upper.push(35)
         bonus2.innerText = 35
-        bonusCheck1 = 1
+        bonusCheck2 = 1
     }
 }
