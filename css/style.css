@@ -108,6 +108,7 @@ section.score-card > div > div {
     /* grid-template-columns: repeat(1, 10vmin); */
     grid-gap: 0vmin;
     justify-content: center;
+    align-items: center;
     margin: -1px;
     flex-shrink: inherit;
     border: 1px solid black;

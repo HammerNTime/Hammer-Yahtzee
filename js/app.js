@@ -2,7 +2,7 @@
 
 
 /* -------------------------Cached Elements------------------------- */
-
+const message = document.querySelector("#message")
 const dice = document.querySelector("#dice")
 const dice1 = document.querySelector("#dice1")
 const dice2 = document.querySelector("#dice2")
@@ -318,13 +318,13 @@ function turnReset() {
     currentRoll = 1
     rollButton.innerHTML = "Roll 1"
     render()
-    checkGameOver()
 }
 
 function turnChange() {
     currentTurn *= -1
     console.log(currentTurn)
     turnCounter++
+    checkGameOver()
 }
 function gameReset(){
     plr1Array = []
@@ -429,12 +429,14 @@ function checkIfUpper(){
     }
 }
 function checkGameOver() {
-    if (turnCounter === 27){
+    if (turnCounter === 26){
         rollButton.innerText = "Click for New Game!"
         currentRoll = "New Game"
+        winningMsg()
         console.log('DONE!')
     }
 }
+
 
 /* ------------------------- Game Logic ------------------------- */
 
@@ -844,5 +846,19 @@ function bonusCheck() {
         plr2Upper.push(35)
         bonus2.innerText = 35
         bonusCheck2 = 1
+    }
+}
+
+
+/* ------------------------- Message Functions ------------------------- */
+
+function winningMsg() {
+    if (Number(grandTotal1.innerText) > Number(grandTotal2.innerText)){
+        message.innerText = `Great game! ${plr1Name.innerText} won by ${Number(grandTotal1.innerText) - Number(grandTotal2.innerText)} points with a score of ${Number(grandTotal1.innerText)}!`
+    } else if (Number(grandTotal2.innerText) > Number(grandTotal1.innerText)){
+        message.innerText = `Great game! ${plr2Name.innerText} won by ${Number(grandTotal2.innerText) - Number(grandTotal1.innerText)} points with a score of ${Number(grandTotal2.innerText)}!`
+    } else {
+        message.innerText = `Amazing! you both tied with a score of ${Number(grandTotal1.innerText)}!`
+
     }
 }
