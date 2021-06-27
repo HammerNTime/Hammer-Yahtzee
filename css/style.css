@@ -38,6 +38,14 @@ body {
 #roll-button-form {
     margin-top: 20px;
 }
+
+#column-2 > div {
+  font-size: 10px;
+}
+#column-2 :first-child {
+  font-size: 14px;
+}
+
 section.dice {
     display: flex;
     grid-template-rows: repeat(1, 50px);
@@ -143,4 +151,24 @@ section.score-card > div > div {
 .dice-6 {
   background-image: url(../assets/Dice-6.png);
   background-size: cover;
+}
+
+.right-arrow {
+  background-image: url(../assets/rightArrow.png);
+  background-size: 32px;
+}
+
+#delete-border-1 {
+  border-right: none;
+}
+#delete-border-2 {
+  border-right: none;
+  border-left: none;
+}
+#delete-border-3 {
+  border-left: none;
+  border-right: none;
+}
+#delete-border-4 {
+  border-left: none;
 }
