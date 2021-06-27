@@ -321,8 +321,8 @@ function checkPossibilities(){
         checkFullHouse(plr1Array, "full-house-1", fullHouse1)
         checkSmStraight(plr1Array, "sm-straight-1", smStraight1)
         checkLgStraight(plr1Array, "lg-straight-1", lgStraight1)
-        // checkYahtzee(plr1Array, "yahtzee-1", yahtzee1)
-        // checkChance(plr1Array, "chance-1", chance1)
+        checkYahtzee(plr1Array, "yahtzee-1", yahtzee1)
+        checkChance(plr1Array, "chance-1", chance1)
         // checkYahtzeeBonus(plr1Array, "yahtzee-bonus-1", yahtzeeBonus1)
         // checkLowerTotal(plr1Array, "lower-total-1", lowerTotal1)
         // checkUpperTotal2(plr1Array, "upper-total-11", upperTotal11)
@@ -340,8 +340,8 @@ function checkPossibilities(){
         checkFullHouse(plr2Array, "full-house-2", fullHouse2)
         checkSmStraight(plr2Array, "sm-straight-2", smStraight2)
         checkLgStraight(plr2Array, "lg-straight-2", lgStraight2)
-        // checkYahtzee(plr2Array, "yahtzee-2", yahtzee2)
-        // checkChance(plr2Array, "chance-2", chance2)
+        checkYahtzee(plr2Array, "yahtzee-2", yahtzee2)
+        checkChance(plr2Array, "chance-2", chance2)
         // checkYahtzeeBonus(plr2Array, "yahtzee-bonus-2", yahtzeeBonus2)
         // checkLowerTotal(plr2Array, "lower-total-2", lowerTotal2)
         // checkUpperTotal2(plr2Array, "upper-total-22", upperTotal22)
@@ -712,3 +712,43 @@ function checkLgStraight(plr, id, el){
     }
 }
 
+function checkYahtzee(plr, id, el){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
+        return
+    }
+    let total
+    let copyDiceArray = diceArray.slice(0, 5)
+    let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
+    if (sortedNumArray[0] === sortedNumArray[4] && diceArray [0] !== null)
+        { 
+            el.style.backgroundColor = "#42f581"
+            total = sortedNumArray.reduce((acc, num) => acc += num, 0)
+            el.innerText = 50
+        } else {
+            el.style.backgroundColor = "white"
+            el.innerText = null
+        }
+    if (sortedNumArray[0] !== sortedNumArray[4] && currentRoll === 4)
+    {
+        el.style.backgroundColor = "yellow"
+        el.innerText = 0
+     }
+}
+
+function checkChance(plr, id, el){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
+        return
+    }
+    let total
+    if (diceArray[0] !== null)
+    { 
+        el.style.backgroundColor = "#42f581"
+        total = diceArray.reduce((acc, num) => acc += num, 0)
+        el.innerText = total
+    } else {
+        el.style.backgroundColor = "white"
+        el.innerText = null
+    }
+}
