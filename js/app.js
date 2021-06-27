@@ -115,7 +115,7 @@ function scoreCardClick(event) {
         return
     }
     else if (currentTurn === 1){
-        if (plr1Array.includes(event.target.id)){
+        if (plr1Array.includes(event.target.id && event.target.id !== "yahtzee-bonus-2")){
             return
         } 
         else if (checkIfUpper() === true) {
@@ -132,7 +132,7 @@ function scoreCardClick(event) {
             turnReset()
         }
     } else {
-        if (plr2Array.includes(event.target.id)){
+        if (plr2Array.includes(event.target.id) && event.target.id !== "yahtzee-bonus-2"){
             return
         } 
         else if (checkIfUpper() === true) {
@@ -323,7 +323,7 @@ function checkPossibilities(){
         checkLgStraight(plr1Array, "lg-straight-1", lgStraight1)
         checkYahtzee(plr1Array, "yahtzee-1", yahtzee1)
         checkChance(plr1Array, "chance-1", chance1)
-        // checkYahtzeeBonus(plr1Array, "yahtzee-bonus-1", yahtzeeBonus1)
+        checkYahtzeeBonus(plr1Array, "yahtzee-bonus-1", yahtzeeBonus1, "yahtzee-1")
         // checkLowerTotal(plr1Array, "lower-total-1", lowerTotal1)
         // checkUpperTotal2(plr1Array, "upper-total-11", upperTotal11)
         // checkGrandTotal(plr1Array, "grand-total-1", grandTotal1)
@@ -342,7 +342,7 @@ function checkPossibilities(){
         checkLgStraight(plr2Array, "lg-straight-2", lgStraight2)
         checkYahtzee(plr2Array, "yahtzee-2", yahtzee2)
         checkChance(plr2Array, "chance-2", chance2)
-        // checkYahtzeeBonus(plr2Array, "yahtzee-bonus-2", yahtzeeBonus2)
+        checkYahtzeeBonus(plr2Array, "yahtzee-bonus-2", yahtzeeBonus2, "yahtzee-2")
         // checkLowerTotal(plr2Array, "lower-total-2", lowerTotal2)
         // checkUpperTotal2(plr2Array, "upper-total-22", upperTotal22)
         // checkGrandTotal(plr2Array, "grand-total-2", grandTotal2)
@@ -750,5 +750,19 @@ function checkChance(plr, id, el){
     } else {
         el.style.backgroundColor = "white"
         el.innerText = null
+    }
+}
+function checkYahtzeeBonus(plr, id, el, pyt){
+    if (plr.includes(id)){
+        el.style.backgroundColor = "#ededed"
+    }
+    if (plr.includes(pyt)){
+        let copyDiceArray = diceArray.slice(0, 5)
+        let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
+        if (sortedNumArray[0] === sortedNumArray[4] && diceArray [0] !== null)
+            { 
+                el.style.backgroundColor = "#42f581"
+                el.innerText = (Number(el.innerText) + 100)
+            } 
     }
 }
