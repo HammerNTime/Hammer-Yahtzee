@@ -247,28 +247,28 @@ function rollNewDice() {
     
     if (dice1Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
-        dice1.innerText = roll
+        diceImg(dice1, roll)
         diceArray.splice(0, 1, roll)
         
     }
     if (dice2Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
-        dice2.innerText = roll
+        diceImg(dice2, roll)
         diceArray.splice(1, 1, roll)
     }
     if (dice3Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
+        diceImg(dice3, roll)
         diceArray.splice(2, 1, roll)
-        dice3.innerText = roll
     }
     if (dice4Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
-        dice4.innerText = roll
+        diceImg(dice4, roll)
         diceArray.splice(3, 1, roll)
     }
     if (dice5Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
-        dice5.innerText = roll
+        diceImg(dice5, roll)
         diceArray.splice(4, 1, roll)
     }
     render()
@@ -295,6 +295,26 @@ const randomDiceRoll = () => {
    return parseInt(Math.floor((Math.random() * 6) + 1))
 } 
 
+function diceImg(dice, result){
+    if (result === 1){
+        dice.className = "dice-1"
+    }
+    if (result === 2){
+        dice.className = "dice-2"
+    }
+    if (result === 3){
+        dice.className = "dice-3"
+    }
+    if (result === 4){
+        dice.className = "dice-4"
+    }
+    if (result === 5){
+        dice.className = "dice-5"
+    }
+    if (result === 6){
+        dice.className = "dice-6"
+    }
+}
 
 /* -------------------------Reset Functions------------------------- */
 
