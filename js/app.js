@@ -103,20 +103,11 @@ function init() {
 
 function scoreCardClick(event) {
     upperCheck = event.target.id
-    if (event.target.parentElement === column1 
-        || event.target.parentElement === column2 
-        || event.target.id === "score-card"
-        || event.target.id === "column-1"
-        || event.target.id === "column-2"
-        || event.target.id === "column-3"
-        || event.target.id === "column-4"
-        || event.target.id === "plr-1-name"
-        || event.target.id === "plr-2-name"
-        || event.target.innerText === ""){
+    if (scoreCardNoClickEvents(event) === true){
         return
     }
-    else if (currentTurn === 1){
-        if (plr1Array.includes(event.target.id && event.target.id !== "yahtzee-bonus-2")){
+    else if (currentTurn === 1 && event.target.parentElement !== column4){
+        if (plr1Array.includes(event.target.id) && event.target.id !== "yahtzee-bonus-2"){
             return
         } 
         else if (checkIfUpper() === true) {
@@ -124,13 +115,20 @@ function scoreCardClick(event) {
             plr1Upper.push(parseInt(event.target.innerText))
             diceReset()
             turnReset()
+            turnChange()
+            return
+
         } else {
             plr1Array.push(event.target.id)
             plr1Lower.push(parseInt(event.target.innerText))
             diceReset()
             turnReset()
+            turnChange()
+            return
+
         }
-    } else {
+    }
+    else if (currentTurn === -1 && event.target.parentElement !== column3) {
         if (plr2Array.includes(event.target.id) && event.target.id !== "yahtzee-bonus-2"){
             return
         } 
@@ -139,11 +137,17 @@ function scoreCardClick(event) {
             plr2Upper.push(parseInt(event.target.innerText))
             diceReset()
             turnReset()
+            turnChange()
+            return
+
         } else {
             plr2Array.push(event.target.id)
             plr2Lower.push(parseInt(event.target.innerText))
             diceReset()
             turnReset()
+            turnChange()
+            return
+
         }
     }
 }
@@ -196,6 +200,29 @@ function diceHoldInit(event) {
     }
 }
 
+function scoreCardNoClickEvents(event){
+    if (event.target.parentElement === column1 
+        || event.target.parentElement === column2 
+        || event.target.id === "score-card"
+        || event.target.id === "column-1"
+        || event.target.id === "column-2"
+        || event.target.id === "column-3"
+        || event.target.id === "column-4"
+        || event.target.id === "plr-1-name"
+        || event.target.id === "plr-2-name"
+        || event.target.id === "upper-total-1"
+        || event.target.id === "upper-total-2"
+        || event.target.id === "lower-total-1"
+        || event.target.id === "lower-total-2"
+        || event.target.id === "upper-total-11"
+        || event.target.id === "upper-total-22"
+        || event.target.id === "grand-total-1"
+        || event.target.id === "grand-total-2"
+        || event.target.innerText === ""){
+        return true
+    }
+
+}
 
 
 /* -------------------------Roll Dice Functions------------------------- */
@@ -218,28 +245,28 @@ function rollNewDice() {
     // }
     let roll
     
-    if (dice1Check !== -1){
+    if (dice1Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
         dice1.innerText = roll
         diceArray.splice(0, 1, roll)
         
     }
-    if (dice2Check !== -1){
+    if (dice2Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
         dice2.innerText = roll
         diceArray.splice(1, 1, roll)
     }
-    if (dice3Check !== -1){
+    if (dice3Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
         diceArray.splice(2, 1, roll)
         dice3.innerText = roll
     }
-    if (dice4Check !== -1){
+    if (dice4Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
         dice4.innerText = roll
         diceArray.splice(3, 1, roll)
     }
-    if (dice5Check !== -1){
+    if (dice5Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
         dice5.innerText = roll
         diceArray.splice(4, 1, roll)
@@ -259,6 +286,8 @@ function rollCheck() {
     else if (currentRoll === 3){
         rollButton.innerHTML = "Make Your Selection"
         currentRoll++
+    } else if (currentRoll === "New Game") {
+        gameReset()
     }
 }
 
@@ -289,13 +318,32 @@ function turnReset() {
     currentRoll = 1
     rollButton.innerHTML = "Roll 1"
     render()
-    turnChange()
-    gameOver()
+    checkGameOver()
 }
 
 function turnChange() {
     currentTurn *= -1
+    console.log(currentTurn)
     turnCounter++
+}
+function gameReset(){
+    plr1Array = []
+    plr2Array = []
+    plr1Upper = []
+    plr2Upper = []
+    plr1Lower = []
+    plr2Lower = []
+    bonusCheck1 = null
+    bonusCheck2 = null
+    currentTurn = -1
+    render()
+    currentTurn = 1
+    render()
+    currentTurn = 1
+    diceReset()
+    turnReset()
+    turnCounter = 0
+
 }
 
 
@@ -380,8 +428,10 @@ function checkIfUpper(){
         return false
     }
 }
-function gameOver() {
+function checkGameOver() {
     if (turnCounter === 27){
+        rollButton.innerText = "Click for New Game!"
+        currentRoll = "New Game"
         console.log('DONE!')
     }
 }
