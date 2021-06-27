@@ -381,7 +381,7 @@ function checkIfUpper(){
     }
 }
 function gameOver() {
-    if (turnCounter === 26){
+    if (turnCounter === 27){
         console.log('DONE!')
     }
 }
@@ -577,6 +577,7 @@ function check3Kind(plr, id, el){
         }
 }
 
+// same as check3Kind, but have to check for less possibilities within the array
 function check4Kind(plr, id, el){
     if (plr.includes(id)){
         el.style.backgroundColor = "#ededed"
@@ -603,6 +604,9 @@ function check4Kind(plr, id, el){
             el.innerText = 0
         }
 }
+
+// checking for all iterations of full house possibilities in a sorted dice array. 
+// had to use 2 checks for 0 to account for index 0/1 and 3/4 both being equal. 
 function checkFullHouse(plr, id, el){
     if (plr.includes(id)){
         el.style.backgroundColor = "#ededed"
@@ -621,12 +625,19 @@ function checkFullHouse(plr, id, el){
             el.style.backgroundColor = "white"
             el.innerText = null
         }
-    if (sortedNumArray[0] !== sortedNumArray[1] || sortedNumArray[3] !== sortedNumArray[4]){
-        if (sortedNumArray[0] !== sortedNumArray[2] && sortedNumArray[2] !== sortedNumArray[4] && currentRoll === 4){
-            el.style.backgroundColor = "yellow"
-            el.innerText = 0
+        if (sortedNumArray[0] !== sortedNumArray[1] || sortedNumArray[3] !== sortedNumArray[4]){
+            if (currentRoll === 4){
+                el.style.backgroundColor = "yellow"
+                el.innerText = 0
+            }
         }
-    }
+        if (sortedNumArray[0] === sortedNumArray[1] || sortedNumArray[3] === sortedNumArray[4]){
+            if (sortedNumArray[0] !== sortedNumArray [2] && sortedNumArray[2] !== sortedNumArray[4])
+                if (currentRoll === 4){
+                    el.style.backgroundColor = "yellow"
+                    el.innerText = 0
+                }
+        }
 }
 
 // checks for sm Straight. had to make new arrays to push into to simplify the check. 
@@ -671,12 +682,14 @@ function checkSmStraight(plr, id, el){
             el.style.backgroundColor = "white"
             el.innerText = null
         }
-    if (check1Array.length < 4 && check2Array.length < 4 && check3Array < 4 && currentRoll === 4)
+    if (check1Array.length < 4 && check2Array.length < 4 && check3Array.length < 4 && currentRoll === 4)
     {
             el.style.backgroundColor = "yellow"
             el.innerText = 0
     }
 }
+
+// same as smStraight but have to check for less possbilities within the array
 function checkLgStraight(plr, id, el){
     if (plr.includes(id)){
         el.style.backgroundColor = "#ededed"
