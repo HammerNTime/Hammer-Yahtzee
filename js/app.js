@@ -91,6 +91,8 @@ lightDarkBtn.addEventListener("click", colorScheme.change)
 init()
 
 function init() {
+    diceArray = [null, null, null, null, null]
+    gameReset()
     plr1Array = []
     plr2Array = []
     plr1Upper = []
@@ -463,13 +465,13 @@ function checkGameOver() {
 
 function checkAces(plr, id, el){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
         return
     }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(1)){
-        el.style.backgroundColor = "#42f581"
+        el.setAttribute("class", "boxgreen")
         diceArray.forEach(num => {
             if (num === 1){
                 filteredNumsArray.push(num)
@@ -478,24 +480,24 @@ function checkAces(plr, id, el){
         total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
         el.innerText = total
     } else {
-        el.style.backgroundColor = "white"
+        el.setAttribute("class", "box-unselected")
         el.innerText = null
     }
     if (!diceArray.includes(1) && currentRoll === 4){
-        el.style.backgroundColor = "yellow"
+        el.setAttribute("class", "boxyellow")
         el.innerText = 0
     }
 }
 
 function checkTwos(plr, id, el){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
         return
     }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(2)){
-        el.style.backgroundColor = "#42f581"
+        el.setAttribute("class", "boxgreen")
         diceArray.forEach(num => {
             if (num === 2){
                 filteredNumsArray.push(num)
@@ -504,24 +506,24 @@ function checkTwos(plr, id, el){
        total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
        el.innerText = total
     } else {
-        el.style.backgroundColor = "white"
+        el.setAttribute("class", "box-unselected")
         el.innerText = null
     }
     if (!diceArray.includes(2) && currentRoll === 4){
-        el.style.backgroundColor = "yellow"
+        el.setAttribute("class", "boxyellow")
         el.innerText = 0
     }
 }
 
 function checkThrees(plr, id, el){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
         return
     }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(3)){
-        el.style.backgroundColor = "#42f581"
+        el.setAttribute("class", "boxgreen")
         diceArray.forEach(num => {
             if (num === 3){
                 filteredNumsArray.push(num)
@@ -530,24 +532,24 @@ function checkThrees(plr, id, el){
        total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
        el.innerText = total
     } else {
-        el.style.backgroundColor = "white"
+        el.setAttribute("class", "box-unselected")
         el.innerText = null
     }
     if (!diceArray.includes(3) && currentRoll === 4){
-        el.style.backgroundColor = "yellow"
+        el.setAttribute("class", "boxyellow")
         el.innerText = 0
     }
 }
 
 function checkFours(plr, id, el){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
         return
     }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(4)){
-        el.style.backgroundColor = "#42f581"
+        el.setAttribute("class", "boxgreen")
         diceArray.forEach(num => {
             if (num === 4){
                 filteredNumsArray.push(num)
@@ -556,24 +558,24 @@ function checkFours(plr, id, el){
        total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
        el.innerText = total
     } else {
-        el.style.backgroundColor = "white"
+        el.setAttribute("class", "box-unselected")
         el.innerText = null
     }
     if (!diceArray.includes(4) && currentRoll === 4){
-        el.style.backgroundColor = "yellow"
+        el.setAttribute("class", "boxyellow")
         el.innerText = 0
     }
 }
 
 function checkFives(plr, id, el){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
         return
     }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(5)){
-        el.style.backgroundColor = "#42f581"
+        el.setAttribute("class", "boxgreen")
         diceArray.forEach(num => {
             if (num === 5){
                 filteredNumsArray.push(num)
@@ -582,24 +584,24 @@ function checkFives(plr, id, el){
        total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
        el.innerText = total
     } else {
-        el.style.backgroundColor = "white"
+        el.setAttribute("class", "box-unselected")
         el.innerText = null
     }
     if (!diceArray.includes(5) && currentRoll === 4){
-        el.style.backgroundColor = "yellow"
+        el.setAttribute("class", "boxyellow")
         el.innerText = 0
     }
 }
 
 function checkSixes(plr, id, el){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
         return
     }
     let filteredNumsArray = []
     let total
     if (diceArray.includes(6)){
-        el.style.backgroundColor = "#42f581"
+        el.setAttribute("class", "boxgreen")
         diceArray.forEach(num => {
             if (num === 6){
                 filteredNumsArray.push(num)
@@ -608,11 +610,11 @@ function checkSixes(plr, id, el){
        total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
        el.innerText = total
     } else {
-        el.style.backgroundColor = "white"
+        el.setAttribute("class", "box-unselected")
         el.innerText = null
     }
     if (!diceArray.includes(6) && currentRoll === 4){
-        el.style.backgroundColor = "yellow"
+        el.setAttribute("class", "boxyellow")
         el.innerText = 0
     }
 }
@@ -622,7 +624,7 @@ function checkSixes(plr, id, el){
 // nulls in the diceArray
 function check3Kind(plr, id, el){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
         return
     }
     let total
@@ -632,11 +634,11 @@ function check3Kind(plr, id, el){
         || (sortedNumArray[1] === sortedNumArray[3] && diceArray[0] !== null)
         || (sortedNumArray[2] === sortedNumArray[4] && diceArray[0] !== null))
         { 
-            el.style.backgroundColor = "#42f581"
+            el.setAttribute("class", "boxgreen")
             total = sortedNumArray.reduce((acc, num) => acc += num, 0)
             el.innerText = total
         } else {
-            el.style.backgroundColor = "white"
+            el.setAttribute("class", "box-unselected")
             el.innerText = null
         }
     if (sortedNumArray[0] !== sortedNumArray[2]
@@ -644,7 +646,7 @@ function check3Kind(plr, id, el){
         && sortedNumArray[2] !== sortedNumArray[4]
         && currentRoll === 4
         ){
-            el.style.backgroundColor = "yellow"
+            el.setAttribute("class", "boxyellow")
             el.innerText = 0
         }
 }
@@ -652,7 +654,7 @@ function check3Kind(plr, id, el){
 // same as check3Kind, but have to check for less possibilities within the array
 function check4Kind(plr, id, el){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
         return
     }
     let total
@@ -661,18 +663,18 @@ function check4Kind(plr, id, el){
     if ((sortedNumArray[0] === sortedNumArray[3] && diceArray[0] !== null)
         || (sortedNumArray[1] === sortedNumArray[4] && diceArray[0] !== null))
         { 
-            el.style.backgroundColor = "#42f581"
+            el.setAttribute("class", "boxgreen")
             total = sortedNumArray.reduce((acc, num) => acc += num, 0)
             el.innerText = total
         } else {
-            el.style.backgroundColor = "white"
+            el.setAttribute("class", "box-unselected")
             el.innerText = null
         }
     if (sortedNumArray[0] !== sortedNumArray[3]
         && sortedNumArray[1] !== sortedNumArray[4]
         && currentRoll === 4
         ){
-            el.style.backgroundColor = "yellow"
+            el.setAttribute("class", "boxyellow")
             el.innerText = 0
         }
 }
@@ -681,7 +683,7 @@ function check4Kind(plr, id, el){
 // had to use 2 checks for 0 to account for index 0/1 and 3/4 both being equal. 
 function checkFullHouse(plr, id, el){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
         return
     }
     let total
@@ -690,23 +692,23 @@ function checkFullHouse(plr, id, el){
     if ((sortedNumArray[0] === sortedNumArray[2] && sortedNumArray[3] === sortedNumArray[4] && sortedNumArray[0] !== sortedNumArray[4] && diceArray[0] !== null)
         || (sortedNumArray[0] === sortedNumArray[1] && sortedNumArray[2] === sortedNumArray[4] && sortedNumArray[0] !== sortedNumArray[4] && diceArray[0] !== null))
         { 
-            el.style.backgroundColor = "#42f581"
+            el.setAttribute("class", "boxgreen")
             total = sortedNumArray.reduce((acc, num) => acc += num, 0)
             el.innerText = 25
         } else {
-            el.style.backgroundColor = "white"
+            el.setAttribute("class", "box-unselected")
             el.innerText = null
         }
         if (sortedNumArray[0] !== sortedNumArray[1] || sortedNumArray[3] !== sortedNumArray[4]){
             if (currentRoll === 4){
-                el.style.backgroundColor = "yellow"
+                el.setAttribute("class", "boxyellow")
                 el.innerText = 0
             }
         }
         if (sortedNumArray[0] === sortedNumArray[1] || sortedNumArray[3] === sortedNumArray[4]){
             if (sortedNumArray[0] !== sortedNumArray [2] && sortedNumArray[2] !== sortedNumArray[4]){
                 if (currentRoll === 4){
-                    el.style.backgroundColor = "yellow"
+                    el.setAttribute("class", "boxyellow")
                     el.innerText = 0
                 }
             }
@@ -719,7 +721,7 @@ function checkFullHouse(plr, id, el){
 // they dont prevent the check from being true
 function checkSmStraight(plr, id, el){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
         return
     }
     let total
@@ -747,16 +749,16 @@ function checkSmStraight(plr, id, el){
     })
     if (check1Array.length >= 4 || check2Array.length >= 4 || check3Array.length >= 4) 
     { 
-            el.style.backgroundColor = "#42f581"
+            el.setAttribute("class", "boxgreen")
             total = sortedNumArray.reduce((acc, num) => acc += num, 0)
             el.innerText = 30
         } else {
-            el.style.backgroundColor = "white"
+            el.setAttribute("class", "box-unselected")
             el.innerText = null
         }
     if (check1Array.length < 4 && check2Array.length < 4 && check3Array.length < 4 && currentRoll === 4)
     {
-            el.style.backgroundColor = "yellow"
+            el.setAttribute("class", "boxyellow")
             el.innerText = 0
     }
 }
@@ -764,7 +766,7 @@ function checkSmStraight(plr, id, el){
 // same as smStraight but have to check for less possbilities within the array
 function checkLgStraight(plr, id, el){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
         return
     }
     let total
@@ -787,23 +789,23 @@ function checkLgStraight(plr, id, el){
     })
     if (check1Array.length === 5 || check2Array.length === 5) 
     { 
-            el.style.backgroundColor = "#42f581"
+            el.setAttribute("class", "box-green")
             total = sortedNumArray.reduce((acc, num) => acc += num, 0)
             el.innerText = 40
         } else {
-            el.style.backgroundColor = "white"
+            el.setAttribute("class", "box-unselected")
             el.innerText = null
         }
     if (check1Array.length < 5 && check2Array.length < 5 && currentRoll === 4)
     {
-            el.style.backgroundColor = "yellow"
+            el.setAttribute("class", "boxyellow")
             el.innerText = 0
     }
 }
 
 function checkYahtzee(plr, id, el){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
         return
     }
     let copyDiceArray = diceArray.slice(0, 5)
@@ -812,40 +814,40 @@ function checkYahtzee(plr, id, el){
 
     if (sortedNumArray[0] === sortedNumArray[4] && diceArray [0] !== null)
         { 
-            el.style.backgroundColor = "#42f581"
+            el.setAttribute("class", "boxgreen")
             total = sortedNumArray.reduce((acc, num) => acc += num, 0)
             el.innerText = 50
             yahtzeeScored()
         } else {
-            el.style.backgroundColor = "white"
+            el.setAttribute("class", "box-unselected")
             el.innerText = null
         }
     if (sortedNumArray[0] !== sortedNumArray[4] && currentRoll === 4)
     {
-        el.style.backgroundColor = "yellow"
+        el.setAttribute("class", "boxyellow")
         el.innerText = 0
      }
 }
 
 function checkChance(plr, id, el){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
         return
     }
     let total
     if (diceArray[0] !== null)
     { 
-        el.style.backgroundColor = "#42f581"
+        el.setAttribute("class", "boxgreen")
         total = diceArray.reduce((acc, num) => acc += num, 0)
         el.innerText = total
     } else {
-        el.style.backgroundColor = "white"
+        el.setAttribute("class", "box-unselected")
         el.innerText = null
     }
 }
 function checkYahtzeeBonus(plr, id, el, pyt){
     if (plr.includes(id)){
-        el.style.backgroundColor = "#ededed"
+        el.setAttribute("class", "box-selected")
     }
     if (plr.includes(pyt)){
         let copyDiceArray = diceArray.slice(0, 5)
@@ -854,10 +856,13 @@ function checkYahtzeeBonus(plr, id, el, pyt){
 
         if (sortedNumArray[0] === sortedNumArray[4] && diceArray [0] !== null)
             { 
-                el.style.backgroundColor = "#42f581"
+                el.setAttribute("class", "boxgreen")
                 el.innerText = (Number(el.innerText) + 100)
                 yahtzeeScored()
             } 
+    } else {
+        el.setAttribute("class", "box-unselected")
+        el.innerText = null
     }
 }
 
