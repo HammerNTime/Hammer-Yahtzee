@@ -28,6 +28,9 @@ html {
     --box-green: #42f581;
     --box-yellow: yellow;
     --box-unselected: white;
+    --dark-btn: black;
+    --dark-btn-txt: white;
+    --dark-btn-content: "Dark Mode";
     display: grid;
     background-color: var(--body-bg);
     text-align: center;
@@ -43,16 +46,19 @@ html {
     "previous score";
   }
   body.dark {
-    --body-bg: black;
+    --body-bg: rgb(18, 16, 21);
     --h1-clr: white;
-    --dice-bdr: orange;
+    --dice-bdr: rgb(0, 217, 255);
     --scorecard-bg: gray;
     --scorecard-bdr: white;
     --scorecard-txt-clr: white;
     --box-selected: #black;
-    --box-green: #134e28;
-    --box-yellow: rgb(114, 114, 18);
+    --box-green: #007127;
+    --box-yellow: rgb(147, 147, 0);
     --box-unselected: gray;
+    --dark-btn: white;
+    --dark-btn-txt: black;
+    --dark-btn-content: "Light Mode";
     background-color: var(--body-bg);
 
   }
@@ -111,13 +117,20 @@ section.score-card > div > div {
   flex-shrink: inherit;
   border: 1px solid ;
   text-align: center;
-  /* background-color: var(--scorecard-bg); */
   border-color: var(--scorecard-bdr);
   color: var(--scorecard-txt-clr);
   min-height: 2.2vmax;
   flex-direction: row;
+  max-height: 45px;
 }
+#light-dark {
+  background-color: var(--dark-btn);
+  color: var(--dark-btn-txt);
+}
+#light-dark::after {
+  content: var(--dark-btn-content);
 
+}
 .dice-1 {
   background-image: url(../assets/Dice-1.png);
   background-size: cover;
@@ -284,7 +297,7 @@ top: 0;
       min-height: 27px;
     }
     .column-2 > div {
-      font-size: 1.2vmax;
+      font-size: .9vmax;
       height: 2.7vmax;
       min-height: 27px;
   
@@ -299,7 +312,6 @@ top: 0;
       font-size: 1.8vmax;
       height: 2.7vmax;
       min-height: 27px;
-      
     }
     .column-1 :first-child {
       font-size: 1.8vmax;
@@ -378,7 +390,7 @@ top: 0;
       min-height: 27px;
     }
     .column-2 > div {
-      font-size: 1.2vmax;
+      font-size: .9vmax;
       height: 2.7vmax;
       min-height: 27px;
     }
@@ -411,7 +423,7 @@ top: 0;
     background-size: 3.3vmax;
     } 
     h1 {
-      font-size: 2.5vmax;
+      font-size: 2vmax;
     }
   } 
 
