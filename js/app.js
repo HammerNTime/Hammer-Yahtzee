@@ -352,6 +352,7 @@ function diceReset() {
 
 
 function turnReset() {
+    currentRoll = 4
     updateMsg()
     currentRoll = 1
     rollButton.innerHTML = "Roll 1"
@@ -868,6 +869,7 @@ function checkYahtzee(plr, id, el){
             el.style.backgroundColor = "#42f581"
             total = sortedNumArray.reduce((acc, num) => acc += num, 0)
             el.innerText = 50
+            yahtzeeScored()
         } else {
             el.style.backgroundColor = "white"
             el.innerText = null
@@ -906,6 +908,7 @@ function checkYahtzeeBonus(plr, id, el, pyt){
             { 
                 el.style.backgroundColor = "#42f581"
                 el.innerText = (Number(el.innerText) + 100)
+                yahtzeeScored()
             } 
     }
 }
@@ -961,4 +964,18 @@ function updateMsg() {
     if (currentRoll === 3) {
         message.innerText = `${String(currentPlr)}, please make your selection.`
     }
+}
+
+function yahtzeeScored() {
+    message.innerText = "YAHTZEE!!!!!"
+    dice1.classList.add("animate__animated", "animate__tada")
+    setTimeout(function(){dice1.classList.remove("animate__animated", "animate__tada")}, 1000)
+    dice2.classList.add("animate__animated", "animate__tada")
+    setTimeout(function(){dice2.classList.remove("animate__animated", "animate__tada")}, 1000)
+    dice3.classList.add("animate__animated", "animate__tada")
+    setTimeout(function(){dice3.classList.remove("animate__animated", "animate__tada")}, 1000)
+    dice4.classList.add("animate__animated", "animate__tada")
+    setTimeout(function(){dice4.classList.remove("animate__animated", "animate__tada")}, 1000)
+    dice5.classList.add("animate__animated", "animate__tada")
+    setTimeout(function(){dice5.classList.remove("animate__animated", "animate__tada")}, 1000)
 }
