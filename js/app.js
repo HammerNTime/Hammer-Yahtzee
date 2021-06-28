@@ -103,13 +103,6 @@ function init() {
     currentTurn = 1
 }
 
-// function currentPlrName() {
-//     if (currentTurn === 1){
-//         currentPlr = plr1Name.innerText
-//     } else if (currentTurn === -1) {
-//         currentPlr = plr2Name.innerText
-//     }
-// }
 /* -------------------------Click Event Functions------------------------- */
 
 function scoreCardClick(event) {
@@ -388,39 +381,6 @@ function gameReset(){
     render()
 }
 
-// function resetInnerText(){
-//     aces1.innerText = ""
-//     aces2.innerText = ""
-//     twos1.innerText = ""
-//     twos2.innerText = ""
-//     threes1.innerText = ""
-//     threes2.innerText = ""
-//     fours1.innerText = ""
-//     fours2.innerText = ""
-//     fives1.innerText = ""
-//     fives2.innerText = ""
-//     sixes1.innerText = ""
-//     sixes2.innerText = ""
-//     bonus1.innerText = ""
-//     bonus2.innerText = ""
-//     threeKind1.innerText = ""
-//     threeKind2.innerText = ""
-//     fourKind1.innerText = ""
-//     fourKind2.innerText = ""
-//     fullHouse1.innerText = ""
-//     fullHouse2.innerText = ""
-//     smStraight1.innerText = ""
-//     smStraight2.innerText = ""
-//     lgStraight1.innerText = ""
-//     lgStraight2.innerText = ""
-//     yahtzee1.innerText = ""
-//     yahtzee2.innerText = ""
-//     chance1.innerText = ""
-//     chance2.innerText = ""
-//     yahtzeeBonus1.innerText = ""
-//     yahtzeeBonus2.innerText = ""
-// }
-
 
 /* -------------------------Render Functions------------------------- */
 
@@ -444,9 +404,6 @@ function checkPossibilities(){
         checkYahtzee(plr1Array, "yahtzee-1", yahtzee1)
         checkChance(plr1Array, "chance-1", chance1)
         checkYahtzeeBonus(plr1Array, "yahtzee-bonus-1", yahtzeeBonus1, "yahtzee-1")
-        // checkLowerTotal(plr1Array, "lower-total-1", lowerTotal1)
-        // checkUpperTotal2(plr1Array, "upper-total-11", upperTotal11)
-        // checkGrandTotal(plr1Array, "grand-total-1", grandTotal1)
     }
     if (currentTurn === -1){
         checkAces(plr2Array, "aces-2", aces2)
@@ -463,10 +420,6 @@ function checkPossibilities(){
         checkYahtzee(plr2Array, "yahtzee-2", yahtzee2)
         checkChance(plr2Array, "chance-2", chance2)
         checkYahtzeeBonus(plr2Array, "yahtzee-bonus-2", yahtzeeBonus2, "yahtzee-2")
-        // checkLowerTotal(plr2Array, "lower-total-2", lowerTotal2)
-        // checkUpperTotal2(plr2Array, "upper-total-22", upperTotal22)
-        // checkGrandTotal(plr2Array, "grand-total-2", grandTotal2)
-
     }
 }
 
@@ -480,8 +433,6 @@ function updateTotals() {
     upperTotal22.innerText = upperTotal2.innerText
     grandTotal1.innerText = (Number(upperTotal1.innerText) + Number(lowerTotal1.innerText))
     grandTotal2.innerText = (Number(upperTotal2.innerText) + Number(lowerTotal2.innerText))
-
-    
 }
 
 function checkIfUpper(){
