@@ -21,6 +21,7 @@ html {
 
 body {
     display: grid;
+    background-color: whitesmoke;
     text-align: center;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr .5fr;
@@ -127,7 +128,7 @@ section.score-card > div > div {
 
 .right-arrow {
   background-image: url(../assets/rightArrow.png);
-  background-size: 2vmax;
+  background-size: 2.7vmax;
 }
 
 #delete-border-1 {
@@ -148,18 +149,30 @@ section.score-card > div > div {
   #column-1 > div {
     font-weight: bold;
     font-size: 1vmax;
+    height: 2.7vmax;
+    max-height: 40px;
+    min-height: 27px;
   }
   #column-2 > div {
-    font-size: .5vmax;
+    font-size: .7vmax;
+    height: 2.7vmax;
+    max-height: 40px;
+    min-height: 27px;
   }
   #column-1 :first-child {
     font-size: 1.2vmax;
   }
   #column-3 > div {
     font-size: 1vmax;
+    height: 2.7vmax;
+    max-height: 40px;
+    min-height: 27px;
   }
   #column-4 > div {
     font-size: 1vmax;
+    height: 2.7vmax;
+    max-height: 40px;
+    min-height: 27px;
   }
   #column-2 :first-child {
     font-size: 1.2vmax;
@@ -212,9 +225,10 @@ section.score-card > div > div {
       grid-template-columns: 110px 100px 65px 65px;
       grid-gap: 0;
       justify-content: center;
-      margin-top: 8px;
+      margin-top: 20px;
       flex-shrink: inherit;
       grid-area: score;
+      align-items: center;
       
     }
     section.score-card > div > div {
@@ -231,25 +245,48 @@ section.score-card > div > div {
       background-color: white;
       border-color: black;
       color: black;
-      height: 25px;
+    }
+    #column-1 > div {
+      font-weight: bold;
+      font-size: 1vmax;
+      height: 2.7vmax;
+      min-height: 27px;
     }
     #column-2 > div {
-      font-size: 8px;
+      font-size: .7vmax;
+      height: 2.7vmax;
+      min-height: 27px;
+  
     }
     #column-1 :first-child {
-      font-size: stretch;
+      font-size: 1.2vmax;
+    }
+    #column-3 > div {
+      font-size: 1vmax;
+      height: 2.7vmax;
+      min-height: 27px;
+  
+    }
+    #column-4 > div {
+      font-size: 1vmax;
+      height: 2.7vmax;
+      min-height: 27px;
+  
     }
     #column-2 :first-child {
-      font-size: 14px;
+      font-size: 1.2vmax;
     }
     #column-3 :first-child {
-      font-size: cover;
+      font-size: 1.2vmax;
     }
     #column-4 :first-child {
-      font-size: cover;
+      font-size: 1.2vmax;
     }
-  
-    .right-arrow {
+    #roll-button {
+      margin-top: 40px;
+      font-size: 1.5vmax;
+    }
+      .right-arrow {
       background-size: 25px;
     }
     } 

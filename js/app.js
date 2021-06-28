@@ -108,7 +108,7 @@ function scoreCardClick(event) {
         return
     }
     else if (currentTurn === 1 && event.target.parentElement !== column4){
-        if (plr1Array.includes(event.target.id) && event.target.id !== "yahtzee-bonus-2"){
+        if (plr1Array.includes(event.target.id) && event.target.id !== "yahtzee-bonus-1"){
             return
         } 
         else if (checkIfUpper() === true) {
@@ -798,9 +798,10 @@ function checkYahtzee(plr, id, el){
         el.style.backgroundColor = "#ededed"
         return
     }
-    let total
     let copyDiceArray = diceArray.slice(0, 5)
     let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
+    // sortedNumArray = [1,1,1,1,1]
+
     if (sortedNumArray[0] === sortedNumArray[4] && diceArray [0] !== null)
         { 
             el.style.backgroundColor = "#42f581"
@@ -841,6 +842,8 @@ function checkYahtzeeBonus(plr, id, el, pyt){
     if (plr.includes(pyt)){
         let copyDiceArray = diceArray.slice(0, 5)
         let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
+        // sortedNumArray = [1,1,1,1,1]
+
         if (sortedNumArray[0] === sortedNumArray[4] && diceArray [0] !== null)
             { 
                 el.style.backgroundColor = "#42f581"
@@ -904,16 +907,18 @@ function updateMsg() {
 
 function yahtzeeScored() {
     message.innerText = "YAHTZEE!!!!!"
-    dice1.classList.add("animate__animated", "animate__tada")
-    setTimeout(function(){dice1.classList.remove("animate__animated", "animate__tada")}, 1000)
-    dice2.classList.add("animate__animated", "animate__tada")
-    setTimeout(function(){dice2.classList.remove("animate__animated", "animate__tada")}, 1000)
-    dice3.classList.add("animate__animated", "animate__tada")
-    setTimeout(function(){dice3.classList.remove("animate__animated", "animate__tada")}, 1000)
-    dice4.classList.add("animate__animated", "animate__tada")
-    setTimeout(function(){dice4.classList.remove("animate__animated", "animate__tada")}, 1000)
-    dice5.classList.add("animate__animated", "animate__tada")
-    setTimeout(function(){dice5.classList.remove("animate__animated", "animate__tada")}, 1000)
+    message.classList.add("animate__animated", "animate__jackInTheBox")
+    setTimeout(function(){message.classList.remove("animate__animated", "animate__jackInTheBox")}, 2000)
+    setTimeout(function(){dice1.classList.add("animate__animated", "animate__tada")}, 400)
+    setTimeout(function(){dice1.classList.remove("animate__animated", "animate__tada")}, 1400)
+    setTimeout(function(){dice2.classList.add("animate__animated", "animate__tada")}, 400)
+    setTimeout(function(){dice2.classList.remove("animate__animated", "animate__tada")}, 1400)
+    setTimeout(function(){dice3.classList.add("animate__animated", "animate__tada")}, 400)
+    setTimeout(function(){dice3.classList.remove("animate__animated", "animate__tada")}, 1400)
+    setTimeout(function(){dice4.classList.add("animate__animated", "animate__tada")}, 400)
+    setTimeout(function(){dice4.classList.remove("animate__animated", "animate__tada")}, 1400)
+    setTimeout(function(){dice5.classList.add("animate__animated", "animate__tada")}, 400)
+    setTimeout(function(){dice5.classList.remove("animate__animated", "animate__tada")}, 1400)
 }
 
 /* ------------------------- Animation Functions ------------------------- */
