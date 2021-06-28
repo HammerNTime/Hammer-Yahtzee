@@ -63,7 +63,8 @@ const grandTotal2 = document.querySelector("#grand-total-2")
 /*---------------------------- Variables (state) ----------------------------*/
 
 let dice1Check, dice2Check, dice3Check, dice4Check, dice5Check, diceArray, currentRoll, 
-currentTurn, plr1Array, plr1Upper, plr2Upper, checkUpper, plr1Lower, plr2Lower, turnCounter, bonusCheck1, bonusCheck2
+currentTurn, plr1Array, plr1Upper, plr2Upper, checkUpper, plr1Lower, plr2Lower, turnCounter, 
+bonusCheck1, bonusCheck2, currentPlr, otherPlr
 
 const player1Obj = {
     aces: null,
@@ -94,12 +95,21 @@ function init() {
     bonusCheck1 = null
     bonusCheck2 = null
     turnCounter = 0
+    currentPlr = plr1Name.innerText
+    otherPlr = plr2Name.innerText
     message.innerText = `Welcome to Yahtzee! ${plr1Name.innerText} is up first!`
     diceReset()
     turnReset()
     currentTurn = 1
 }
 
+// function currentPlrName() {
+//     if (currentTurn === 1){
+//         currentPlr = plr1Name.innerText
+//     } else if (currentTurn === -1) {
+//         currentPlr = plr2Name.innerText
+//     }
+// }
 /* -------------------------Click Event Functions------------------------- */
 
 function scoreCardClick(event) {
@@ -154,6 +164,9 @@ function scoreCardClick(event) {
 }
 
 function diceHoldInit(event) {
+    if (currentRoll === 1){
+        return
+    }
     if (event.target.id === "dice1"){
         dice1Check *= -1
         if (dice1Check === -1){
@@ -219,6 +232,8 @@ function scoreCardNoClickEvents(event){
         || event.target.id === "upper-total-22"
         || event.target.id === "grand-total-1"
         || event.target.id === "grand-total-2"
+        || event.target.id === "bonus-1"
+        || event.target.id === "bonus-2"
         || event.target.innerText === ""){
         return true
     }
@@ -276,16 +291,19 @@ function rollNewDice() {
 function rollCheck() {
     if (currentRoll === 1) {
         rollButton.innerHTML = "Roll 2"
+        updateMsg()
         currentRoll++
     }
     else if (currentRoll === 2){
         rollButton.innerHTML = "Roll 3"
         rollButton.className = "btn btn-warning btn-lg"
+        updateMsg()
         currentRoll++
     }
     else if (currentRoll === 3){
         rollButton.innerHTML = "Make Your Selection"
         rollButton.className = "btn btn-danger btn-lg"
+        updateMsg()
         currentRoll++
     }
 }
@@ -334,6 +352,7 @@ function diceReset() {
 
 
 function turnReset() {
+    updateMsg()
     currentRoll = 1
     rollButton.innerHTML = "Roll 1"
     rollButton.className = "btn btn-success btn-lg"
@@ -362,6 +381,8 @@ function gameReset(){
     rollButton.innerHTML = "Roll 1"
     rollButton.className = "btn btn-success btn-lg"
     turnCounter = 0
+    message.innerText = `Lets do it again! ${plr1Name.innerText} is up!`
+
     diceArray = [null, null, null, null, null]
     render()
 }
@@ -894,11 +915,15 @@ function bonusCheck() {
         plr1Upper.push(35)
         bonus1.innerText = 35
         bonusCheck1 = 1
+    } else {
+        bonus1.innerText = ""
     }
     if (bonusCheck2 === null && ((plr2Upper.reduce((acc, num) => acc += num, 0)) >= 63)) {
         plr2Upper.push(35)
         bonus2.innerText = 35
         bonusCheck2 = 1
+    } else {
+        bonus2.innerText = ""
     }
 }
 
@@ -912,6 +937,28 @@ function winningMsg() {
         message.innerText = `Great game! ${plr2Name.innerText} won by ${Number(grandTotal2.innerText) - Number(grandTotal1.innerText)} points with a score of ${Number(grandTotal2.innerText)}!`
     } else {
         message.innerText = `Amazing! you both tied with a score of ${Number(grandTotal1.innerText)}!`
+    }
+}
 
+function updateMsg() {
+    if (currentTurn === 1){
+        currentPlr = plr1Name.innerText
+        otherPlr = plr2Name.innerText
+    } else if (currentTurn === -1) {
+        currentPlr = plr2Name.innerText
+        otherPlr = plr1Name.innerText
+    }
+    if (currentRoll === 4) {
+        message.innerText = `${String(otherPlr)}, you are up!
+        Make your roll.`
+    }
+    if (currentRoll === 1) {
+        message.innerText = `${String(currentPlr)}, you have 2 rolls left.`
+    }
+    if (currentRoll === 2) {
+        message.innerText = `${String(currentPlr)}, it's your last roll!`
+    }
+    if (currentRoll === 3) {
+        message.innerText = `${String(currentPlr)}, please make your selection.`
     }
 }
