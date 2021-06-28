@@ -130,7 +130,11 @@ function scoreCardClick(event) {
             return
         } else {
             plr1Array.push(event.target.id)
-            plr1Lower.push(parseInt(event.target.innerText))
+            if (parseInt(event.target.innerText) < 100){
+                plr1Lower.push(parseInt(event.target.innerText))
+            } else {
+                plr1Lower.push(100)
+            }
             diceReset()
             turnReset()
             turnChange()
@@ -150,7 +154,11 @@ function scoreCardClick(event) {
             return
         } else {
             plr2Array.push(event.target.id)
-            plr2Lower.push(parseInt(event.target.innerText))
+            if (parseInt(event.target.innerText) < 100){
+                plr2Lower.push(parseInt(event.target.innerText))
+            } else {
+                plr2Lower.push(100)
+            }
             diceReset()
             turnReset()
             turnChange()
@@ -789,7 +797,7 @@ function checkLgStraight(plr, id, el){
     })
     if (check1Array.length === 5 || check2Array.length === 5) 
     { 
-            el.setAttribute("class", "box-green")
+            el.setAttribute("class", "boxgreen")
             total = sortedNumArray.reduce((acc, num) => acc += num, 0)
             el.innerText = 40
         } else {
@@ -852,8 +860,6 @@ function checkYahtzeeBonus(plr, id, el, pyt){
     if (plr.includes(pyt)){
         let copyDiceArray = diceArray.slice(0, 5)
         let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
-        // sortedNumArray = [1,1,1,1,1]
-
         if (sortedNumArray[0] === sortedNumArray[4] && diceArray [0] !== null)
             { 
                 el.setAttribute("class", "boxgreen")
