@@ -192,8 +192,8 @@ section.score-card > div > div {
     body {
       display: grid;
       text-align: center;
-      grid-template-columns: 100%;
-      grid-template-rows: 90px 80px 60px 100px;
+      grid-template-columns: 1fr;
+      grid-template-rows: 10vmax 10vmax 8vmax 12vmax;
       margin: 0;
       height: 100%;
       grid-template-areas: 
@@ -209,7 +209,7 @@ section.score-card > div > div {
     }
     section.dice {
       display: flex;
-      grid-gap: 4vmin;
+      grid-gap: 3vmin;
       justify-content: center;
       align-items: center;
       flex-shrink: inherit;
@@ -222,16 +222,15 @@ section.score-card > div > div {
     }
     section.score-card {
       display: grid;
-      grid-template-columns: 110px 100px 65px 65px;
+      grid-template-columns: 12vmax 10vmax 7vmax 7vmax;
       grid-gap: 0;
       justify-content: center;
-      margin-top: 20px;
       flex-shrink: inherit;
       grid-area: score;
-      align-items: center;
-      
+      border-left: solid 1px;
+      align-items: center;    
     }
-    section.score-card > div > div {
+        section.score-card > div > div {
       display: flex;
       flex: content;
       grid-gap: 0vmin;
