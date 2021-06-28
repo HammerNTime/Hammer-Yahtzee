@@ -94,10 +94,10 @@ function init() {
     turnCounter = 0
     currentPlr = plr1Name.innerText
     otherPlr = plr2Name.innerText
-    message.innerText = `Welcome to Yahtzee! ${plr1Name.innerText} is up first!`
     diceReset()
     turnReset()
     currentTurn = 1
+    message.innerText = `Welcome to Yahtzee! ${plr1Name.innerText} is up first!`
 }
 
 /* -------------------------Click Event Functions------------------------- */
