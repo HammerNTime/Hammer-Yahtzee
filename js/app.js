@@ -58,8 +58,6 @@ const upperTotal22 = document.querySelector("#upper-total-22")
 const grandTotal1 = document.querySelector("#grand-total-1")
 const grandTotal2 = document.querySelector("#grand-total-2")
 
-
-
 /*---------------------------- Variables (state) ----------------------------*/
 
 let dice1Check, dice2Check, dice3Check, dice4Check, dice5Check, diceArray, currentRoll, 
@@ -80,7 +78,6 @@ const player1Obj = {
 rollButton.addEventListener("click", rollNewDice)
 scoreCard.addEventListener("click", scoreCardClick)
 dice.addEventListener("click", diceHoldInit)
-
 
 /* -------------------------Functions------------------------- */
 init()
@@ -226,12 +223,9 @@ function scoreCardNoClickEvents(event){
         || event.target.innerText === ""){
         return true
     }
-
 }
 
-
 /* -------------------------Roll Dice Functions------------------------- */
-
 
 function rollNewDice() {
     if (dice1Check === -1 
@@ -252,7 +246,6 @@ function rollNewDice() {
         roll = randomDiceRoll()
         diceImg(dice1, roll)
         diceArray.splice(0, 1, roll)
-        
     }
     if (dice2Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
@@ -297,10 +290,6 @@ function rollCheck() {
     }
 }
 
-const randomDiceRoll = () => {
-   return parseInt(Math.floor((Math.random() * 6) + 1))
-} 
-
 function diceImg(dice, result){
     if (result === 1){
         dice.className = "dice-1"
@@ -322,8 +311,11 @@ function diceImg(dice, result){
     }
 }
 
-/* -------------------------Reset Functions------------------------- */
+function randomDiceRoll() {
+    return parseInt(Math.floor((Math.random() * 6) + 1))
+ }  
 
+/* -------------------------Reset Functions------------------------- */
 
 function diceReset() {
     dice1Check = 1
@@ -338,7 +330,6 @@ function diceReset() {
     dice5.style.backgroundColor = "white"
     diceArray = [null, null, null, null, null]
 }
-
 
 function turnReset() {
     currentRoll = 4
@@ -355,6 +346,7 @@ function turnChange() {
     turnCounter++
     checkGameOver()
 }
+
 function gameReset(){
     plr1Array = []
     plr2Array = []
@@ -372,11 +364,9 @@ function gameReset(){
     rollButton.className = "btn btn-success btn-lg"
     turnCounter = 0
     message.innerText = `Lets do it again! ${plr1Name.innerText} is up!`
-
     diceArray = [null, null, null, null, null]
     render()
 }
-
 
 /* -------------------------Render Functions------------------------- */
 
@@ -384,6 +374,7 @@ function render() {
     checkPossibilities()
     updateTotals()
 }
+
 function checkPossibilities(){
     if (currentTurn === 1){
         checkAces(plr1Array, "aces-1", aces1)
@@ -450,6 +441,7 @@ function checkIfUpper(){
         return false
     }
 }
+
 function checkGameOver() {
     if (turnCounter === 26){
         rollButton.innerText = "Click for New Game!"
@@ -458,7 +450,6 @@ function checkGameOver() {
         console.log('DONE!')
     }
 }
-
 
 /* ------------------------- Game Logic ------------------------- */
 
@@ -476,8 +467,8 @@ function checkAces(plr, id, el){
                 filteredNumsArray.push(num)
             }      
         })
-       total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
-       el.innerText = total
+        total = filteredNumsArray.reduce((acc, currentnum) => acc + currentnum);  
+        el.innerText = total
     } else {
         el.style.backgroundColor = "white"
         el.innerText = null
@@ -485,9 +476,9 @@ function checkAces(plr, id, el){
     if (!diceArray.includes(1) && currentRoll === 4){
         el.style.backgroundColor = "yellow"
         el.innerText = 0
-
     }
 }
+
 function checkTwos(plr, id, el){
     if (plr.includes(id)){
         el.style.backgroundColor = "#ededed"
@@ -511,9 +502,9 @@ function checkTwos(plr, id, el){
     if (!diceArray.includes(2) && currentRoll === 4){
         el.style.backgroundColor = "yellow"
         el.innerText = 0
-
     }
 }
+
 function checkThrees(plr, id, el){
     if (plr.includes(id)){
         el.style.backgroundColor = "#ededed"
@@ -537,9 +528,9 @@ function checkThrees(plr, id, el){
     if (!diceArray.includes(3) && currentRoll === 4){
         el.style.backgroundColor = "yellow"
         el.innerText = 0
-
     }
 }
+
 function checkFours(plr, id, el){
     if (plr.includes(id)){
         el.style.backgroundColor = "#ededed"
@@ -563,9 +554,9 @@ function checkFours(plr, id, el){
     if (!diceArray.includes(4) && currentRoll === 4){
         el.style.backgroundColor = "yellow"
         el.innerText = 0
-
     }
 }
+
 function checkFives(plr, id, el){
     if (plr.includes(id)){
         el.style.backgroundColor = "#ededed"
@@ -589,9 +580,9 @@ function checkFives(plr, id, el){
     if (!diceArray.includes(5) && currentRoll === 4){
         el.style.backgroundColor = "yellow"
         el.innerText = 0
-
     }
 }
+
 function checkSixes(plr, id, el){
     if (plr.includes(id)){
         el.style.backgroundColor = "#ededed"
@@ -615,7 +606,6 @@ function checkSixes(plr, id, el){
     if (!diceArray.includes(6) && currentRoll === 4){
         el.style.backgroundColor = "yellow"
         el.innerText = 0
-
     }
 }
 
@@ -706,11 +696,12 @@ function checkFullHouse(plr, id, el){
             }
         }
         if (sortedNumArray[0] === sortedNumArray[1] || sortedNumArray[3] === sortedNumArray[4]){
-            if (sortedNumArray[0] !== sortedNumArray [2] && sortedNumArray[2] !== sortedNumArray[4])
+            if (sortedNumArray[0] !== sortedNumArray [2] && sortedNumArray[2] !== sortedNumArray[4]){
                 if (currentRoll === 4){
                     el.style.backgroundColor = "yellow"
                     el.innerText = 0
                 }
+            }
         }
 }
 
@@ -732,7 +723,6 @@ function checkSmStraight(plr, id, el){
     let check3Array = []
     let copyDiceArray = diceArray.slice(0, 5)
     let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
-
     sortedNumArray.forEach((num) => {
         if (num === check1) {
             check1Array.push(num)
@@ -876,7 +866,6 @@ function bonusCheck() {
         bonus2.innerText = ""
     }
 }
-
 
 /* ------------------------- Message Functions ------------------------- */
 
