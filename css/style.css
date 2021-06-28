@@ -19,19 +19,19 @@ html {
   }
 
 body {
-    --body-bg: ;
-    --h1-clr: ;
-    --dice-bdr: ;
-    --scorecard-bg: ;
-    --scorecard-bdr: ;
-    --scorecard-txt-clr: ;
-    --box-selected: ;
-    --box-green: ;
-    --box-yellow: ;
-    --box-unselected: ;
+    --body-bg: whitesmoke;
+    --h1-clr: black;
+    --dice-bdr: black;
+    --scorecard-bg: white;
+    --scorecard-bdr: black;
+    --scorecard-txt-clr: black;
+    --box-selected: #ededed;
+    --box-green: #42f581;
+    --box-yellow: yellow;
+    --box-unselected: white;
 
     display: grid;
-    background-color: whitesmoke;
+    background-color: var(--body-bg);
     text-align: center;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr .5fr;
@@ -46,6 +46,19 @@ body {
     "roll score"
     "previous score";
 }
+body.dark {
+  --body-bg: gray;
+  --h1-clr: black;
+  --dice-bdr: black;
+  --scorecard-bg: white;
+  --scorecard-bdr: black;
+  --scorecard-txt-clr: black;
+  --box-selected: #ededed;
+  --box-green: #42f581;
+  --box-yellow: yellow;
+  --box-unselected: white;
+
+}
 
 h1 {
   display: flex;
@@ -54,6 +67,7 @@ h1 {
   font-size: 3.5vmax;
   max-height: 1fr;
   max-width: 1fr;
+  color: var(--h1-clr);
 }
 
 section.dice {
@@ -67,15 +81,14 @@ section.dice {
 section.dice > div {
   display: flex;
   justify-content: center;
-  border: 3px solid black;
+  border: 3px solid;
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
   background-color: white;
-  border-color: black;
+  border-color: var(--dice-bdr);
   border-radius: 20%;
   flex-shrink: none;
-  color: black;
   min-height: 6vmax;
   min-width: 6vmax;
   /* height: 10vmin;
@@ -100,12 +113,12 @@ section.score-card > div > div {
   align-items: center;
   margin: -1px;
   flex-shrink: inherit;
-  border: 1px solid black;
+  border: 1px solid ;
   font-size: 13px;
   text-align: center;
-  background-color: white;
-  border-color: black;
-  color: black;
+  background-color: var(--scorecard-bg);
+  border-color: var(--scorecard-bdr);
+  color: var(--scorecard-txt-clr);
   min-height: 2.2vmax;
   flex-direction: row;
 }
@@ -138,6 +151,13 @@ section.score-card > div > div {
 .right-arrow {
   background-image: url(../assets/rightArrow.png);
   background-size: 2.7vmax;
+}
+
+.box-selected{
+  background-color: var(--box-selected);
+}
+.box-green {
+  background-color: var(--box-green);
 }
 
 #delete-border-1 {
@@ -200,6 +220,7 @@ top: 0;
   width: 80px;
   height: 25px;
 }
+
   @media only screen and (max-width: 1600px) {
     #column-1 > div {
       max-height: 32px;
