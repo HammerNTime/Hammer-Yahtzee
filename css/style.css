@@ -22,10 +22,13 @@ html {
 body {
     display: grid;
     text-align: center;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr .5fr;
+    grid-column-gap: 10px;
     margin: 0;
     height: 100vh;
+    /* justify-content: center;
+    align-items: center; */
     grid-template-areas: 
     "initial score"
     "dice score"
@@ -38,14 +41,17 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 3.5vmax;
+  max-height: 1fr;
+  max-width: 1fr;
 }
 
 section.dice {
   display: flex;
-  grid-gap: 2vmin;
+  grid-gap: 1.5vmax;
   justify-content: center;
   align-items: center;
-  flex-shrink: inherit;
+  flex-shrink: none;
   grid-area: dice;
 }
 section.dice > div {
@@ -58,19 +64,22 @@ section.dice > div {
   background-color: white;
   border-color: black;
   border-radius: 20%;
-  flex-shrink: inherit;
+  flex-shrink: none;
   color: black;
-  height: 10vmin;
-  width: 10vmin;
+  min-height: 6vmax;
+  min-width: 6vmax;
+  /* height: 10vmin;
+  width: 10vmin; */
 }
 section.score-card {
   display: grid;
-  grid-template-columns: 110px 100px 65px 65px;
+  grid-template-columns: 12vmax 8vmax 5vmax 5vmax;
   grid-gap: 0;
   justify-content: center;
-  margin-top: 20px;
   flex-shrink: inherit;
   grid-area: score;
+  border-left: solid 1px;
+  align-items: center;
   
 }
 section.score-card > div > div {
@@ -87,7 +96,8 @@ section.score-card > div > div {
   background-color: white;
   border-color: black;
   color: black;
-  height: 28px;
+  min-height: 2.2vmax;
+  flex-direction: row;
 }
 
 .dice-1 {
@@ -117,7 +127,7 @@ section.score-card > div > div {
 
 .right-arrow {
   background-image: url(../assets/rightArrow.png);
-  background-size: 32px;
+  background-size: 2vmax;
 }
 
 #delete-border-1 {
@@ -137,25 +147,32 @@ section.score-card > div > div {
 
   #column-1 > div {
     font-weight: bold;
+    font-size: 1vmax;
   }
   #column-2 > div {
-    font-size: 8px;
+    font-size: .5vmax;
   }
   #column-1 :first-child {
-    font-size: stretch;
+    font-size: 1.2vmax;
+  }
+  #column-3 > div {
+    font-size: 1vmax;
+  }
+  #column-4 > div {
+    font-size: 1vmax;
   }
   #column-2 :first-child {
-    font-size: 1.8vmax;
+    font-size: 1.2vmax;
   }
   #column-3 :first-child {
-    font-size: cover;
+    font-size: 1.2vmax;
   }
   #column-4 :first-child {
-    font-size: cover;
+    font-size: 1.2vmax;
   }
   #roll-button {
     margin-top: 40px;
-    font-size: 18px;
+    font-size: 1.5vmax;
   }
   
   @media only screen and (max-width: 750px) {
