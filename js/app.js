@@ -1,5 +1,11 @@
 /* -------------------------Constants------------------------- */
-
+const colorScheme = {
+    dark: "",
+    change: function () {
+        colorScheme.dark = colorScheme.dark ? "" : "dark"
+        document.querySelector("body").setAttribute("class", colorScheme.dark)
+    },
+}
 
 /* -------------------------Cached Elements------------------------- */
 const message = document.querySelector("#message")
@@ -57,6 +63,7 @@ const upperTotal11 = document.querySelector("#upper-total-11")
 const upperTotal22 = document.querySelector("#upper-total-22")
 const grandTotal1 = document.querySelector("#grand-total-1")
 const grandTotal2 = document.querySelector("#grand-total-2")
+const lightDarkBtn = document.querySelector("#light-dark")
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -78,6 +85,7 @@ const player1Obj = {
 rollButton.addEventListener("click", rollNewDice)
 scoreCard.addEventListener("click", scoreCardClick)
 dice.addEventListener("click", diceHoldInit)
+lightDarkBtn.addEventListener("click", colorScheme.change)
 
 /* -------------------------Functions------------------------- */
 init()
