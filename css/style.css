@@ -19,7 +19,17 @@ html {
   }
 
 body {
-  
+    --body-bg: ;
+    --h1-clr: ;
+    --dice-bdr: ;
+    --scorecard-bg: ;
+    --scorecard-bdr: ;
+    --scorecard-txt-clr: ;
+    --box-selected: ;
+    --box-green: ;
+    --box-yellow: ;
+    --box-unselected: ;
+
     display: grid;
     background-color: whitesmoke;
     text-align: center;
