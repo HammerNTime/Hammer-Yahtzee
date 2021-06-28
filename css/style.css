@@ -148,13 +148,11 @@ section.score-card > div > div {
   font-weight: bold;
   font-size: 1vmax;
   height: 2.7vmax;
-  max-height: 40px;
   min-height: 27px;
 }
 #column-2 > div {
   font-size: .7vmax;
   height: 2.7vmax;
-  max-height: 40px;
   min-height: 27px;
 }
 #column-1 :first-child {
@@ -163,13 +161,11 @@ section.score-card > div > div {
 #column-3 > div {
   font-size: 1vmax;
   height: 2.7vmax;
-  max-height: 40px;
   min-height: 27px;
 }
 #column-4 > div {
   font-size: 1vmax;
   height: 2.7vmax;
-  max-height: 40px;
   min-height: 27px;
 }
 #column-2 :first-child {
