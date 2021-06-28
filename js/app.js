@@ -121,7 +121,6 @@ function scoreCardClick(event) {
             turnReset()
             turnChange()
             return
-
         } else {
             plr1Array.push(event.target.id)
             plr1Lower.push(parseInt(event.target.innerText))
@@ -129,7 +128,6 @@ function scoreCardClick(event) {
             turnReset()
             turnChange()
             return
-
         }
     }
     else if (currentTurn === -1 && event.target.parentElement !== column3) {
@@ -143,7 +141,6 @@ function scoreCardClick(event) {
             turnReset()
             turnChange()
             return
-
         } else {
             plr2Array.push(event.target.id)
             plr2Lower.push(parseInt(event.target.innerText))
@@ -151,7 +148,6 @@ function scoreCardClick(event) {
             turnReset()
             turnChange()
             return
-
         }
     }
 }

@@ -23,10 +23,9 @@ body {
     display: grid;
     text-align: center;
     grid-template-columns: 50% 50%;
-    grid-template-rows: .5fr 1fr .5fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     margin: 0;
-    /* flex-direction: column; */
-    height: 120vh;
+    height: 100vh;
     grid-template-areas: 
     "initial score"
     "dice score"
@@ -35,99 +34,60 @@ body {
 
 }
 
-#column-1 > div {
-  font-weight: bold;
-}
-#column-2 > div {
-  font-size: 8px;
-}
-#column-2 :first-child {
-  font-size: 14px;
-}
-#roll-button {
-  margin-top: -70px;
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 section.dice {
-    display: flex;
-    grid-template-rows: repeat(1, 50px);
-    grid-template-columns: repeat(5, 50px);
-    grid-gap: 2vmin;
-    justify-content: center;
-    margin-top: 20px;
-    flex-shrink: inherit;
-    vertical-align: center;
-    grid-area: dice;
-  }
-  section.dice > div {
-    display: flex;
-    justify-content: center;
-    border: 3px solid black;
-    font-size: 8vmin;
-    text-align: center;
-    vertical-align: middle;
-    background-color: white;
-    border-color: black;
-    border-radius: 20%;
-    flex-shrink: inherit;
-    color: black;
-    height: 10vmin;
-    width: 10vmin;
-  }
-/* section.dice-hold {
-    display: flex;
-    grid-template-rows: repeat(1, 50px);
-    grid-template-columns: repeat(5, 50px);
-    grid-gap: 2vmin;
-    justify-content: center;
-    margin-top: 0px;
-    flex-shrink: inherit;
-    vertical-align: center;
-
-  } */
-  /* section.dice-hold > div {
-    display: flex;
-    justify-content: center;
-    border: 3px solid black;
-    font-size: 4vmin;
-    text-align: center;
-    vertical-align: middle;
-    background-color: white;
-    border-color: black;
-    border-radius: 20%;
-    flex-shrink: inherit;
-    color: black;
-    height: 10vmin;
-    width: 10vmin;
-  } */
+  display: flex;
+  grid-gap: 2vmin;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: inherit;
+  grid-area: dice;
+}
+section.dice > div {
+  display: flex;
+  justify-content: center;
+  border: 3px solid black;
+  font-size: 8vmin;
+  text-align: center;
+  vertical-align: middle;
+  background-color: white;
+  border-color: black;
+  border-radius: 20%;
+  flex-shrink: inherit;
+  color: black;
+  height: 10vmin;
+  width: 10vmin;
+}
 section.score-card {
-    display: grid;
-    grid-template-rows: repeat(1, 40vmin);
-    grid-template-columns: 15vmin 15vmin 10vmin 10vmin;
-    grid-gap: 0vmin;
-    justify-content: center;
-    margin: 20px;
-    flex-shrink: inherit;
-    grid-area: score;
-
-  }
+  display: grid;
+  grid-template-columns: 110px 100px 65px 65px;
+  grid-gap: 0;
+  justify-content: center;
+  margin-top: 20px;
+  flex-shrink: inherit;
+  grid-area: score;
+  
+}
 section.score-card > div > div {
-    display: flex;
-    flex: content;
-    /* grid-template-rows: repeat(10, 4vmin); */
-    /* grid-template-columns: repeat(1, 10vmin); */
-    grid-gap: 0vmin;
-    justify-content: center;
-    align-items: center;
-    margin: -1px;
-    flex-shrink: inherit;
-    border: 1px solid black;
-    font-size: 2vmin;
-    text-align: center;
-    background-color: white;
-    border-color: black;
-    color: black;
-    height: 28px;
+  display: flex;
+  flex: content;
+  grid-gap: 0vmin;
+  justify-content: center;
+  align-items: center;
+  margin: -1px;
+  flex-shrink: inherit;
+  border: 1px solid black;
+  font-size: 13px;
+  text-align: center;
+  background-color: white;
+  border-color: black;
+  color: black;
+  height: 28px;
 }
 
 .dice-1 {
@@ -175,6 +135,182 @@ section.score-card > div > div {
   border-left: none;
 }
 
-#message {
-  margin-top: 30px;
-}
+  #column-1 > div {
+    font-weight: bold;
+  }
+  #column-2 > div {
+    font-size: 8px;
+  }
+  #column-1 :first-child {
+    font-size: stretch;
+  }
+  #column-2 :first-child {
+    font-size: 1.8vmax;
+  }
+  #column-3 :first-child {
+    font-size: cover;
+  }
+  #column-4 :first-child {
+    font-size: cover;
+  }
+  #roll-button {
+    margin-top: 40px;
+    font-size: 18px;
+  }
+  
+  @media only screen and (max-width: 750px) {
+    body {
+      display: grid;
+      text-align: center;
+      grid-template-columns: 100%;
+      grid-template-rows: 90px 80px 60px 100px;
+      margin: 0;
+      height: 100%;
+      grid-template-areas: 
+      "initial"
+      "dice"
+      "roll"
+      "score";
+    }
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    section.dice {
+      display: flex;
+      grid-gap: 4vmin;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: inherit;
+      grid-area: dice;
+    }
+    
+    #roll-button {
+      margin-top: 0;
+      font-size: 9px;
+    }
+    section.score-card {
+      display: grid;
+      grid-template-columns: 110px 100px 65px 65px;
+      grid-gap: 0;
+      justify-content: center;
+      margin-top: 8px;
+      flex-shrink: inherit;
+      grid-area: score;
+      
+    }
+    section.score-card > div > div {
+      display: flex;
+      flex: content;
+      grid-gap: 0vmin;
+      justify-content: center;
+      align-items: center;
+      margin: -1px;
+      flex-shrink: inherit;
+      border: 1px solid black;
+      font-size: 13px;
+      text-align: center;
+      background-color: white;
+      border-color: black;
+      color: black;
+      height: 25px;
+    }
+    #column-2 > div {
+      font-size: 8px;
+    }
+    #column-1 :first-child {
+      font-size: stretch;
+    }
+    #column-2 :first-child {
+      font-size: 14px;
+    }
+    #column-3 :first-child {
+      font-size: cover;
+    }
+    #column-4 :first-child {
+      font-size: cover;
+    }
+  
+    .right-arrow {
+      background-size: 25px;
+    }
+    } 
+  @media only screen and (max-width: 500px) {
+    body {
+      display: grid;
+      text-align: center;
+      grid-template-columns: 100%;
+      grid-template-rows: 70px 60px 40px 100px;
+      margin: 0;
+      height: 100%;
+      grid-template-areas: 
+      "initial"
+      "dice"
+      "roll"
+      "score";
+    }
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    section.dice {
+      display: flex;
+      grid-gap: 4vmin;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: inherit;
+      grid-area: dice;
+    }
+    
+    #roll-button {
+      margin-top: 0;
+      font-size: 9px;
+    }
+    section.score-card {
+      display: grid;
+      grid-template-columns: 110px 100px 65px 65px;
+      grid-gap: 0;
+      justify-content: center;
+      margin-top: 8px;
+      flex-shrink: inherit;
+      grid-area: score;
+      
+    }
+    section.score-card > div > div {
+      display: flex;
+      flex: content;
+      grid-gap: 0vmin;
+      justify-content: center;
+      align-items: center;
+      margin: -1px;
+      flex-shrink: inherit;
+      border: 1px solid black;
+      font-size: 13px;
+      text-align: center;
+      background-color: white;
+      border-color: black;
+      color: black;
+      height: 22px;
+    }
+    #column-2 > div {
+      font-size: 7px;
+    }
+    #column-1 :first-child {
+      font-size: stretch;
+    }
+    #column-2 :first-child {
+      font-size: 14px;
+    }
+    #column-3 :first-child {
+      font-size: cover;
+    }
+    #column-4 :first-child {
+      font-size: cover;
+    }
+  
+    .right-arrow {
+      background-size: 25px;
+    }
+    } 
