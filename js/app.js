@@ -235,17 +235,15 @@ function rollNewDice() {
     && dice3Check === -1
     && dice4Check === -1
     && dice5Check === -1
-    || currentRoll > 3){
+    || currentRoll === 4){
         return    
     }
+    if (currentRoll === "New Game"){
+        gameReset()
+        return
+    }
     rollCheck()
-    // if (currentRoll === "reset"){
-    //     diceReset()
-    //     turnReset()
-    //     return
-    // }
     let roll
-    
     if (dice1Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
         diceImg(dice1, roll)
@@ -288,10 +286,7 @@ function rollCheck() {
     else if (currentRoll === 3){
         rollButton.innerHTML = "Make Your Selection"
         rollButton.className = "btn btn-danger btn-lg"
-
         currentRoll++
-    } else if (currentRoll === "New Game") {
-        gameReset()
     }
 }
 
@@ -341,6 +336,7 @@ function diceReset() {
 function turnReset() {
     currentRoll = 1
     rollButton.innerHTML = "Roll 1"
+    rollButton.className = "btn btn-success btn-lg"
     render()
 }
 
@@ -362,13 +358,46 @@ function gameReset(){
     currentTurn = -1
     render()
     currentTurn = 1
-    render()
-    currentTurn = 1
-    diceReset()
-    turnReset()
+    currentRoll = 1
+    rollButton.innerHTML = "Roll 1"
+    rollButton.className = "btn btn-success btn-lg"
     turnCounter = 0
-
+    diceArray = [null, null, null, null, null]
+    render()
 }
+
+// function resetInnerText(){
+//     aces1.innerText = ""
+//     aces2.innerText = ""
+//     twos1.innerText = ""
+//     twos2.innerText = ""
+//     threes1.innerText = ""
+//     threes2.innerText = ""
+//     fours1.innerText = ""
+//     fours2.innerText = ""
+//     fives1.innerText = ""
+//     fives2.innerText = ""
+//     sixes1.innerText = ""
+//     sixes2.innerText = ""
+//     bonus1.innerText = ""
+//     bonus2.innerText = ""
+//     threeKind1.innerText = ""
+//     threeKind2.innerText = ""
+//     fourKind1.innerText = ""
+//     fourKind2.innerText = ""
+//     fullHouse1.innerText = ""
+//     fullHouse2.innerText = ""
+//     smStraight1.innerText = ""
+//     smStraight2.innerText = ""
+//     lgStraight1.innerText = ""
+//     lgStraight2.innerText = ""
+//     yahtzee1.innerText = ""
+//     yahtzee2.innerText = ""
+//     chance1.innerText = ""
+//     chance2.innerText = ""
+//     yahtzeeBonus1.innerText = ""
+//     yahtzeeBonus2.innerText = ""
+// }
 
 
 /* -------------------------Render Functions------------------------- */
