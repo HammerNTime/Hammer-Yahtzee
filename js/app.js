@@ -244,27 +244,27 @@ function rollNewDice() {
     let roll
     if (dice1Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
-        diceImg(dice1, roll)
+        diceAnimation1(dice1, roll)
         diceArray.splice(0, 1, roll)
     }
     if (dice2Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
-        diceImg(dice2, roll)
+        diceAnimation2(dice2, roll)
         diceArray.splice(1, 1, roll)
     }
     if (dice3Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
-        diceImg(dice3, roll)
+        diceAnimation1(dice3, roll)
         diceArray.splice(2, 1, roll)
     }
     if (dice4Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
-        diceImg(dice4, roll)
+        diceAnimation2(dice4, roll)
         diceArray.splice(3, 1, roll)
     }
     if (dice5Check !== -1 && currentRoll !== "New Game"){
         roll = randomDiceRoll()
-        diceImg(dice5, roll)
+        diceAnimation1(dice5, roll)
         diceArray.splice(4, 1, roll)
     }
     render()
@@ -914,4 +914,40 @@ function yahtzeeScored() {
     setTimeout(function(){dice4.classList.remove("animate__animated", "animate__tada")}, 1000)
     dice5.classList.add("animate__animated", "animate__tada")
     setTimeout(function(){dice5.classList.remove("animate__animated", "animate__tada")}, 1000)
+}
+
+/* ------------------------- Animation Functions ------------------------- */
+
+function diceAnimation1(dice, roll){
+    dice.style.transform = "rotate(45deg)"
+    diceImg(dice, randomDiceRoll())
+    setTimeout(() => {
+        dice.style.transform = "rotate(0deg)"
+        diceImg(dice, randomDiceRoll())
+    }, 100)
+    setTimeout(() => {
+        dice.style.transform = "rotate(45deg)"
+        diceImg(dice, randomDiceRoll())
+    }, 200)
+    setTimeout(() => {
+        dice.style.transform = "rotate(0deg)"
+        diceImg(dice, roll)
+    }, 300)
+}
+
+function diceAnimation2(dice, roll){
+    dice.style.transform = "rotate(0deg)"
+    diceImg(dice, randomDiceRoll())
+    setTimeout(() => {
+        dice.style.transform = "rotate(-30deg)"
+        diceImg(dice, randomDiceRoll())
+    }, 100)
+    setTimeout(() => {
+        dice.style.transform = "rotate(-60deg)"
+        diceImg(dice, randomDiceRoll())
+    }, 200)
+    setTimeout(() => {
+        dice.style.transform = "rotate(0deg)"
+        diceImg(dice, roll)
+    }, 300)
 }
