@@ -17,52 +17,52 @@ html {
   :root {
       font-size: 62.5%;
   }
-  body {
-    --body-bg: whitesmoke;
-    --h1-clr: black;
-    --dice-bdr: black;
-    --scorecard-bg: white;
-    --scorecard-bdr: black;
-    --scorecard-txt-clr: black;
-    --box-selected: #ededed;
-    --box-green: #42f581;
-    --box-yellow: yellow;
-    --box-unselected: white;
-    --dark-btn: black;
-    --dark-btn-txt: white;
-    --dark-btn-content: "Dark Mode";
-    display: grid;
-    background-color: var(--body-bg);
-    text-align: center;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr .5fr;
-    grid-column-gap: 10px;
-    margin: 0;
-    height: 100vh;
-    grid-template-areas: 
-    "initial score"
-    "dice score"
-    "roll score"
-    "previous score";
-  }
-  body.dark {
-    --body-bg: rgb(18, 16, 21);
-    --h1-clr: white;
-    --dice-bdr: rgb(0, 217, 255);
-    --scorecard-bg: gray;
-    --scorecard-bdr: white;
-    --scorecard-txt-clr: white;
-    --box-selected: #black;
-    --box-green: #007127;
-    --box-yellow: rgb(147, 147, 0);
-    --box-unselected: gray;
-    --dark-btn: white;
-    --dark-btn-txt: black;
-    --dark-btn-content: "Light Mode";
-    background-color: var(--body-bg);
+body {
+  --body-bg: whitesmoke;
+  --h1-clr: black;
+  --dice-bdr: black;
+  --scorecard-bg: white;
+  --scorecard-bdr: black;
+  --scorecard-txt-clr: black;
+  --box-selected: #ededed;
+  --box-green: #42f581;
+  --box-yellow: yellow;
+  --box-unselected: white;
+  --dark-btn: black;
+  --dark-btn-txt: white;
+  --dark-btn-content: "Dark Mode";
+  display: grid;
+  background-color: var(--body-bg);
+  text-align: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr .5fr;
+  grid-column-gap: 10px;
+  margin: 0;
+  height: 100vh;
+  grid-template-areas: 
+  "initial score"
+  "dice score"
+  "roll score"
+  "previous score";
+}
 
-  }
+body.dark {
+  --body-bg: rgb(18, 16, 21);
+  --h1-clr: white;
+  --dice-bdr: rgb(0, 217, 255);
+  --scorecard-bg: gray;
+  --scorecard-bdr: white;
+  --scorecard-txt-clr: white;
+  --box-selected: #black;
+  --box-green: #007127;
+  --box-yellow: rgb(147, 147, 0);
+  --box-unselected: gray;
+  --dark-btn: white;
+  --dark-btn-txt: black;
+  --dark-btn-content: "Light Mode";
+  background-color: var(--body-bg);
 
+}
 
 h1 {
   display: flex;
@@ -82,6 +82,7 @@ section.dice {
   flex-shrink: none;
   grid-area: dice;
 }
+
 section.dice > div {
   display: flex;
   justify-content: center;
@@ -95,6 +96,7 @@ section.dice > div {
   min-height: 6vmax;
   min-width: 6vmax;
 }
+
 section.score-card {
   display: grid;
   grid-template-columns: 12vmax 8vmax 5vmax 5vmax;
@@ -102,9 +104,10 @@ section.score-card {
   justify-content: center;
   flex-shrink: inherit;
   grid-area: score;
-  border-left: solid 1px;
+  border-left: solid 3px;
   align-items: center;  
 }
+
 section.score-card > div > div {
   display: flex;
   flex: content;
@@ -119,14 +122,7 @@ section.score-card > div > div {
   color: var(--scorecard-txt-clr);
   flex-direction: row;
 }
-#light-dark {
-  background-color: var(--dark-btn);
-  color: var(--dark-btn-txt);
-}
-#light-dark::after {
-  content: var(--dark-btn-content);
 
-}
 .dice-1 {
   background-image: url(../assets/Dice-1.png);
   background-size: cover;
@@ -157,6 +153,60 @@ section.score-card > div > div {
   background-size: 2.7vmax;
 }
 
+.column-1 > div {
+  font-weight: bold;
+  font-size: 1.1vmax;
+  height: 2.7vmax;
+  min-height: 27px;
+  max-height: 45px;
+  background-color: var(--scorecard-bg);
+  
+}
+.column-2 > div {
+  font-size: .7vmax;
+  height: 2.7vmax;
+  min-height: 27px;
+  max-height: 45px;
+  background-color: var(--scorecard-bg);
+}
+.column-3 > div {
+  font-size: 1vmax;
+  height: 2.7vmax;
+  min-height: 27px;
+  max-height: 45px;
+}
+.column-4 > div {
+  font-size: 1vmax;
+  height: 2.7vmax;
+  min-height: 27px;
+  max-height: 45px;
+}
+.column-1 :first-child {
+  font-size: 1.2vmax;
+}
+.column-2 :first-child {
+  font-size: 1.2vmax;
+}
+.column-3 :first-child {
+  font-size: 1.2vmax;
+}
+.column-4 :first-child {
+  font-size: 1.2vmax;
+}
+
+.box-selected{
+  background-color: var(--box-selected);
+}
+.box-green {
+  background-color: var(--box-green);
+}
+.box-yellow {
+  background-color: var(--box-yellow);
+}
+.box-unselected {
+  background-color: var(--box-unselected);
+}
+
 #plr-1-name, #plr-2-name, #bonus-1, #bonus-2, #lower-total-1, #lower-total-2, #upper-total-1,
 #upper-total-11, #upper-total-2, #upper-total-22, #delete-border-3, #delete-border-4,
 #grand-total-1, #grand-total-2 {
@@ -177,62 +227,27 @@ section.score-card > div > div {
 #delete-border-4 {
   border-left: none;
 }
-.column-1 > div {
-  font-weight: bold;
-  font-size: 1vmax;
-  height: 2.7vmax;
-  min-height: 27px;
-  max-height: 45px;
-  background-color: var(--scorecard-bg);
-
-}
-.column-2 > div {
-  font-size: .7vmax;
-  height: 2.7vmax;
-  min-height: 27px;
-  max-height: 45px;
-  background-color: var(--scorecard-bg);
-
-}
-.column-1 :first-child {
-  font-size: 1.2vmax;
-}
-.column-3 > div {
-  font-size: 1vmax;
-  height: 2.7vmax;
-  min-height: 27px;
-  max-height: 45px;
-}
-.column-4 > div {
-  font-size: 1vmax;
-  height: 2.7vmax;
-  min-height: 27px;
-  max-height: 45px;
-}
-.column-2 :first-child {
-  font-size: 1.2vmax;
-}
-.column-3 :first-child {
-  font-size: 1.2vmax;
-}
-.column-4 :first-child {
-  font-size: 1.2vmax;
-}
 #roll-button {
   margin-top: 40px;
   font-size: 1.5vmax;
 }
 #light-dark-section {
-position: absolute;
-top: 0;
+  position: absolute;
+  top: 0;
 }
 #light-dark {
   width: 80px;
   height: 25px;
 }
+#light-dark {
+  background-color: var(--dark-btn);
+  color: var(--dark-btn-txt);
+}
+#light-dark::after {
+  content: var(--dark-btn-content);
+}
 
   @media only screen and (max-width: 1600px) {
-    
     .column-1 > div {
       max-height: 32px;
     }
@@ -245,7 +260,6 @@ top: 0;
     .column-4 > div {
       max-height: 32px;
     }
-  
   }
   @media only screen and (max-width: 900px) {
     body {
@@ -257,7 +271,6 @@ top: 0;
       "roll"
       "score";
     }
-
     form {
       display: flex;
       justify-content: center;
@@ -266,42 +279,30 @@ top: 0;
     section.dice {
       grid-gap: 2.5vmax;
     }
-    
-    #roll-button {
-      margin-top: 0;
-      font-size: 1.5vmax;
+
+    section.dice > div {
+      min-height: 7vmax;
+      min-width: 7vmax;
     }
+    
     section.score-card {
       grid-template-columns: 15vmax 13vmax 9vmax 9vmax;
       border-left: none;
     }
-    section.score-card > div > div {
-      display: flex;
-      flex: content;
-      grid-gap: 0vmin;
-      justify-content: center;
-      align-items: center;
-      margin: -1px;
-      flex-shrink: inherit;
-      text-align: center;
-    }
+
     .column-1 > div {
       font-weight: bold;
       font-size: 1.5vmax;
-      height: 2.7vmax;
-      min-height: 27px;
     }
     .column-2 > div {
       font-size: .9vmax;
       height: 2.7vmax;
       min-height: 27px;
-  
     }
     .column-3 > div {
       font-size: 1.8vmax;
       height: 2.7vmax;
       min-height: 27px;
-      
     }
     .column-4 > div {
       font-size: 1.8vmax;
@@ -320,11 +321,12 @@ top: 0;
     .column-4 :first-child {
       font-size: 1.8vmax;
     }
-    .roll-button {
-      font-size: 1.3vmax;
-    }
-      .right-arrow {
+    .right-arrow {
       background-size: 3.3vmax;
+    }
+    #roll-button {
+      margin-top: 0;
+      font-size: 1.3vmax;
     }
   } 
   @media only screen and (max-width: 600px) {
@@ -346,6 +348,9 @@ top: 0;
       justify-content: center;
       align-items: center;
     }
+    h1 {
+      font-size: 2.5vmax;
+    }
     section.dice {
       display: flex;
       grid-gap: 4vmin;
@@ -353,10 +358,6 @@ top: 0;
       align-items: center;
       flex-shrink: inherit;
       grid-area: dice;
-    }
-    #roll-button {
-      margin-top: 0;
-      font-size: 2vmax;
     }
     section.score-card {
       display: grid;
@@ -410,28 +411,12 @@ top: 0;
     .column-4 :first-child {
       font-size: 1.3vmax;
     }
-    #roll-button {
-      font-size: 1.3vmax;
-    }
     .right-arrow {
     background-size: 3.3vmax;
     } 
-    h1 {
-      font-size: 2.5vmax;
+    #roll-button {
+      font-size: 1.3vmax;
     }
   } 
 
-
-  .box-selected{
-    background-color: var(--box-selected);
-  }
-  .boxgreen {
-    background-color: var(--box-green);
-  }
-  .boxyellow {
-    background-color: var(--box-yellow);
-  }
-  .box-unselected {
-    background-color: var(--box-unselected);
-  }
   
