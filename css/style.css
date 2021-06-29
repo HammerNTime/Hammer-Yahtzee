@@ -263,22 +263,26 @@ section.score-card > div > div {
   width: 35vmax;
   border-radius: 5%;
 }
+#name-btn {
+  font-size: 1.5vmax;
+  margin-left: .4vmax;
+  font-family: 'Patua One', cursive;
+}
 h2 {
+  font-family: 'Patua One', cursive;
   font-size: 3.2vmax;
   text-align: center;
   margin: 3vmax 2vmax;
 }
 h3 {
+  font-family: 'Patua One', cursive;
   font-size: 1.5vmax;
   margin: 2vmax 2vmax 1.5vmax;
 }
 input {
+  font-family: 'Patua One', cursive;
   margin: 0 0 0 2vmax;
   font-size: 1.5vmax;
-}
-#name-btn {
-  font-size: 1.5vmax;
-  margin-left: .4vmax;
 }
 @media only screen and (min-width: 2100px) {
   .right-arrow {
