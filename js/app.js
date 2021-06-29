@@ -81,17 +81,19 @@ rollButton.addEventListener("click", rollNewDice)
 scoreCard.addEventListener("click", scoreCardClick)
 dice.addEventListener("click", diceHoldInit)
 lightDarkBtn.addEventListener("click", colorScheme.change)
-nameForm.addEventListener("submit", init)
+nameForm.addEventListener("submit", start)
 
 /* -------------------------Functions------------------------- */
-
-
-function init(event) {
+function start(event){
     event.preventDefault()
     hideUnhide()
+    init()
+} 
+init()
+function init() {
+    diceArray = [null, null, null, null, null]
     plr1Name.innerText = plr1Input.value
     plr2Name.innerText = plr2Input.value
-    diceArray = [null, null, null, null, null]
     gameReset()
     plr1Array = []
     plr2Array = []
