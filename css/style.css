@@ -72,6 +72,7 @@ h1 {
   max-height: 1fr;
   max-width: 1fr;
   color: var(--h1-clr);
+  font-family: 'Patua One', cursive;
 }
 
 section.dice {
@@ -349,7 +350,7 @@ section.score-card > div > div {
       align-items: center;
     }
     h1 {
-      font-size: 2.5vmax;
+      font-size: 3.1vmax;
     }
     section.dice {
       display: flex;
