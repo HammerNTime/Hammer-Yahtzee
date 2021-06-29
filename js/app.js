@@ -91,6 +91,8 @@ lightDarkBtn.addEventListener("click", colorScheme.change)
 init()
 
 function init() {
+    plr1Name.innerText = prompt("Welcome to Yahtzee! Please enter player 1's name")
+    plr2Name.innerText = prompt("Please enter player 2's name")
     diceArray = [null, null, null, null, null]
     gameReset()
     plr1Array = []
