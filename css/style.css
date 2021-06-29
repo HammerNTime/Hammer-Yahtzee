@@ -86,7 +86,6 @@ section.dice > div {
   display: flex;
   justify-content: center;
   border: 3px solid;
-  font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
   background-color: white;
@@ -104,8 +103,7 @@ section.score-card {
   flex-shrink: inherit;
   grid-area: score;
   border-left: solid 1px;
-  align-items: center;
-  
+  align-items: center;  
 }
 section.score-card > div > div {
   display: flex;
@@ -181,7 +179,6 @@ section.score-card > div > div {
 #delete-border-4 {
   border-left: none;
 }
-
 .column-1 > div {
   font-weight: bold;
   font-size: 1vmax;
@@ -248,14 +245,10 @@ top: 0;
     }
   
   }
-  @media only screen and (max-width: 750px) {
+  @media only screen and (max-width: 900px) {
     body {
-      display: grid;
-      text-align: center;
       grid-template-columns: 1fr;
       grid-template-rows: 10vmax 10vmax 8vmax 12vmax;
-      margin: 0;
-      height: 100%;
       grid-template-areas: 
       "initial"
       "dice"
@@ -274,7 +267,7 @@ top: 0;
     
     #roll-button {
       margin-top: 0;
-      font-size: 9px;
+      font-size: 1.5vmax;
     }
     section.score-card {
       grid-template-columns: 15vmax 13vmax 9vmax 9vmax;
@@ -332,12 +325,12 @@ top: 0;
       background-size: 3.3vmax;
     }
   } 
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 600px) {
     body {
       display: grid;
       text-align: center;
       grid-template-columns: 100%;
-      grid-template-rows: 70px 60px 40px 100px;
+      grid-template-rows: 10vmax 10vmax 8vmax 12vmax;
       margin: 0;
       height: 100%;
       grid-template-areas: 
@@ -361,11 +354,11 @@ top: 0;
     }
     #roll-button {
       margin-top: 0;
-      font-size: 9px;
+      font-size: 2vmax;
     }
     section.score-card {
       display: grid;
-      grid-template-columns: 15vmax 13vmax 9vmax 9vmax;
+      grid-template-columns: 12vmax 10vmax 6vmax 6vmax;
       grid-gap: 0;
       justify-content: center;
       margin-top: 8px;
@@ -380,41 +373,40 @@ top: 0;
       align-items: center;
       margin: -1px;
       flex-shrink: inherit;
-      font-size: 13px;
       text-align: center;
     }
     .column-1 > div {
       font-weight: bold;
-      font-size: 1.5vmax;
+      font-size: 1.2vmax;
       height: 2.7vmax;
       min-height: 27px;
     }
     .column-2 > div {
-      font-size: .9vmax;
+      font-size: .8vmax;
       height: 2.7vmax;
       min-height: 27px;
     }
     .column-3 > div {
-      font-size: 1.8vmax;
+      font-size: 1.2vmax;
       height: 2.7vmax;
       min-height: 27px;
     }
     .column-4 > div {
-      font-size: 1.8vmax;
+      font-size: 1.2vmax;
       height: 2.7vmax;
       min-height: 27px;
     }
     .column-1 :first-child {
-      font-size: 1.8vmax;
+      font-size: 1.5vmax;
     }
     .column-2 :first-child {
-      font-size: 1.8vmax;
+      font-size: 1.5vmax;
     }
     .column-3 :first-child {
-      font-size: 1.8vmax;
+      font-size: 1.3vmax;
     }
     .column-4 :first-child {
-      font-size: 1.8vmax;
+      font-size: 1.3vmax;
     }
     #roll-button {
       font-size: 1.3vmax;
@@ -423,7 +415,7 @@ top: 0;
     background-size: 3.3vmax;
     } 
     h1 {
-      font-size: 2vmax;
+      font-size: 2.5vmax;
     }
   } 
 
