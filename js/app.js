@@ -84,11 +84,6 @@ lightDarkBtn.addEventListener("click", colorScheme.change)
 nameForm.addEventListener("submit", start)
 
 /* -------------------------Functions------------------------- */
-function start(event){
-    event.preventDefault()
-    hideUnhide()
-    init()
-} 
 init()
 function init() {
     diceArray = [null, null, null, null, null]
@@ -112,13 +107,13 @@ function init() {
     message.innerText = `Welcome to Yahtzee! ${plr1Name.innerText} is up first!`
 }
 
+// hides the name form and unhides all the other stuff
 function hideUnhide() {
     message.removeAttribute("hidden")
     dice.removeAttribute("hidden")
     rollButtonForm.removeAttribute("hidden")
     grabNamesContainer.setAttribute("hidden", true)
 }
-
 /* -------------------------Click Event Functions------------------------- */
 
 // this function is the main work-horse. it first populates the uppercheck vaiable so the click
@@ -258,14 +253,21 @@ function scoreCardNoClickEvents(event){
         || event.target.id === "bonus-1"
         || event.target.id === "bonus-2"
         || event.target.innerText === ""){
-        return true
+            return true
+        }
     }
-}
 
-/* -------------------------Roll Dice Functions------------------------- */
-
-// first checks to see if all dice are being held, then if the roll is really for a new game
-// then checks if each specific dice is being held, if not it calls a random number and runs 
+// initializer to populate the names of players and hide/unhide
+function start(event){
+    event.preventDefault()
+    hideUnhide()
+    init()
+} 
+    
+    /* -------------------------Roll Dice Functions------------------------- */
+    
+    // first checks to see if all dice are being held, then if the roll is really for a new game
+    // then checks if each specific dice is being held, if not it calls a random number and runs 
 // the dice animation
 function rollNewDice() {
     if (dice1Check === -1 
