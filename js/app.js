@@ -112,11 +112,17 @@ function init() {
 
 /* -------------------------Click Event Functions------------------------- */
 
+// this function is the main work-horse. it first populates the uppercheck vaiable so the click
+// can be checked to see if it falls in the upper section. then it makes sure it isnt a "bad click"
+// then it makes sure it isnt the first turn before the roll and that the otherplayers number isnt
+// being clicked. if it passes all of that it decides if the click was for an upper or lower number
+// it then pushes the innertext of the clicked box into the correct array and resets the dice
+// resets the turn and changes the turn
 function scoreCardClick(event) {
     upperCheck = event.target.id
     if (scoreCardNoClickEvents(event) === true){
         return
-    }
+    } 
     else if (currentTurn === 1 && event.target.parentElement !== column4){
         if (plr1Array.includes(event.target.id) && event.target.id !== "yahtzee-bonus-1"){
             return
@@ -167,6 +173,8 @@ function scoreCardClick(event) {
     }
 }
 
+// checks if the current roll is not 1, then checks which dice was clicked and if that
+// dice is already being held and colors accordingly which switching the checker from 1 to -1
 function diceHoldInit(event) {
     if (currentRoll === 1){
         return
@@ -218,6 +226,8 @@ function diceHoldInit(event) {
     }
 }
 
+// list of things that are not allowed to be clicked that the event listener
+// would otherwise listen for
 function scoreCardNoClickEvents(event){
     if (event.target.parentElement === column1 
         || event.target.parentElement === column2 
@@ -245,6 +255,9 @@ function scoreCardNoClickEvents(event){
 
 /* -------------------------Roll Dice Functions------------------------- */
 
+// first checks to see if all dice are being held, then if the roll is really for a new game
+// then checks if each specific dice is being held, if not it calls a random number and runs 
+// the dice animation
 function rollNewDice() {
     if (dice1Check === -1 
     && dice2Check === -1
@@ -288,6 +301,7 @@ function rollNewDice() {
     render()
 }
 
+// checks what roll is active and calls update msg, increases the currentRoll and btn accordingly
 function rollCheck() {
     if (currentRoll === 1) {
         rollButton.innerHTML = "Roll 2"
@@ -308,6 +322,7 @@ function rollCheck() {
     }
 }
 
+// updates the image on the dice based on the random number rolled
 function diceImg(dice, result){
     if (result === 1){
         dice.className = "dice-1"
@@ -329,12 +344,14 @@ function diceImg(dice, result){
     }
 }
 
+// calls a random number between 1-6, this coresponds to the dice rolled
 function randomDiceRoll() {
     return parseInt(Math.floor((Math.random() * 6) + 1))
  }  
 
 /* -------------------------Reset Functions------------------------- */
 
+// resets the dice before next players turn
 function diceReset() {
     dice1Check = 1
     dice2Check = 1
@@ -349,6 +366,8 @@ function diceReset() {
     diceArray = [null, null, null, null, null]
 }
 
+// resets the turn and updates the msg for the next player
+// resets the roll btn
 function turnReset() {
     currentRoll = 4
     updateMsg()
@@ -358,6 +377,7 @@ function turnReset() {
     render()
 }
 
+// changes the player and checks to see if the game has ended
 function turnChange() {
     currentTurn *= -1
     console.log(currentTurn)
@@ -365,6 +385,8 @@ function turnChange() {
     checkGameOver()
 }
 
+// resets all arrays and uses a very silly way to clear all the boards by looping through 
+// players while running render()
 function gameReset(){
     plr1Array = []
     plr2Array = []
@@ -388,11 +410,13 @@ function gameReset(){
 
 /* -------------------------Render Functions------------------------- */
 
+// calls the checkpossibilities function and updateTotals
 function render() {
     checkPossibilities()
     updateTotals()
 }
 
+// runs through each possibility for current player and updates them
 function checkPossibilities(){
     if (currentTurn === 1){
         checkAces(plr1Array, "aces-1", aces1)
@@ -428,6 +452,7 @@ function checkPossibilities(){
     }
 }
 
+// does simple math to reduce the current arrays to update the total boxes
 function updateTotals() {
     bonusCheck()
     upperTotal1.innerText = plr1Upper.reduce((acc, num) => acc += num, 0) 
@@ -440,6 +465,8 @@ function updateTotals() {
     grandTotal2.innerText = (Number(upperTotal2.innerText) + Number(lowerTotal2.innerText))
 }
 
+// checks if the current selection is in the upper section, so it can be split to calculate
+// if the bonus has been met
 function checkIfUpper(){
     if (upperCheck === "aces-1"
     || upperCheck === "twos-1"
@@ -460,6 +487,8 @@ function checkIfUpper(){
     }
 }
 
+// runs if turnCounter is 26, which is the last move of a 2 player game. runs the winning msg and 
+// changes current roll to New Game
 function checkGameOver() {
     if (turnCounter === 26){
         rollButton.innerText = "Click for New Game!"
@@ -471,6 +500,7 @@ function checkGameOver() {
 
 /* ------------------------- Game Logic ------------------------- */
 
+// checks for aces and adds them
 function checkAces(plr, id, el){
     if (plr.includes(id)){
         el.setAttribute("class", "box-selected")
@@ -497,6 +527,7 @@ function checkAces(plr, id, el){
     }
 }
 
+// checks for twos and adds them
 function checkTwos(plr, id, el){
     if (plr.includes(id)){
         el.setAttribute("class", "box-selected")
@@ -523,6 +554,7 @@ function checkTwos(plr, id, el){
     }
 }
 
+// checks for threes and adds them
 function checkThrees(plr, id, el){
     if (plr.includes(id)){
         el.setAttribute("class", "box-selected")
@@ -549,6 +581,7 @@ function checkThrees(plr, id, el){
     }
 }
 
+// checks for fours and adds them
 function checkFours(plr, id, el){
     if (plr.includes(id)){
         el.setAttribute("class", "box-selected")
@@ -575,6 +608,7 @@ function checkFours(plr, id, el){
     }
 }
 
+// checks for fives and adds them
 function checkFives(plr, id, el){
     if (plr.includes(id)){
         el.setAttribute("class", "box-selected")
@@ -601,6 +635,7 @@ function checkFives(plr, id, el){
     }
 }
 
+// checks for sixes and adds them 
 function checkSixes(plr, id, el){
     if (plr.includes(id)){
         el.setAttribute("class", "box-selected")
@@ -811,6 +846,7 @@ function checkLgStraight(plr, id, el){
     }
 }
 
+// checks for 5 of a kind
 function checkYahtzee(plr, id, el){
     if (plr.includes(id)){
         el.setAttribute("class", "box-selected")
@@ -837,6 +873,7 @@ function checkYahtzee(plr, id, el){
      }
 }
 
+// adds all dice and applies to chance box
 function checkChance(plr, id, el){
     if (plr.includes(id)){
         el.setAttribute("class", "box-selected")
@@ -853,6 +890,9 @@ function checkChance(plr, id, el){
         el.innerText = null
     }
 }
+
+// checks to see if a previous yahtzee has been scored and then activates. 
+// keeps adding 100 for each consecutive bonus
 function checkYahtzeeBonus(plr, id, el, pyt){
     if (plr.includes(id)){
         el.setAttribute("class", "box-selected")
@@ -872,6 +912,7 @@ function checkYahtzeeBonus(plr, id, el, pyt){
     }
 }
 
+// checks if either player has gotten 63 total points in the top section and applies the bonus if true
 function bonusCheck() {
     if (bonusCheck1 === null && ((plr1Upper.reduce((acc, num) => acc += num, 0)) >= 63)) {
         plr1Upper.push(35)
@@ -924,6 +965,10 @@ function updateMsg() {
     }
 }
 
+
+/* ------------------------- Animation Functions ------------------------- */
+
+// animation for a yahtzee scored
 function yahtzeeScored() {
     message.innerText = "YAHTZEE!!!!!"
     message.classList.add("animate__animated", "animate__jackInTheBox")
@@ -939,9 +984,7 @@ function yahtzeeScored() {
     setTimeout(function(){dice5.classList.add("animate__animated", "animate__tada")}, 400)
     setTimeout(function(){dice5.classList.remove("animate__animated", "animate__tada")}, 1400)
 }
-
-/* ------------------------- Animation Functions ------------------------- */
-
+// animates the 1st 3rd and 5th dice upon roll
 function diceAnimation1(dice, roll){
     dice.style.transform = "rotate(45deg)"
     diceImg(dice, randomDiceRoll())
@@ -959,6 +1002,7 @@ function diceAnimation1(dice, roll){
     }, 300)
 }
 
+// animates the 2nd and 4th dice in reverse to look more realistic
 function diceAnimation2(dice, roll){
     dice.style.transform = "rotate(0deg)"
     diceImg(dice, randomDiceRoll())
