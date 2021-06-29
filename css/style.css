@@ -248,6 +248,32 @@ section.score-card > div > div {
 #light-dark::after {
   content: var(--dark-btn-content);
 }
+#grab-names-container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  grid-area: dice;
+}
+#grab-names-form {
+  background-color: green;
+  align-items: flex-start;
+  text-align: left;
+  height: 300px;
+  width: 35vmax;
+  border-radius: 5%;
+}
+h2 {
+  font-size: 40px;
+  margin: 20px 20px;
+}
+h3 {
+  margin: 20px 20px;
+}
+input {
+  margin: 0 0 0 20px;
+  font-size: 16px;
+}
 @media only screen and (min-width: 2100px) {
   .right-arrow {
     background-size: 2vmax;
@@ -423,7 +449,6 @@ section.score-card > div > div {
       font-size: 1.3vmax;
     }
   } 
-
 @media only screen and (min-height: 1100px) and (min-width: 900px) and (max-width: 1750px){
   h1 {
     margin: 120px 10px -70px;

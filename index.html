@@ -20,17 +20,27 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 id="message">Initial Text/Plr Msgs</h1>
-    <section id="dice" class="dice">
+    <h1 id="message" hidden>Initial Text/Plr Msgs</h1>
+    <section id="dice" class="dice" hidden>
         <div id="dice1" class="dice-1"></div>
         <div id="dice2" class="dice-2"></div>
         <div id="dice3" class="dice-3"></div>
         <div id="dice4" class="dice-4"></div>
         <div id="dice5" class="dice-5"></div>
     </section>
-    <form id="roll-button-form">
+    <form id="roll-button-form" hidden>
         <button id="roll-button" class="btn btn-success btn-lg" type="button">Roll 1</button>
     </form>
+    <div id="grab-names-container">
+        <form id="grab-names-form">
+            <h2>Welcome to Yahtzee!</h2>
+            <h3>Please enter player 1's name:</h3>
+            <input id="plr-1-input" type="text">
+            <h3>Please enter player 2's name:</h3>
+            <input id="plr-2-input" type="text">
+            <button id="name-btn" class="btn-outline-primary btn-lg" type="submit">Submit</button>
+        </form>
+    </div>
     <h2 id="previous-games" hidden>Previous game info</h2>
     <section id="light-dark-section">
         <button id="light-dark"></button>

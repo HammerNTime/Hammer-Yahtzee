@@ -64,6 +64,10 @@ const upperTotal22 = document.querySelector("#upper-total-22")
 const grandTotal1 = document.querySelector("#grand-total-1")
 const grandTotal2 = document.querySelector("#grand-total-2")
 const lightDarkBtn = document.querySelector("#light-dark")
+const nameForm = document.querySelector("#grab-names-form")
+const plr1Input = document.querySelector("#plr-1-input")
+const plr2Input = document.querySelector("#plr-2-input")
+const grabNamesContainer = document.querySelector("#grab-names-container")
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -71,28 +75,22 @@ let dice1Check, dice2Check, dice3Check, dice4Check, dice5Check, diceArray, curre
 currentTurn, plr1Array, plr1Upper, plr2Upper, checkUpper, plr1Lower, plr2Lower, turnCounter, 
 bonusCheck1, bonusCheck2, currentPlr, otherPlr
 
-const player1Obj = {
-    aces: null,
-    twos: null,
-    threes: null,
-    fours: null,
-    fives: null,
-    sixes: null,
-}
-
 /* -------------------------Event Listeners------------------------- */
 
 rollButton.addEventListener("click", rollNewDice)
 scoreCard.addEventListener("click", scoreCardClick)
 dice.addEventListener("click", diceHoldInit)
 lightDarkBtn.addEventListener("click", colorScheme.change)
+nameForm.addEventListener("submit", init)
 
 /* -------------------------Functions------------------------- */
-init()
 
-function init() {
-    // plr1Name.innerText = prompt("Welcome to Yahtzee! Please enter player 1's name")
-    // plr2Name.innerText = prompt("Please enter player 2's name")
+
+function init(event) {
+    event.preventDefault()
+    hideUnhide()
+    plr1Name.innerText = plr1Input.value
+    plr2Name.innerText = plr2Input.value
     diceArray = [null, null, null, null, null]
     gameReset()
     plr1Array = []
@@ -110,6 +108,13 @@ function init() {
     turnReset()
     currentTurn = 1
     message.innerText = `Welcome to Yahtzee! ${plr1Name.innerText} is up first!`
+}
+
+function hideUnhide() {
+    message.removeAttribute("hidden")
+    dice.removeAttribute("hidden")
+    rollButtonForm.removeAttribute("hidden")
+    grabNamesContainer.setAttribute("hidden", true)
 }
 
 /* -------------------------Click Event Functions------------------------- */
