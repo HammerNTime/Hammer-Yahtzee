@@ -91,8 +91,8 @@ lightDarkBtn.addEventListener("click", colorScheme.change)
 init()
 
 function init() {
-    plr1Name.innerText = prompt("Welcome to Yahtzee! Please enter player 1's name")
-    plr2Name.innerText = prompt("Please enter player 2's name")
+    // plr1Name.innerText = prompt("Welcome to Yahtzee! Please enter player 1's name")
+    // plr2Name.innerText = prompt("Please enter player 2's name")
     diceArray = [null, null, null, null, null]
     gameReset()
     plr1Array = []
@@ -892,7 +892,8 @@ function checkChance(plr, id, el){
 }
 
 // checks to see if a previous yahtzee has been scored and then activates. 
-// keeps adding 100 for each consecutive bonus
+// keeps adding 100 for each consecutive bonus had to add an extra argument
+// to account for if regular yahtzee had been 0'd out previously
 function checkYahtzeeBonus(plr, id, el, pyt, pytn){
     if (plr.includes(id)){
         el.setAttribute("class", "box-selected")

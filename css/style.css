@@ -424,4 +424,9 @@ section.score-card > div > div {
     }
   } 
 
+@media only screen and (min-height: 1100px) and (min-width: 900px) and (max-width: 1750px){
+  h1 {
+    margin: 120px 10px -70px;
+  }
   
+}
