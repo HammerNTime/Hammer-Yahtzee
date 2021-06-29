@@ -434,7 +434,7 @@ function checkPossibilities(){
         checkLgStraight(plr1Array, "lg-straight-1", lgStraight1)
         checkYahtzee(plr1Array, "yahtzee-1", yahtzee1)
         checkChance(plr1Array, "chance-1", chance1)
-        checkYahtzeeBonus(plr1Array, "yahtzee-bonus-1", yahtzeeBonus1, "yahtzee-1")
+        checkYahtzeeBonus(plr1Array, "yahtzee-bonus-1", yahtzeeBonus1, "yahtzee-1", yahtzee1)
     }
     if (currentTurn === -1){
         checkAces(plr2Array, "aces-2", aces2)
@@ -450,7 +450,7 @@ function checkPossibilities(){
         checkLgStraight(plr2Array, "lg-straight-2", lgStraight2)
         checkYahtzee(plr2Array, "yahtzee-2", yahtzee2)
         checkChance(plr2Array, "chance-2", chance2)
-        checkYahtzeeBonus(plr2Array, "yahtzee-bonus-2", yahtzeeBonus2, "yahtzee-2")
+        checkYahtzeeBonus(plr2Array, "yahtzee-bonus-2", yahtzeeBonus2, "yahtzee-2", yahtzee2)
     }
 }
 
@@ -856,8 +856,6 @@ function checkYahtzee(plr, id, el){
     }
     let copyDiceArray = diceArray.slice(0, 5)
     let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
-    // sortedNumArray = [1,1,1,1,1]
-
     if (sortedNumArray[0] === sortedNumArray[4] && diceArray [0] !== null)
         { 
             el.setAttribute("class", "box-green")
@@ -895,11 +893,11 @@ function checkChance(plr, id, el){
 
 // checks to see if a previous yahtzee has been scored and then activates. 
 // keeps adding 100 for each consecutive bonus
-function checkYahtzeeBonus(plr, id, el, pyt){
+function checkYahtzeeBonus(plr, id, el, pyt, pytn){
     if (plr.includes(id)){
         el.setAttribute("class", "box-selected")
     }
-    if (plr.includes(pyt)){
+    if (plr.includes(pyt) && (parseInt(pytn.innerText) !== 0)){
         let copyDiceArray = diceArray.slice(0, 5)
         let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
         if (sortedNumArray[0] === sortedNumArray[4] && diceArray [0] !== null)
