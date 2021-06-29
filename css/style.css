@@ -248,10 +248,10 @@ section.score-card > div > div {
 #light-dark::after {
   content: var(--dark-btn-content);
 }
-@media only screen and (max-width: 2300px) {
+@media only screen and (min-width: 2100px) {
   .right-arrow {
-    background-size: 2.6vmax;
-  
+    background-size: 2vmax;
+  }
 }
 
   @media only screen and (max-width: 1600px) {
@@ -329,7 +329,7 @@ section.score-card > div > div {
       font-size: 1.8vmax;
     }
     .right-arrow {
-      background-size: 3.3vmax;
+      background-size: 3.2vmax;
     }
     #roll-button {
       margin-top: 0;
@@ -417,7 +417,7 @@ section.score-card > div > div {
       font-size: 1.3vmax;
     }
     .right-arrow {
-    background-size: 3.3vmax;
+    background-size: 2.7vmax;
     } 
     #roll-button {
       font-size: 1.3vmax;
