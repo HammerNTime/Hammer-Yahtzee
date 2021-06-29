@@ -259,20 +259,26 @@ section.score-card > div > div {
   background-color: green;
   align-items: flex-start;
   text-align: left;
-  height: 300px;
+  height: 30vmax;
   width: 35vmax;
   border-radius: 5%;
 }
 h2 {
-  font-size: 40px;
-  margin: 20px 20px;
+  font-size: 3.2vmax;
+  text-align: center;
+  margin: 3vmax 2vmax;
 }
 h3 {
-  margin: 20px 20px;
+  font-size: 1.5vmax;
+  margin: 2vmax 2vmax 1.5vmax;
 }
 input {
-  margin: 0 0 0 20px;
-  font-size: 16px;
+  margin: 0 0 0 2vmax;
+  font-size: 1.5vmax;
+}
+#name-btn {
+  font-size: 1.5vmax;
+  margin-left: .4vmax;
 }
 @media only screen and (min-width: 2100px) {
   .right-arrow {
