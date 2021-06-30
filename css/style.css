@@ -432,7 +432,7 @@ input {
     }
     h1 {
       font-size: 3.1vmax;
-      margin-top: 10px;
+      margin-top: 20px;
     }
     section.dice {
       display: flex;
