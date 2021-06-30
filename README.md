@@ -1,5 +1,7 @@
 # Yahtzee-Unit-Project #
 
+https://hammer-yahtzee.netlify.app/
+
 
 ## History ##
 
@@ -43,6 +45,14 @@ Sm Straight:<br>
 
 A player may score 40 points in their Lg Straight if they have a combination of dice that make up a sequence of five.
 
-Lg Straight<br>
+Lg Straight:<br>
 ![alt text](./assets/lg-straight.png)
 
+### Yahtzee!! ###
+A player may score 50 points in their Yahtzee if they have any five of a kind. They may also get up and yell "Yahtzee!!" and do a dance. 
+
+Yahtzee:<br>
+![alt text](./assets/Yahtzee.png)
+
+#### Chance ####
+A player may score the total of all of their current dice at any point in the Chance box.
