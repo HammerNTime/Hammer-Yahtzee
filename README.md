@@ -16,7 +16,7 @@ As a family favorite game, it felt only natural to create an on-the-go version t
 
 Each turn consists of a maximum of three rolls. The first roll must be made with all five dice. If the player chooses to roll a second and, if desired, a third time, he may "hold" any or all the dice and roll again. A score must be entered after the last roll in the appropriate box or a zero entered in a box of the player’s choice. The player may also elect to enter a score in a box after either their first or second roll, at which point their turn would end and the next player would be up. Boxes may only be scored in once during the game and may not be changed once used. 
 
-##### Holding dice #####
+#### Holding dice ####
 This may be achieved by clicking the dice the player wants to hold. This will turn the dice red and it will not roll until unclicked or it is the next player's turn.
 
 #### Upper Section ####
