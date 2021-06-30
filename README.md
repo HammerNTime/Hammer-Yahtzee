@@ -1,4 +1,4 @@
 # Yahtzee-Unit-Project
 
 
-![alt text](./assets/Dice-1.png)
+![alt text](./assets/yahtzee-start.png)
