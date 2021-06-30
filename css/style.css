@@ -389,13 +389,14 @@ input {
       border-radius: 5%;
     }
     
-    /* #name-btn {
+    #name-btn {
       font-size: 1.5vmax;
       font-family: 'Patua One', cursive;
-      position: absolute;
-      margin: 150px 4vmax 0vmax 245px;
+      display: inline-block;
+      /* position: absolute; */
+      /* margin: 150px 4vmax 0vmax 245px; */
     
-    } */
+    }
     h2 {
       font-family: 'Patua One', cursive;
       font-size: 3vmax;
