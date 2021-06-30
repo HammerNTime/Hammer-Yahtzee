@@ -73,7 +73,7 @@ h1 {
   max-width: 1fr;
   color: var(--h1-clr);
   font-family: 'Patua One', cursive;
-  margin: 0 10px;
+  margin: 100px 10px 0;
 }
 
 section.dice {
