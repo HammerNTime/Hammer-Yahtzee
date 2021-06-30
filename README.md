@@ -66,11 +66,14 @@ A player may score 100 each time they have a five of a kind and they have alread
 
 
 ### Tech Used ###
-JavaScript
-CSS
-HTML
+* JavaScript
+* CSS
+* HTML
 
-Shoutout to Bootstrap and Animate.css for buttons and (most) animations
+#### Shoutouts #### 
+* Bootstrap - for buttons
+* Animate.css - for (most) animations
+* Google Fonts
 
 
 ### Future Endeavors ###
