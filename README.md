@@ -5,7 +5,7 @@ https://hammer-yahtzee.netlify.app/
 
 ## History ##
 
-Yahtzee is a dice game of chance! It was originally produced by Milton Bradley (since acquired by Hasboro) in the early 1940's; it is said that the game originated from a couple that invented it to entertain guests on their yacht, refering to it as the "yacht game". Originally marketed as Yatzie, it was rebranded to Yahtzee in 1956. Yahtzee shares many similarities to the Scandinavian game Yatzy. Hasboro claims to now sell about 50 million copies of yahtzee each year.
+Yahtzee is a dice game of chance! It was originally produced by Milton Bradley (since acquired by Hasboro) in the early 1940's; it is said that the game originated from a couple that invented it to entertain guests on their yacht, refering to it as the "yacht game". Originally marketed as Yatzie, it was rebranded to Yahtzee in 1956. Yahtzee shares many similarities to the Scandinavian game Yatzy. Hasboro claims to now sell about 50 million copies of Yahtzee each year.
 
 
 As a family favorite game, it felt only natural to create an on-the-go version that did not require materials or a tabletop.
@@ -78,5 +78,6 @@ A player may score 100 each time they have a five of a kind and they have alread
 
 ### Future Endeavors ###
 * Tracking player scores across multiple games
+* Add in game drop-down with rules
 * Ability to add or remove players
 * Computer logic?
