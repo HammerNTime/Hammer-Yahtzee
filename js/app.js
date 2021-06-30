@@ -1028,4 +1028,4 @@ function diceAnimation2(dice, roll){
         dice.style.transform = "rotate(0deg)"
         diceImg(dice, roll)
     }, 300)
-}
+} 
