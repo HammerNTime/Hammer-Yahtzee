@@ -23,26 +23,26 @@ To earn a bonus of 35 points, a player must score 63 points or more in the Upper
 #### 3 & 4 of a Kind ####
 A player scores the total of all dice provided they include 3 of 4 dice of the same number, respectively. 
 
-3 of a kind:
+3 of a kind:<br>
 ![alt text](./assets/3-of-kind.png)
 
-4 of a kind:
+4 of a kind:<br>
 ![alt text](./assets/4-of-kind.png)
 
 #### Full House #### 
 A player may score 25 points in the Full House box any time they have a combination of 3 of one dice and 2 of another. An example would be 2 fours and 3 sixes.
 
-Full House:
+Full House:<br>
 ![alt text](./assets/full-house.png)
 
 #### Small and Large Straight ####
 A player may score 30 points in their Sm Straight if they have a combination of dice that make up a sequence of four. the order and fifth dice does not matter. Examples include Ace, Two, Three, Four, (last dice doesn't matter), or Three, Four, Five, Six. 
 
-Sm Straight:
+Sm Straight:<br>
 ![alt text](./assets/sm-straight.png)
 
 A player may score 40 points in their Lg Straight if they have a combination of dice that make up a sequence of five.
 
-Lg Straight
+Lg Straight<br>
 ![alt text](./assets/lg-straight.png)
 
