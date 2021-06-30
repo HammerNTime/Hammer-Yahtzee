@@ -740,14 +740,12 @@ function checkFullHouse(plr, id, el){
         el.setAttribute("class", "box-selected")
         return
     }
-    let total
     let copyDiceArray = diceArray.slice(0, 5)
     let sortedNumArray = copyDiceArray.sort((a, b) => a - b)
     if ((sortedNumArray[0] === sortedNumArray[2] && sortedNumArray[3] === sortedNumArray[4] && sortedNumArray[0] !== sortedNumArray[4] && diceArray[0] !== null)
         || (sortedNumArray[0] === sortedNumArray[1] && sortedNumArray[2] === sortedNumArray[4] && sortedNumArray[0] !== sortedNumArray[4] && diceArray[0] !== null))
         { 
             el.setAttribute("class", "box-green")
-            total = sortedNumArray.reduce((acc, num) => acc += num, 0)
             el.innerText = 25
         } else {
             el.setAttribute("class", "box-unselected")
@@ -778,7 +776,6 @@ function checkSmStraight(plr, id, el){
         el.setAttribute("class", "box-selected")
         return
     }
-    let total
     let check1 = 1
     let check1Array = []
     let check2 = 2
@@ -804,7 +801,6 @@ function checkSmStraight(plr, id, el){
     if (check1Array.length >= 4 || check2Array.length >= 4 || check3Array.length >= 4) 
     { 
             el.setAttribute("class", "box-green")
-            total = sortedNumArray.reduce((acc, num) => acc += num, 0)
             el.innerText = 30
         } else {
             el.setAttribute("class", "box-unselected")
@@ -823,7 +819,6 @@ function checkLgStraight(plr, id, el){
         el.setAttribute("class", "box-selected")
         return
     }
-    let total
     let check1 = 1
     let check1Array = []
     let check2 = 2
@@ -844,7 +839,6 @@ function checkLgStraight(plr, id, el){
     if (check1Array.length === 5 || check2Array.length === 5) 
     { 
             el.setAttribute("class", "box-green")
-            total = sortedNumArray.reduce((acc, num) => acc += num, 0)
             el.innerText = 40
         } else {
             el.setAttribute("class", "box-unselected")
@@ -868,7 +862,6 @@ function checkYahtzee(plr, id, el){
     if (sortedNumArray[0] === sortedNumArray[4] && diceArray [0] !== null)
         { 
             el.setAttribute("class", "box-green")
-            total = sortedNumArray.reduce((acc, num) => acc += num, 0)
             el.innerText = 50
             yahtzeeScored()
         } else {
