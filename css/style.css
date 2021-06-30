@@ -45,7 +45,6 @@ body {
   "roll score"
   "previous score";
 }
-
 body.dark {
   --body-bg: rgb(18, 16, 21);
   --h1-clr: white;
@@ -61,9 +60,8 @@ body.dark {
   --dark-btn-txt: black;
   --dark-btn-content: "Light Mode";
   background-color: var(--body-bg);
-
+  
 }
-
 h1 {
   display: flex;
   justify-content: center;
@@ -75,7 +73,22 @@ h1 {
   font-family: 'Patua One', cursive;
   margin: 100px 10px 0;
 }
-
+h2 {
+  font-family: 'Patua One', cursive;
+  font-size: 3.2vmax;
+  text-align: center;
+  margin: 3vmax 2vmax;
+}
+h3 {
+  font-family: 'Patua One', cursive;
+  font-size: 1.5vmax;
+  margin: 2vmax 2vmax 1.5vmax;
+}
+input {
+  font-family: 'Patua One', cursive;
+  margin: 0 0 0 2vmax;
+  font-size: 1.5vmax;
+}
 section.dice {
   display: flex;
   grid-gap: 1.5vmax;
@@ -84,7 +97,6 @@ section.dice {
   flex-shrink: none;
   grid-area: dice;
 }
-
 section.dice > div {
   display: flex;
   justify-content: center;
@@ -98,7 +110,6 @@ section.dice > div {
   min-height: 6vmax;
   min-width: 6vmax;
 }
-
 section.score-card {
   display: grid;
   grid-template-columns: 12vmax 8vmax 5vmax 5vmax;
@@ -109,7 +120,6 @@ section.score-card {
   border-left: solid 3px;
   align-items: center;  
 }
-
 section.score-card > div > div {
   display: flex;
   flex: content;
@@ -124,7 +134,6 @@ section.score-card > div > div {
   color: var(--scorecard-txt-clr);
   flex-direction: row;
 }
-
 .dice-1 {
   background-image: url(../assets/Dice-1.png);
   background-size: cover;
@@ -149,12 +158,10 @@ section.score-card > div > div {
   background-image: url(../assets/Dice-6.png);
   background-size: cover;
 }
-
 .right-arrow {
   background-image: url(../assets/rightArrow.png);
   background-size: 2.7vmax;
 }
-
 .column-1 > div {
   font-weight: bold;
   font-size: 1.1vmax;
@@ -162,7 +169,6 @@ section.score-card > div > div {
   min-height: 27px;
   max-height: 45px;
   background-color: var(--scorecard-bg);
-  
 }
 .column-2 > div {
   font-size: .7vmax;
@@ -195,7 +201,6 @@ section.score-card > div > div {
 .column-4 :first-child {
   font-size: 1.2vmax;
 }
-
 .box-selected{
   background-color: var(--box-selected);
 }
@@ -208,7 +213,6 @@ section.score-card > div > div {
 .box-unselected {
   background-color: var(--box-unselected);
 }
-
 #plr-1-name, #plr-2-name, #bonus-1, #bonus-2, #lower-total-1, #lower-total-2, #upper-total-1,
 #upper-total-11, #upper-total-2, #upper-total-22, #delete-border-3, #delete-border-4,
 #grand-total-1, #grand-total-2 {
@@ -268,245 +272,228 @@ section.score-card > div > div {
   margin-left: .4vmax;
   font-family: 'Patua One', cursive;
 }
-h2 {
-  font-family: 'Patua One', cursive;
-  font-size: 3.2vmax;
-  text-align: center;
-  margin: 3vmax 2vmax;
-}
-h3 {
-  font-family: 'Patua One', cursive;
-  font-size: 1.5vmax;
-  margin: 2vmax 2vmax 1.5vmax;
-}
-input {
-  font-family: 'Patua One', cursive;
-  margin: 0 0 0 2vmax;
-  font-size: 1.5vmax;
-}
+
 @media only screen and (min-width: 2100px) {
   .right-arrow {
     background-size: 2vmax;
   }
 }
 
-  @media only screen and (max-width: 1600px) {
-    .column-1 > div {
-      max-height: 32px;
-    }
-    .column-2 > div {
-      max-height: 32px;
-    }
-    .column-3 > div {
-      max-height: 32px;
-    }
-    .column-4 > div {
-      max-height: 32px;
-    }
+@media only screen and (max-width: 1600px) {
+  .column-1 > div {
+    max-height: 32px;
   }
-  @media only screen and (max-width: 900px) {
-    body {
-      grid-template-columns: 1fr;
-      grid-template-rows: 10vmax 10vmax 8vmax 12vmax;
-      grid-template-areas: 
-      "initial"
-      "dice"
-      "roll"
-      "score";
-    }
-    h1 {
-      margin-top: 30px;
-    }
-    form {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    section.dice {
-      grid-gap: 2.5vmax;
-    }
+  .column-2 > div {
+    max-height: 32px;
+  }
+  .column-3 > div {
+    max-height: 32px;
+  }
+  .column-4 > div {
+    max-height: 32px;
+  }
+}
 
-    section.dice > div {
-      min-height: 7vmax;
-      min-width: 7vmax;
-    }
-    
-    section.score-card {
-      grid-template-columns: 15vmax 13vmax 9vmax 9vmax;
-      border-left: none;
-    }
+@media only screen and (max-width: 900px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 10vmax 10vmax 8vmax 12vmax;
+    grid-template-areas: 
+    "initial"
+    "dice"
+    "roll"
+    "score";
+  }
+  h1 {
+    margin-top: 30px;
+  }
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  h2 {
+    font-family: 'Patua One', cursive;
+    font-size: 3vmax;
+    text-align: center;
+    margin: -1vmax 0vmax 1vmax 3.5vmax;
+  }
+  h3 {
+    font-family: 'Patua One', cursive;
+    font-size: 1.5vmax;
+    margin: 1vmax 2vmax .5vmax;
+  }
+  input {
+    font-family: 'Patua One', cursive;
+    margin: 0 0 0 2vmax;
+    font-size: 1.5vmax;
+  }
+  section.dice {
+    grid-gap: 2.5vmax;
+  }
 
-    .column-1 > div {
-      font-weight: bold;
-      font-size: 1.5vmax;
-    }
-    .column-2 > div {
-      font-size: .9vmax;
-      height: 2.7vmax;
-      min-height: 27px;
-    }
-    .column-3 > div {
-      font-size: 1.8vmax;
-      height: 2.7vmax;
-      min-height: 27px;
-    }
-    .column-4 > div {
-      font-size: 1.8vmax;
-      height: 2.7vmax;
-      min-height: 27px;
-    }
-    .column-1 :first-child {
-      font-size: 1.8vmax;
-    }
-    .column-2 :first-child {
-      font-size: 1.8vmax;
-    }
-    .column-3 :first-child {
-      font-size: 1.8vmax;
-    }
-    .column-4 :first-child {
-      font-size: 1.8vmax;
-    }
-    .right-arrow {
-      background-size: 3.2vmax;
-    }
-    #roll-button {
-      margin-top: 0;
-      font-size: 1.3vmax;
-    }
-    #grab-names-container {
-      display: flex;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      grid-area: dice;
-    }
-    #grab-names-form {
-      flex: grid;
-      background-color: green;
-      align-items: flex-start;
-      flex-direction: column;
-      text-align: left;
-      height: 22vmax;
-      width: 35vmax;
-      border-radius: 5%;
-    }
-    
-    #name-btn {
-      font-size: 1.5vmax;
-      font-family: 'Patua One', cursive;
-      display: inline-block;
-      /* position: absolute; */
-      /* margin: 150px 4vmax 0vmax 245px; */
-    
-    }
-    h2 {
-      font-family: 'Patua One', cursive;
-      font-size: 3vmax;
-      text-align: center;
-      margin: -1vmax 0vmax 1vmax 3.5vmax;
-    }
-    h3 {
-      font-family: 'Patua One', cursive;
-      font-size: 1.5vmax;
-      margin: 1vmax 2vmax .5vmax;
-    }
-    input {
-      font-family: 'Patua One', cursive;
-      margin: 0 0 0 2vmax;
-      font-size: 1.5vmax;
-    }
+  section.dice > div {
+    min-height: 7vmax;
+    min-width: 7vmax;
+  }
+  
+  section.score-card {
+    grid-template-columns: 15vmax 13vmax 9vmax 9vmax;
+    border-left: none;
+  }
+
+  .column-1 > div {
+    font-weight: bold;
+    font-size: 1.5vmax;
+  }
+  .column-2 > div {
+    font-size: .9vmax;
+    height: 2.7vmax;
+    min-height: 27px;
+  }
+  .column-3 > div {
+    font-size: 1.8vmax;
+    height: 2.7vmax;
+    min-height: 27px;
+  }
+  .column-4 > div {
+    font-size: 1.8vmax;
+    height: 2.7vmax;
+    min-height: 27px;
+  }
+  .column-1 :first-child {
+    font-size: 1.8vmax;
+  }
+  .column-2 :first-child {
+    font-size: 1.8vmax;
+  }
+  .column-3 :first-child {
+    font-size: 1.8vmax;
+  }
+  .column-4 :first-child {
+    font-size: 1.8vmax;
+  }
+  .right-arrow {
+    background-size: 3.2vmax;
+  }
+  #roll-button {
+    margin-top: 0;
+    font-size: 1.3vmax;
+  }
+  #grab-names-container {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    grid-area: dice;
+  }
+  #grab-names-form {
+    flex: grid;
+    background-color: green;
+    align-items: flex-start;
+    flex-direction: column;
+    text-align: left;
+    height: 22vmax;
+    width: 35vmax;
+    border-radius: 5%;
+  }
+  #name-btn {
+    font-size: 1.5vmax;
+    font-family: 'Patua One', cursive;
+    display: inline-block;
+  }
+} 
+
+@media only screen and (max-width: 600px) {
+  body {
+    display: grid;
+    text-align: center;
+    grid-template-rows: 10vmax 10vmax 8vmax 12vmax;
+    grid-template-areas: 
+    "initial"
+    "dice"
+    "roll"
+    "score";
+  }
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  h1 {
+    font-size: 3.1vmax;
+    margin-top: 20px;
+  }
+  section.dice {
+    display: flex;
+    grid-gap: 3vmin;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: inherit;
+    grid-area: dice;
+  }
+  section.score-card {
+    display: grid;
+    grid-template-columns: 13vmax 11vmax 7vmax 7vmax;
+    grid-gap: 0;
+    justify-content: center;
+    margin-top: 8px;
+    flex-shrink: inherit;
+    grid-area: score;
+  }
+  section.score-card > div > div {
+    display: flex;
+    flex: content;
+    grid-gap: 0vmin;
+    justify-content: center;
+    align-items: center;
+    margin: -1px;
+    flex-shrink: inherit;
+    text-align: center;
+  }
+  .column-1 > div {
+    font-weight: bold;
+    font-size: 1.2vmax;
+    height: 2.7vmax;
+    min-height: 27px;
+  }
+  .column-2 > div {
+    font-size: .8vmax;
+    height: 2.7vmax;
+    min-height: 27px;
+  }
+  .column-3 > div {
+    font-size: 1.2vmax;
+    height: 2.7vmax;
+    min-height: 27px;
+  }
+  .column-4 > div {
+    font-size: 1.2vmax;
+    height: 2.7vmax;
+    min-height: 27px;
+  }
+  .column-1 :first-child {
+    font-size: 1.5vmax;
+  }
+  .column-2 :first-child {
+    font-size: 1.5vmax;
+  }
+  .column-3 :first-child {
+    font-size: 1.3vmax;
+  }
+  .column-4 :first-child {
+    font-size: 1.3vmax;
+  }
+  .right-arrow {
+  background-size: 3.6vmax;
   } 
-  @media only screen and (max-width: 600px) {
-    body {
-      display: grid;
-      text-align: center;
-      grid-template-rows: 10vmax 10vmax 8vmax 12vmax;
-      grid-template-areas: 
-      "initial"
-      "dice"
-      "roll"
-      "score";
-    }
-    form {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    h1 {
-      font-size: 3.1vmax;
-      margin-top: 20px;
-    }
-    section.dice {
-      display: flex;
-      grid-gap: 3vmin;
-      justify-content: center;
-      align-items: center;
-      flex-shrink: inherit;
-      grid-area: dice;
-    }
-    section.score-card {
-      display: grid;
-      grid-template-columns: 13vmax 11vmax 7vmax 7vmax;
-      grid-gap: 0;
-      justify-content: center;
-      margin-top: 8px;
-      flex-shrink: inherit;
-      grid-area: score;
-    }
-    section.score-card > div > div {
-      display: flex;
-      flex: content;
-      grid-gap: 0vmin;
-      justify-content: center;
-      align-items: center;
-      margin: -1px;
-      flex-shrink: inherit;
-      text-align: center;
-    }
-    .column-1 > div {
-      font-weight: bold;
-      font-size: 1.2vmax;
-      height: 2.7vmax;
-      min-height: 27px;
-    }
-    .column-2 > div {
-      font-size: .8vmax;
-      height: 2.7vmax;
-      min-height: 27px;
-    }
-    .column-3 > div {
-      font-size: 1.2vmax;
-      height: 2.7vmax;
-      min-height: 27px;
-    }
-    .column-4 > div {
-      font-size: 1.2vmax;
-      height: 2.7vmax;
-      min-height: 27px;
-    }
-    .column-1 :first-child {
-      font-size: 1.5vmax;
-    }
-    .column-2 :first-child {
-      font-size: 1.5vmax;
-    }
-    .column-3 :first-child {
-      font-size: 1.3vmax;
-    }
-    .column-4 :first-child {
-      font-size: 1.3vmax;
-    }
-    .right-arrow {
-    background-size: 3.6vmax;
-    } 
-    #roll-button {
-      font-size: 1.3vmax;
-    }
-  } 
+  #roll-button {
+    font-size: 1.3vmax;
+  }
+} 
+
 @media only screen and (min-height: 1100px) and (min-width: 900px) and (max-width: 1750px){
   h1 {
     margin: 120px 10px -70px;
   }
-  
 }
