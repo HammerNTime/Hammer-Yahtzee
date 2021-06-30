@@ -14,7 +14,7 @@ As a family favorite game, it felt only natural to create an on-the-go version t
 
 ## Rules ##
 
-Each turn consists of a maximum of three rolls. The first roll must be made with all five dice. If the player chooses to roll a second and, if desired, a third time, he may "hold" any or all the dice and roll again. A score must be entered after the last roll in the appropriate box or a zero entered in a box of the player’s choice. The player may also elect to enter a score in a box after either their first or second roll, at which point their turn would end and the next player would be up. Boxes may only be scored in once during the game and may not be changed once used. 
+Each turn consists of a maximum of three rolls. The first roll must be made with all five dice. If the player chooses to roll a second and, if desired, a third time, he may "hold" any or all the dice and roll again. A score must be entered after the last roll in the appropriate box or a zero entered in a box of the player’s choice. The player may also elect to enter a score in a box after either their first or second roll, at which point their turn would end and the next player would be up. Boxes may only be scored in once during the game and may not be changed once used. The game ends once each player has had 13 turns.
 
 #### Holding dice ####
 This may be achieved by clicking the dice the player wants to hold. This will turn the dice red and it will not roll until unclicked or it is the next player's turn.
@@ -59,3 +59,21 @@ Yahtzee:<br>
 
 #### Chance ####
 A player may score the total of all of their current dice at any point in the Chance box.
+
+#### Yahtzee Bonus ####
+A player may score 100 each time they have a five of a kind and they have already scored 50 in their "Yahtzee" box during the current game. This is the only box that may be achieved multiple times. (this will cause the player to have an empty box on their scoreboard for each time this is achieved).
+
+
+
+### Tech Used ###
+JavaScript
+CSS
+HTML
+
+Shoutout to Bootstrap and Animate.css for buttons and (most) animations
+
+
+### Future Endeavors ###
+* Tracking player scores across multiple games
+* Ability to add or remove players
+* Computer logic?
