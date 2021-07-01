@@ -55,7 +55,7 @@ Lg Straight:<br>
 A player may score 50 points in their Yahtzee if they have any five of a kind. They may also get up and yell "Yahtzee!!" and do a dance. 
 
 Yahtzee:<br>
-![alt text](./assets/Yahtzee.png)
+![alt " image of 5 dice that have rolled 6"](./assets/Yahtzee.png)
 
 #### Chance ####
 A player may score the total of all of their current dice at any point in the Chance box.
@@ -63,6 +63,13 @@ A player may score the total of all of their current dice at any point in the Ch
 #### Yahtzee Bonus ####
 A player may score 100 each time they have a five of a kind and they have already scored 50 in their "Yahtzee" box during the current game. This is the only box that may be achieved multiple times. (this will cause the player to have an empty box on their scoreboard for each time this is achieved).
 
+
+## Extra Features ##
+#### Light/Dark Mode ####
+![alt "Dark Mode image"](./assets/darkmode.png)
+
+#### Phone Compatability ####
+![alt "Phone compatability image"](./assets/phonemode.png)
 
 
 ### Tech Used ###

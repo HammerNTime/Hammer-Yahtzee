@@ -77,11 +77,11 @@ bonusCheck1, bonusCheck2, currentPlr, otherPlr
 
 /* -------------------------Event Listeners------------------------- */
 
-rollButton.addEventListener("click", rollNewDice)
-scoreCard.addEventListener("click", scoreCardClick)
-dice.addEventListener("click", diceHoldInit)
+rollButton.addEventListener("click", handleRollNewDice)
+scoreCard.addEventListener("click", handleScoreCardClick)
+dice.addEventListener("click", handleDiceHold)
 lightDarkBtn.addEventListener("click", colorScheme.change)
-nameForm.addEventListener("submit", start)
+nameForm.addEventListener("submit", handleStart)
 
 /* -------------------------Functions------------------------- */
 init()
@@ -122,7 +122,7 @@ function hideUnhide() {
 // being clicked. if it passes all of that it decides if the click was for an upper or lower number
 // it then pushes the innertext of the clicked box into the correct array and resets the dice
 // resets the turn and changes the turn
-function scoreCardClick(event) {
+function handleScoreCardClick(event) {
     upperCheck = event.target.id
     if (scoreCardNoClickEvents(event) === true){
         return
@@ -179,7 +179,7 @@ function scoreCardClick(event) {
 
 // checks if the current roll is not 1, then checks which dice was clicked and if that
 // dice is already being held and colors accordingly which switching the checker from 1 to -1
-function diceHoldInit(event) {
+function handleDiceHold(event) {
     if (currentRoll === 1){
         return
     }
@@ -258,7 +258,7 @@ function scoreCardNoClickEvents(event){
     }
 
 // initializer to populate the names of players and hide/unhide
-function start(event){
+function handleStart(event){
     event.preventDefault()
     hideUnhide()
     init()
@@ -269,7 +269,7 @@ function start(event){
     // first checks to see if all dice are being held, then if the roll is really for a new game
     // then checks if each specific dice is being held, if not it calls a random number and runs 
 // the dice animation
-function rollNewDice() {
+function handleRollNewDice() {
     if (dice1Check === -1 
     && dice2Check === -1
     && dice3Check === -1
