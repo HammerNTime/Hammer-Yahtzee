@@ -71,6 +71,13 @@ A player may score 100 each time they have a five of a kind and they have alread
 #### Phone Compatability ####
 ![alt "Phone compatability image"](./assets/phonemode.png)
 
+#### Smart Highlighting ####
+Squares light up green if the player has a combination of dice they can use for it.<br>
+![alt "Image of smart highlighing"](./assets/smart-highlighting.png)
+
+Squares light up yellow with a zero if the player has used all of their rolls and do not have a combination of dice that can be scored in them. Allowing for the player to place a zero in the selected square.<br>
+![alt "Image of smart highlighing yellow"](./assets/smart-highlighting-yellow.png)
+
 
 ### Tech Used ###
 * JavaScript
