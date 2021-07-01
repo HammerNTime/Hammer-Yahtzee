@@ -264,7 +264,7 @@ function handleStart(event){
     init()
 } 
     
-    /* -------------------------Roll Dice Functions------------------------- */
+/* -------------------------Roll Dice Functions------------------------- */
     
     // first checks to see if all dice are being held, then if the roll is really for a new game
     // then checks if each specific dice is being held, if not it calls a random number and runs 
@@ -358,7 +358,7 @@ function diceImg(dice, result){
 // calls a random number between 1-6, this coresponds to the dice rolled
 function randomDiceRoll() {
     return parseInt(Math.floor((Math.random() * 6) + 1))
- }  
+}  
 
 /* -------------------------Reset Functions------------------------- */
 
@@ -965,7 +965,6 @@ function updateMsg() {
         message.innerText = `${String(currentPlr)}, please make your selection.`
     }
 }
-
 
 /* ------------------------- Animation Functions ------------------------- */
 
