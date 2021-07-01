@@ -391,7 +391,6 @@ function turnReset() {
 // changes the player and checks to see if the game has ended
 function turnChange() {
     currentTurn *= -1
-    console.log(currentTurn)
     turnCounter++
     checkGameOver()
 }
@@ -505,7 +504,6 @@ function checkGameOver() {
         rollButton.innerText = "Click for New Game!"
         currentRoll = "New Game"
         winningMsg()
-        console.log('DONE!')
     }
 }
 
