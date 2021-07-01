@@ -84,11 +84,10 @@ Squares light up yellow with a zero if the player has used all of their rolls an
 * CSS
 * HTML
 
-#### Shoutouts #### 
+### Shoutouts ### 
 * Bootstrap - for buttons
 * Animate.css - for (some) animations
 * Google Fonts
-
 
 ### Future Endeavors ###
 * Tracking player scores across multiple games
