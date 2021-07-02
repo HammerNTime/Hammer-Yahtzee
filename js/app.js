@@ -755,6 +755,12 @@ function checkFullHouse(plr, id, el){
                 el.innerText = 0
             }
         }
+        if(sortedNumArray[0] === sortedNumArray[4] || sortedNumArray[0] === sortedNumArray [3] || sortedNumArray[1] === sortedNumArray[4]){
+           if (currentRoll === 4){
+               el.setAttribute("class", "box-yellow")
+               el.innerText = 0
+           }
+        }
         if (sortedNumArray[0] === sortedNumArray[1] || sortedNumArray[3] === sortedNumArray[4]){
             if (sortedNumArray[0] !== sortedNumArray [2] && sortedNumArray[2] !== sortedNumArray[4]){
                 if (currentRoll === 4){
